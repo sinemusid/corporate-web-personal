@@ -1,0 +1,48 @@
+import { PortfolioItem } from '../types';
+
+export const MOCK_PORTFOLIO_ITEMS: PortfolioItem[] = [
+  {
+    id: 'port-1',
+    title: 'Lentera Malam Nusantara',
+    category: 'feature-film',
+    categoryLabel: 'Feature Film',
+    year: '2025',
+    director: 'Arya Satria',
+    thumbnailUrl: '/images/portfolio-1.jpg',
+    synopsis: 'Kisah drama sinematik menyusuri kebudayaan pesisir Indonesia modern.',
+    unitSlug: 'production',
+  },
+  {
+    id: 'port-2',
+    title: 'Suara Dari Lembah',
+    category: 'documentary',
+    categoryLabel: 'Dokumenter',
+    year: '2024',
+    director: 'Budi Utama',
+    thumbnailUrl: '/images/portfolio-2.jpg',
+    synopsis: 'Dokumenter eksplorasi kehidupan seniman musik tradisional di garis batas.',
+    unitSlug: 'production',
+  },
+  {
+    id: 'port-3',
+    title: 'Echoes of Tomorrow - Tech Campaign',
+    category: 'commercial',
+    categoryLabel: 'Commercial Agency',
+    year: '2025',
+    director: 'Citra Dewi',
+    thumbnailUrl: '/images/portfolio-3.jpg',
+    synopsis: 'Iklan komersial futuristik dengan perpaduan sinematografi & efek visual tinggi.',
+    unitSlug: 'screen',
+  },
+  {
+    id: 'port-4',
+    title: 'Jejak Langkah Akademi',
+    category: 'short-film',
+    categoryLabel: 'Film Pendek',
+    year: '2025',
+    director: 'Karya Siswa Sinemus Lab',
+    thumbnailUrl: '/images/portfolio-4.jpg',
+    synopsis: 'Film pendek antologi hasil karya program inkubasi Sinemus Academy.',
+    unitSlug: 'academy',
+  },
+];
