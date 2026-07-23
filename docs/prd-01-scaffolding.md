@@ -65,16 +65,16 @@ Navigasi utama terbagi menjadi 5 Link Navbar dengan alokasi komponen persis sepe
 
 Setiap modul terisolasi di bawah `src/features/` untuk memasok komponen ke 5 halaman di atas:
 
-| Feature | Tanggung Jawab & Scope Komponen |
-| :--- | :--- |
-| `ecosystem` | Menampilkan diagram ekosistem Sinemus, workflow flow, dan statistik ekosistem. |
-| `units` | Menampilkan unit bisnis (*Screen, Production, Academy, Community*) dan halaman detail masing-masing. |
-| `portfolio` | Menampilkan katalog karya kami (*Karya Kami*) beserta filtering kategori. |
-| `company` | Menampilkan profil perusahaan (*Who We Are*, *About Company*), Visi Misi Value, Milestone, dan Number Projects. |
-| `team` | Menampilkan *Design Structure* (Struktur Organisasi) dan *Our Team* (Jajaran Kepemimpinan). |
-| `services` | Menampilkan seluruh *Layanan Kami* (Film Production, Creative Agency, Distribution, dll). |
-| `career` | Menampilkan *Roadmap*, budaya kerja, benefit, serta banner *Join Our Mission*. |
-| `contact` | Menampilkan *Contact Company* (formulir & lokasi) serta *Page Partner / Collaborator*. |
+| Feature     | Tanggung Jawab & Scope Komponen                                                                                 |
+| :---------- | :-------------------------------------------------------------------------------------------------------------- |
+| `ecosystem` | Menampilkan diagram ekosistem Sinemus, workflow flow, dan statistik ekosistem.                                  |
+| `units`     | Menampilkan unit bisnis (*Screen, Production, Academy, Community*) dan halaman detail masing-masing.            |
+| `portfolio` | Menampilkan katalog karya kami (*Karya Kami*) beserta filtering kategori.                                       |
+| `company`   | Menampilkan profil perusahaan (*Who We Are*, *About Company*), Visi Misi Value, Milestone, dan Number Projects. |
+| `team`      | Menampilkan *Design Structure* (Struktur Organisasi) dan *Our Team* (Jajaran Kepemimpinan).                     |
+| `services`  | Menampilkan seluruh *Layanan Kami* (Film Production, Creative Agency, Distribution, dll).                       |
+| `career`    | Menampilkan *Roadmap*, budaya kerja, benefit, serta banner *Join Our Mission*.                                  |
+| `contact`   | Menampilkan *Contact Company* (formulir & lokasi) serta *Page Partner / Collaborator*.                          |
 
 ---
 

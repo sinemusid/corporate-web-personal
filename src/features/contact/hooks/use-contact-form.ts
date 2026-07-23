@@ -8,6 +8,7 @@ export function useContactForm() {
   const [partners, setPartners] = useState<PartnerItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -22,22 +23,42 @@ export function useContactForm() {
     load();
   }, []);
 
-  const handleSubmit = async (formData: ContactFormData) => {
+  const handleSubmit = async (formData: ContactFormData): Promise<boolean> => {
     setIsSubmitting(true);
     setStatusMessage(null);
     try {
       const res = await submitContactForm(formData);
       if (res.success) {
-        setStatusMessage(res.message || 'Pesan Anda berhasil dikirim!');
+        setIsSuccess(true);
+        setStatusMessage(res.message || 'Pesan Terkirim!');
+        return true;
       } else {
+        setIsSuccess(false);
         setStatusMessage(res.error || 'Gagal mengirim pesan.');
+        return false;
       }
     } catch {
+      setIsSuccess(false);
       setStatusMessage('Terjadi kesalahan jaringan.');
+      return false;
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  return { partners, isLoading, isSubmitting, statusMessage, handleSubmit };
+  const resetFormState = () => {
+    setIsSuccess(false);
+    setStatusMessage(null);
+  };
+
+  return {
+    partners,
+    isLoading,
+    isSubmitting,
+    isSuccess,
+    statusMessage,
+    handleSubmit,
+    resetFormState,
+  };
 }
+

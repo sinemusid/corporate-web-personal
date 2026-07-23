@@ -1,6 +1,6 @@
 import { BaseEntity } from '@/types';
 
-export type PortfolioCategory = 'all' | 'feature-film' | 'documentary' | 'commercial' | 'short-film';
+export type PortfolioCategory = 'all' | 'Film' | 'Series' | 'Documentary' | string;
 
 export interface PortfolioItem extends BaseEntity {
   title: string;
@@ -12,3 +12,4 @@ export interface PortfolioItem extends BaseEntity {
   synopsis: string;
   unitSlug: string;
 }
+

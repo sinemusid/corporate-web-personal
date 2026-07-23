@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from '@/components/ui/Card';
 import { RoadmapMilestone } from '../types';
 
 interface RoadmapTimelineProps {
@@ -8,35 +7,27 @@ interface RoadmapTimelineProps {
 
 export const RoadmapTimeline: React.FC<RoadmapTimelineProps> = ({ roadmap }) => {
   return (
-    <div className="space-y-8">
-      <div className="text-center max-w-2xl mx-auto">
-        <h3 className="text-2xl font-bold text-white">Strategic Roadmap</h3>
-        <p className="text-xs text-zinc-400 mt-1">Peta jalan pengembangan ekosistem Sinemus Indonesia jangka panjang.</p>
-      </div>
+    <div className="space-y-12 my-16">
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Roadmap</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {roadmap.map((item) => (
-          <Card key={item.id} className="space-y-3 relative overflow-hidden">
-            <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-red-500 font-bold">{item.phase}</span>
-              <span className="text-zinc-500">{item.year}</span>
+      <div className="relative pt-6">
+        {/* Horizontal Connecting Line */}
+        <div className="hidden lg:block absolute top-[34px] left-[10%] right-[10%] h-0.5 bg-zinc-800 z-0" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+          {roadmap.map((item) => (
+            <div key={item.id} className="flex flex-col items-center text-center space-y-3">
+              {/* Timeline Dot */}
+              <div className="w-4 h-4 rounded-full bg-zinc-950 border-2 border-amber-400/80 shadow-[0_0_12px_rgba(251,191,36,0.5)] my-2" />
+
+              <span className="text-xs font-mono text-zinc-400">{item.year}</span>
+              <h3 className="text-base font-bold text-white tracking-tight">{item.title}</h3>
+              <p className="text-xs text-zinc-400 max-w-xs leading-relaxed">{item.description}</p>
             </div>
-            <h4 className="font-bold text-white text-base">{item.title}</h4>
-            <p className="text-xs text-zinc-400 leading-relaxed">{item.description}</p>
-            <span
-              className={`inline-block text-[10px] px-2 py-0.5 rounded font-mono ${
-                item.status === 'completed'
-                  ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
-                  : item.status === 'in-progress'
-                  ? 'bg-amber-950 text-amber-400 border border-amber-800'
-                  : 'bg-zinc-800 text-zinc-400'
-              }`}
-            >
-              STATUS: {item.status.toUpperCase()}
-            </span>
-          </Card>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
 };
+

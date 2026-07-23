@@ -5,26 +5,23 @@ import { SectionWrapper } from '@/components/common/SectionWrapper';
 
 // Feature Imports exclusively via Public API Gates
 import { ContactCompanyForm, useContactForm } from '@/features/contact';
-import { JoinOurMission } from '@/features/career';
 
 export default function ContactUsPage() {
-  const { isSubmitting, statusMessage, handleSubmit } = useContactForm();
+  const { isSubmitting, isSuccess, statusMessage, handleSubmit, resetFormState } = useContactForm();
 
   return (
-    <div className="space-y-12">
-      {/* Join Our Mission Banner */}
-      <SectionWrapper>
-        <JoinOurMission />
-      </SectionWrapper>
-
+    <div className="space-y-12 py-8">
       {/* Contact Form & Location Section */}
-      <SectionWrapper darkBg id="contact-form">
+      <SectionWrapper id="contact-form">
         <ContactCompanyForm
           onSubmit={handleSubmit}
           isSubmitting={isSubmitting}
+          isSuccess={isSuccess}
           statusMessage={statusMessage}
+          onReset={resetFormState}
         />
       </SectionWrapper>
     </div>
   );
 }
+

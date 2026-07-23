@@ -3,15 +3,15 @@ import { EcosystemNode, EcosystemFlowStep } from '../types';
 export const MOCK_ECOSYSTEM_NODES: EcosystemNode[] = [
   {
     id: 'eco-1',
-    title: 'Sinemus Screen',
-    category: 'Exhibition & Distribution',
-    description: 'Platform tayang sinematik dan pengalaman eksibisi media audio-visual interaktif.',
-  },
-  {
-    id: 'eco-2',
     title: 'Sinemus Production',
     category: 'Original Content Studio',
     description: 'Rumah produksi film fitur, dokumenter, dan iklan komersial berkualitas internasional.',
+  },
+  {
+    id: 'eco-2',
+    title: 'Sinemus Screen',
+    category: 'Exhibition & Distribution',
+    description: 'Platform tayang sinematik dan pengalaman eksibisi media audio-visual interaktif.',
   },
   {
     id: 'eco-3',
@@ -30,26 +30,33 @@ export const MOCK_ECOSYSTEM_NODES: EcosystemNode[] = [
 export const MOCK_ECOSYSTEM_FLOW: EcosystemFlowStep[] = [
   {
     stepNumber: 1,
-    title: 'Talent Incubation',
-    description: 'Pengembangan ide ide cerita serta talenta melalui program Sinemus Academy.',
-    unitInvolved: 'Sinemus Academy',
+    title: 'IDEASI',
+    description: 'Brainstorming, penulisan naskah, dan konseptualisasi karya berbasis nilai.',
+    unitInvolved: 'Sinemus Production',
   },
   {
     stepNumber: 2,
-    title: 'Content Production',
-    description: 'Eksekusi produksi sinematik berstandar tinggi oleh tim Sinemus Production.',
+    title: 'PRODUKSI',
+    description: 'Eksekusi pengambilan gambar dan penataan suara berstandar profesional.',
     unitInvolved: 'Sinemus Production',
   },
   {
     stepNumber: 3,
-    title: 'Distribution & Screen',
-    description: 'Penayangan film di jaringan ekosistem Sinemus Screen dan mitra eksibisi.',
+    title: 'EKSIBISI',
+    description: 'Distribusi dan penayangan film melalui jaringan bioskop dan platform layar.',
     unitInvolved: 'Sinemus Screen',
   },
   {
     stepNumber: 4,
-    title: 'Community Activation',
-    description: 'Diskusi, riset audience, dan penguatan jejaring kreatif bersama Sinemus Community.',
+    title: 'EDUKASI',
+    description: 'Workshop, masterclass, dan inkubasi talenta muda di industri sinema.',
+    unitInvolved: 'Sinemus Academy',
+  },
+  {
+    stepNumber: 5,
+    title: 'KOMUNITAS',
+    description: 'Apresiasi karya, jaringan diskusi, dan penguatan hubungan sineas & penonton.',
     unitInvolved: 'Sinemus Community',
   },
 ];
+

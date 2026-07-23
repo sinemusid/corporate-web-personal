@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { mainNavigation } from '@/config/navigation.config';
-import { Button } from '@/components/ui/Button';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -12,15 +12,18 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="w-full px-4 sm:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
-          <span className="h-9 w-9 rounded-lg bg-red-600 flex items-center justify-center font-bold text-white tracking-widest shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform">
-            S
-          </span>
-          <span className="font-bold text-xl tracking-tight text-white">
-            SINEMUS <span className="text-red-500 font-light">INDONESIA</span>
-          </span>
+          <div className="relative h-10 w-44 sm:w-52">
+            <Image
+              src="/images/sinemus_logo.png"
+              alt="Sinemus Indonesia Logo"
+              fill
+              priority
+              className="object-contain object-left group-hover:scale-105 transition-transform"
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -42,15 +45,6 @@ export const Navbar: React.FC = () => {
             );
           })}
         </nav>
-
-        {/* Desktop Action */}
-        <div className="hidden md:flex items-center space-x-3">
-          <Link href="/contact">
-            <Button size="sm" variant="primary">
-              Hubungi Kami
-            </Button>
-          </Link>
-        </div>
 
         {/* Mobile Toggle */}
         <button
@@ -81,15 +75,9 @@ export const Navbar: React.FC = () => {
               {item.label}
             </Link>
           ))}
-          <div className="pt-2">
-            <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <Button size="sm" variant="primary" className="w-full">
-                Hubungi Kami
-              </Button>
-            </Link>
-          </div>
         </div>
       )}
     </header>
   );
 };
+

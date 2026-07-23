@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '@/components/ui/Card';
+import Image from 'next/image';
 import { PortfolioItem } from '../types';
 
 interface PortfolioCardProps {
@@ -8,28 +8,26 @@ interface PortfolioCardProps {
 
 export const PortfolioCard: React.FC<PortfolioCardProps> = ({ item }) => {
   return (
-    <Card className="group overflow-hidden flex flex-col justify-between hover:border-red-600/50 transition-all">
-      <div className="space-y-3">
-        <div className="relative aspect-video rounded-lg bg-zinc-800 overflow-hidden flex items-center justify-center text-zinc-600 text-xs font-mono">
-          <span>[ Thumbnail: {item.title} ]</span>
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60" />
-        </div>
+    <div className="group relative rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-800 aspect-[3/4] flex flex-col justify-end shadow-2xl hover:border-zinc-600 transition-all duration-300">
+      {/* Poster Image */}
+      <Image
+        src={item.thumbnailUrl}
+        alt={item.title}
+        fill
+        className="object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-90 group-hover:brightness-100"
+      />
 
-        <div className="flex items-center justify-between text-xs">
-          <span className="text-red-500 font-medium">{item.categoryLabel}</span>
-          <span className="text-zinc-500">{item.year}</span>
-        </div>
+      {/* Dark Bottom Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent z-10" />
 
-        <h4 className="text-base font-bold text-white group-hover:text-red-400 transition-colors">
+      {/* Content */}
+      <div className="relative z-20 p-4 space-y-1 text-center sm:text-left">
+        <h3 className="text-base sm:text-lg font-black text-white uppercase tracking-wider group-hover:text-amber-300 transition-colors">
           {item.title}
-        </h4>
-        <p className="text-xs text-zinc-400 line-clamp-2">{item.synopsis}</p>
+        </h3>
+        <p className="text-[11px] text-zinc-400 font-mono">{item.categoryLabel} ({item.year})</p>
       </div>
-
-      <div className="pt-4 border-t border-zinc-800/80 mt-4 text-xs text-zinc-500 flex justify-between">
-        <span>Sutradara: {item.director}</span>
-        <span className="text-zinc-400 font-mono">@{item.unitSlug}</span>
-      </div>
-    </Card>
+    </div>
   );
 };
+

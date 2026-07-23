@@ -2,35 +2,38 @@ import { BusinessUnit } from '../types';
 
 export const MOCK_UNITS: BusinessUnit[] = [
   {
-    id: 'unit-screen',
-    slug: 'screen',
-    title: 'Sinemus Screen',
-    subtitle: 'Exhibition & Digital Streaming Platform',
-    description: 'Layanan pemutaran film sinematik dan distribusi digital berfokus pada pengalaman penonton modern.',
-    features: ['Private Screening Hub', 'Digital VOD Platform', 'Film Festival Partner'],
+    id: 'unit-production',
+    slug: 'production',
+    title: 'SINEMUS PRODUCTION',
+    subtitle: 'Film Feature & Studio Content Studio',
+    description: 'Rumah produksi film layar lebar, dokumenter, dan konten audio-visual berstandar internasional.',
+    bannerUrl: '/images/khoas_poster.png',
+    features: ['Feature Film Production', 'Commercial & Music Video', 'Post-Production & VFX'],
     stats: [
-      { label: 'Layaran Penayangan', value: '150+' },
-      { label: 'Penonton Aktif', value: '50K+' },
+      { label: 'Judul Film', value: '20+' },
+      { label: 'Penghargaan', value: '15+' },
     ],
   },
   {
-    id: 'unit-production',
-    slug: 'production',
-    title: 'Sinemus Production',
-    subtitle: 'Film Feature & Commercial Production Studio',
-    description: 'Studio pembuatan film independen, dokumenter, dan iklan komersial berkualitas tinggi.',
-    features: ['Feature Film Production', 'Commercial & Music Video', 'Post-Production & VFX'],
+    id: 'unit-screen',
+    slug: 'screen',
+    title: 'SINEMUS SCREEN',
+    subtitle: 'Exhibition & Digital Screening Platform',
+    description: 'Jaringan eksibisi sinema, pemutaran independen, dan platform penayangan digital.',
+    bannerUrl: '/images/khoas_poster.png',
+    features: ['Private Screening Hub', 'Digital VOD Platform', 'Film Festival Partner'],
     stats: [
-      { label: 'Judul Film', value: '25+' },
-      { label: 'Penghargaan', value: '12' },
+      { label: 'Layar Penayangan', value: '150+' },
+      { label: 'Penonton Aktif', value: '50K+' },
     ],
   },
   {
     id: 'unit-academy',
     slug: 'academy',
-    title: 'Sinemus Academy',
+    title: 'SINEMUS ACADEMY',
     subtitle: 'Creative Talent & Technical Education',
-    description: 'Inkubator dan sekolah akselerasi talenta perfilman nasional berbasis industri.',
+    description: 'Inkubator dan lembaga pelatihan intensif untuk mencetak talenta perfilman masa depan.',
+    bannerUrl: '/images/khoas_poster.png',
     features: ['Masterclass Director', 'Screenwriting Lab', 'Technical Workshop'],
     stats: [
       { label: 'Alumni Trainee', value: '1,200+' },
@@ -40,13 +43,16 @@ export const MOCK_UNITS: BusinessUnit[] = [
   {
     id: 'unit-community',
     slug: 'community',
-    title: 'Sinemus Community',
+    title: 'SINEMUS COMMUNITY',
     subtitle: 'Filmmakers Network & Arts Collective',
-    description: 'Wadah kolaborasi jejaring pegiat film, apresiasi sinema, dan forum diskusi independen.',
+    description: 'Wadah jejaring sineas independen, apresiasi film, dan forum apresiasi karya.',
+    bannerUrl: '/images/khoas_poster.png',
     features: ['Community Screening', 'Filmmaker Gathering', 'Funding Lab Grants'],
     stats: [
-      { label: 'Anggota Komunitas', value: '5,000+' },
-      { label: 'Kota Jaringan', value: '18' },
+      { label: 'Anggota Komunitas', value: '500+' },
+      { label: 'Mitra Kota', value: '18' },
     ],
   },
 ];
+
+

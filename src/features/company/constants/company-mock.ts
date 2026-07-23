@@ -3,32 +3,34 @@ import { CompanyInfo, CompanyStat, MilestoneItem } from '../types';
 export const MOCK_COMPANY_INFO: CompanyInfo = {
   id: 'comp-1',
   name: 'Sinemus Indonesia',
-  tagline: 'Empowering Creative Ecosystems & Cinematic Innovation',
-  shortDescription: 'Sinemus Indonesia adalah ekosistem media sinematik terpadu yang menghubungkan talenta, produksi, eksibisi, dan komunitas di Indonesia.',
-  fullAbout: 'Didirikan dengan semangat membawa karya visual Indonesia ke panggung global, Sinemus Indonesia menaungi 4 pilar utama: Screen, Production, Academy, dan Community untuk memfasilitasi siklus kreasi tanpa batas.',
-  vision: 'Menjadi ekosistem sinema dan media kreatif terdepan di Asia Tenggara yang mendorong inovasi bercerita serta pertumbuhan industri independen.',
+  tagline: 'One Ecosystem, Many Stories, For Everyone',
+  shortDescription: 'PT Sineas Muslim Indonesia adalah entitas dan perusahaan perfilman di Indonesia yang bergerak dalam pilar ekosistem sinema terintegrasi untuk menyatukan nilai-nilai kebaikan, keindahan, kecerdasan, dan keberagaman yang berakar pada nilai-nilai Islam universal, relevan, dan organik ke panggung nasional hingga global.',
+  fullAbout: 'Sinemus Indonesia adalah perusahaan ekosistem perfilman berbasis nilai-nilai Islam yang berfokus pada pengembangan industri sinema melalui empat pilar utama: produksi, eksibisi, edukasi, dan jejaring komunitas sinema.',
+  vision: 'Menjadi ekosistem kreatif Muslim terdepan di Indonesia yang menghasilkan karya berdampak dan bermanfaat untuk ummah.',
   mission: [
-    'Mengakselerasi generasi baru pembuat film melalui pendidikan inklusif.',
-    'Menghasilkan konten sinematik dengan standar internasional.',
-    'Membangun infrastruktur distribusi dan eksibisi digital yang mandiri.',
-    'Memperkuat jejaring komunitas seni sinema di seluruh Indonesia.',
+    'Integrasi sistem produksi & eksibisi film berkualitas secara berkelanjutan.',
+    'Program edukasi & inkubasi komprehensif bagi kreator sinema muda.',
+    'Pemberdayaan ekosistem kreatif yang inklusif, mandiri, dan berkesinambungan.',
+    'Jangkauan karya ke pasar global dengan akar budaya dan nilai lokal yang kuat.',
   ],
   values: [
-    { title: 'Inovasi Tanpa Batas', description: 'Memadukan teknologi terkini dengan kekuatan narasi sinematik.' },
-    { title: 'Kolaborasi Inklusif', description: 'Wadah bagi seluruh kreator lintas disiplin untuk berkembang bersama.' },
-    { title: 'Integritas Karya', description: 'Menjaga kejujuran dan estetika dalam setiap proyek yang dihasilkan.' },
+    { title: 'Ekosistem Terintegrasi', description: 'Menghubungkan seluruh elemen sinema dari ide hingga distribusi.' },
+    { title: 'Berbasis Nilai', description: 'Mengusung pesan kebaikan dan keberagaman yang relevan.' },
+    { title: 'Berdampak Global', description: 'Mendorong perfilman Indonesia berdaya saing di kancah internasional.' },
   ],
 };
 
 export const MOCK_COMPANY_STATS: CompanyStat[] = [
-  { label: 'Project Diproduksi', value: '45+', description: 'Film feature, dokumenter, & iklan' },
-  { label: 'Talenta Terlatih', value: '1.2K+', description: 'Alumni program Sinemus Academy' },
-  { label: 'Penghargaan', value: '18', description: 'Festival film nasional & internasional' },
-  { label: 'Jaringan Komunitas', value: '18 Kota', description: 'Titik kolaborasi aktif di Indonesia' },
+  { label: 'Film Diproduksi', value: '20+', description: 'Film feature, dokumenter, & web series' },
+  { label: 'Penghargaan', value: '15+', description: 'Festival film nasional & internasional' },
+  { label: 'Anggota Komunitas', value: '500+', description: 'Filmmaker & kreator aktif' },
+  { label: 'Mitra Strategis', value: '10+', description: 'Kolaborator ekosistem sinema' },
+  { label: 'Unit Bisnis', value: '4', description: 'Pilar utama ekosistem sinemus' },
 ];
 
 export const MOCK_MILESTONES: MilestoneItem[] = [
-  { id: 'm-1', year: '2021', title: 'Pendirian Sinemus', description: 'Awal mula gerakan komuniter dan rumah produksi skala kolektif.' },
-  { id: 'm-2', year: '2023', title: 'Peluncuran Sinemus Academy', description: 'Perluasan ke inkubasi edukasi talenta sinema muda.' },
-  { id: 'm-3', year: '2025', title: 'Perluasan Ekosistem Digital', description: 'Peluncuran jaringan eksibisi Sinemus Screen & platform agregasi.' },
+  { id: 'm-1', year: '2021', title: 'Pendirian Sinemus', description: 'Awal mula gerakan komunitas dan rumah produksi perfilman.' },
+  { id: 'm-2', year: '2023', title: 'Peluncuran Unit Bisnis', description: 'Integrasi pilar produksi, eksibisi, academy, dan komunitas.' },
+  { id: 'm-3', year: '2025', title: 'Ekspansi Ekosistem', description: 'Perluasan jejaring distribusi dan kolaborasi internasional.' },
 ];
+

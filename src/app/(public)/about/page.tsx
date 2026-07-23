@@ -3,15 +3,18 @@
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
 
-// Feature Imports exclusively via Public API Gates
+// Feature Imports exclusively via Public API Gates (No deep imports)
 import {
   AboutCompany,
   VisionMissionValue,
   NumberProjects,
-  MilestonesTimeline,
   useCompany,
-  useMilestones,
 } from '@/features/company';
+
+import {
+  EcosystemFlow,
+  useEcosystem,
+} from '@/features/ecosystem';
 
 import {
   RoadmapTimeline,
@@ -38,7 +41,7 @@ import {
 
 export default function AboutUsPage() {
   const { info, stats } = useCompany();
-  const { milestones } = useMilestones();
+  const { flow } = useEcosystem();
   const { roadmap } = useRoadmap();
   const { members, structure } = useTeam();
   const { services } = useServices();
@@ -46,72 +49,69 @@ export default function AboutUsPage() {
   const { selectedCategory, setSelectedCategory, filteredItems } = usePortfolioFilter(items);
 
   return (
-    <div className="space-y-12">
-      {/* Header */}
-      <section className="py-16 text-center space-y-4 max-w-4xl mx-auto px-4">
-        <span className="text-xs font-mono text-red-500 uppercase tracking-widest bg-red-950/40 px-3 py-1 rounded border border-red-900/50">
-          About Sinemus Indonesia
-        </span>
-        <h1 className="text-4xl font-extrabold text-white">Profil & Ekosistem Perusahaan</h1>
-        <p className="text-zinc-400 text-sm max-w-xl mx-auto">
-          Mengenal lebih dekat visi, jajaran kepemimpinan, milestone, layanan, dan katalog karya Sinemus.
-        </p>
-      </section>
-
-      {/* About Company & Vision */}
+    <div className="space-y-16 py-12">
+      {/* 1. About Us Header & 3 Value Cards */}
       {info && (
-        <SectionWrapper darkBg>
+        <SectionWrapper id="about-info">
           <AboutCompany info={info} />
-          <div className="mt-16">
-            <VisionMissionValue info={info} />
-          </div>
         </SectionWrapper>
       )}
 
-      {/* Number Projects / Stats */}
-      <SectionWrapper>
-        <div className="text-center max-w-xl mx-auto mb-8">
-          <h3 className="text-2xl font-bold text-white">Pencapaian Dalam Angka</h3>
-        </div>
+      {/* 2. Visi Misi & Social Channels */}
+      {info && (
+        <SectionWrapper id="vision-mission">
+          <VisionMissionValue info={info} />
+        </SectionWrapper>
+      )}
+
+      {/* 3. Number Projects / Stats (5 items) */}
+      <SectionWrapper id="stats">
         <NumberProjects stats={stats} />
       </SectionWrapper>
 
-      {/* Milestones & Roadmap */}
-      <SectionWrapper darkBg>
-        <MilestonesTimeline milestones={milestones} />
-        <div className="mt-20">
-          <RoadmapTimeline roadmap={roadmap} />
-        </div>
+      {/* 4. Bagaimana Kami Bekerja (Ecosystem Flow) */}
+      <SectionWrapper id="how-we-work">
+        <EcosystemFlow flow={flow} />
       </SectionWrapper>
 
-      {/* Design Structure & Our Team */}
-      <SectionWrapper>
+      {/* 5. Leadership Team */}
+      <SectionWrapper id="leadership">
+        <OurTeamGrid members={members} />
+      </SectionWrapper>
+
+      {/* 6. Design Structure (Org Chart) */}
+      <SectionWrapper id="structure">
         <DesignStructure structure={structure} />
-        <div className="mt-20">
-          <OurTeamGrid members={members} />
+      </SectionWrapper>
+
+      {/* 7. Layanan Kami (Services) */}
+      <SectionWrapper id="services">
+        <div className="space-y-8 my-8">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Layanan Kami</h2>
+          <LayananKamiGrid services={services} />
         </div>
       </SectionWrapper>
 
-      {/* Layanan Kami */}
-      <SectionWrapper darkBg>
-        <LayananKamiGrid services={services} />
+      {/* 8. Roadmap */}
+      <SectionWrapper id="roadmap">
+        <RoadmapTimeline roadmap={roadmap} />
       </SectionWrapper>
 
-      {/* Karya Kami (Portfolio) */}
+      {/* 9. Karya Kami (Portfolio) */}
       <SectionWrapper id="portfolio">
-        <div className="text-center max-w-2xl mx-auto space-y-2 mb-8">
-          <h2 className="text-3xl font-extrabold text-white">Karya Kami (Portofolio)</h2>
-          <p className="text-xs text-zinc-400">
-            Kumpulan film feature, dokumenter, dan project komersial kreasi ekosistem Sinemus.
-          </p>
+        <div className="space-y-6 my-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800 pb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Karya Kami</h2>
+            <PortfolioFilter
+              currentCategory={selectedCategory}
+              onSelectCategory={setSelectedCategory}
+            />
+          </div>
+          <PortfolioGrid items={filteredItems} />
         </div>
-
-        <PortfolioFilter
-          currentCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
-        />
-        <PortfolioGrid items={filteredItems} />
       </SectionWrapper>
     </div>
   );
 }
+
+

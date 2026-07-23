@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import Image from 'next/image';
 import { BusinessUnit } from '../types';
 
 interface UnitCardProps {
@@ -10,36 +9,40 @@ interface UnitCardProps {
 
 export const UnitCard: React.FC<UnitCardProps> = ({ unit }) => {
   return (
-    <Card className="flex flex-col justify-between h-full hover:border-red-600/60 transition-all">
-      <div className="space-y-4">
-        <div className="flex items-start justify-between">
-          <span className="text-xs font-mono text-red-500 uppercase tracking-widest bg-red-950/40 px-2.5 py-1 rounded border border-red-900/50">
-            {unit.slug}
-          </span>
+    <div className="relative group rounded-2xl overflow-hidden border border-white/20 bg-zinc-950/80 backdrop-blur-md p-6 flex flex-col justify-between h-[360px] transition-all duration-300 hover:border-white/40 hover:scale-[1.02] shadow-2xl">
+      {/* Background Image & Overlay */}
+      {unit.bannerUrl && (
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={unit.bannerUrl}
+            alt={unit.title}
+            fill
+            className="object-cover opacity-25 group-hover:opacity-35 transition-opacity duration-300"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent" />
         </div>
-        <div>
-          <h3 className="text-xl font-bold text-white mb-1">{unit.title}</h3>
-          <p className="text-xs text-red-400 font-medium mb-3">{unit.subtitle}</p>
-          <p className="text-xs text-zinc-400 leading-relaxed">{unit.description}</p>
-        </div>
+      )}
 
-        <ul className="space-y-1.5 pt-2">
-          {unit.features.map((feat, i) => (
-            <li key={i} className="text-xs text-zinc-300 flex items-center space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-              <span>{feat}</span>
-            </li>
-          ))}
-        </ul>
+      {/* Content */}
+      <div className="relative z-10 space-y-3 text-center sm:text-left">
+        <h3 className="text-xl sm:text-2xl font-black tracking-wide text-white uppercase">
+          {unit.title}
+        </h3>
+        <p className="text-xs sm:text-sm text-zinc-300 line-clamp-3 leading-relaxed">
+          {unit.description}
+        </p>
       </div>
 
-      <div className="pt-6">
+      {/* Action Button */}
+      <div className="relative z-10 pt-4 flex justify-center sm:justify-start">
         <Link href={`/units/${unit.slug}`}>
-          <Button variant="outline" size="sm" className="w-full">
-            Jelajahi Unit
-          </Button>
+          <button className="px-5 py-2 rounded-full border border-white/40 text-xs font-semibold tracking-wider text-white hover:bg-white hover:text-black transition-all duration-200 flex items-center space-x-1">
+            <span>Learn More</span>
+            <span>&gt;</span>
+          </button>
         </Link>
       </div>
-    </Card>
+    </div>
   );
 };
+
