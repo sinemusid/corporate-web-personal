@@ -1,26 +1,28 @@
 import React from 'react';
 import {
-  AboutCompanySection,
-  VisionMissionSection,
-  EcosystemFlowSection,
-  OurTeamSection,
-  ServicesGridSection,
-  CareerRoadmapSection,
-  PortfolioGridSection,
-} from '@/widgets';
+  AboutCompanyOverviewWidget,
+  VisionMissionValueWidget,
+  ProjectStatsWidget,
+  MilestonesTimelineWidget,
+  CareerRoadmapWidget,
+  DesignStructureWidget,
+  OurTeamGridWidget,
+  ServicesGridWidget,
+  PortfolioGridWidget,
+} from '@/widgets/about-us';
 
 export default function AboutUsPage() {
   return (
     <div className="space-y-16 py-12">
-      <AboutCompanySection variant="about" />
-      <VisionMissionSection />
-      <AboutCompanySection variant="stats" />
-      <EcosystemFlowSection />
-      <OurTeamSection variant="grid" />
-      <OurTeamSection variant="structure" />
-      <ServicesGridSection />
-      <CareerRoadmapSection />
-      <PortfolioGridSection />
+      <AboutCompanyOverviewWidget />
+      <VisionMissionValueWidget />
+      <ProjectStatsWidget />
+      <MilestonesTimelineWidget />
+      <CareerRoadmapWidget />
+      <DesignStructureWidget />
+      <OurTeamGridWidget />
+      <ServicesGridWidget />
+      <PortfolioGridWidget />
     </div>
   );
 }

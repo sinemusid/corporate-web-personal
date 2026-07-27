@@ -1,44 +1,21 @@
-import { MOCK_PARTNERS } from '../constants/partners-mock';
-import { FORMSPREE_FORM_ID } from '../constants/contact-config';
-import { mapPartners } from './data-mapper';
+import { MOCK_JOIN_MISSION } from '../constants/join-mission.mock';
+import { MOCK_CONTACT_COMPANY } from '../constants/contact-company.mock';
+import { mapJoinMission, mapContactCompany } from './data-mapper';
 import { ContactFormData } from '../types';
 
-export async function fetchPartners() {
-  return mapPartners(MOCK_PARTNERS);
+export async function fetchJoinMission() {
+  return mapJoinMission(MOCK_JOIN_MISSION);
 }
 
-export async function submitContactForm(payload: ContactFormData) {
-  // If endpoint is placeholder or not configured in env, return success for visual demo flow
-  if (!FORMSPREE_FORM_ID || FORMSPREE_FORM_ID === 'YOUR_FORMSPREE_ID') {
-    return { success: true, message: 'Pesan Terkirim!' };
-  }
-
-  const formspreeEndpoint = `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
-
-  try {
-    const res = await fetch(formspreeEndpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        name: payload.name,
-        email: payload.email,
-        subject: payload.company || 'Pesan Baru dari Corporate Web',
-        message: payload.message,
-      }),
-    });
-
-    if (res.ok) {
-      return { success: true, message: 'Pesan Terkirim!' };
-    } else {
-      const data = await res.json().catch(() => ({}));
-      return { success: false, error: data?.error || 'Gagal mengirim pesan via Formspree.' };
-    }
-  } catch {
-    // Return success in offline/demo mode so user can see animation
-    return { success: true, message: 'Pesan Terkirim!' };
-  }
+export async function fetchContactCompany() {
+  return mapContactCompany(MOCK_CONTACT_COMPANY);
 }
 
+export async function submitContactForm(payload: ContactFormData): Promise<boolean> {
+  // Simulate server API latency
+  await new Promise((res) => setTimeout(res, 800));
+  if (!payload.email || !payload.name) {
+    throw new Error('Name and email are required');
+  }
+  return true;
+}

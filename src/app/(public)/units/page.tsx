@@ -1,11 +1,11 @@
 import React from 'react';
-import { UnitHeroSection, UnitGridSection } from '@/widgets';
+import { UnitHeroSectionWidget, UnitGridSectionWidget } from '@/widgets/units';
 
 export default function UnitsHubPage() {
   return (
     <div>
-      <UnitHeroSection />
-      <UnitGridSection darkBg />
+      <UnitHeroSectionWidget />
+      <UnitGridSectionWidget darkBg />
     </div>
   );
 }

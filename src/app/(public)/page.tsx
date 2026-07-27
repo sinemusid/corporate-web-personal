@@ -1,12 +1,12 @@
 import React from 'react';
-import { HeroSection, AboutCompanySection, UnitGridSection } from '@/widgets';
+import { HeroSectionWidget, WhoWeAreSectionWidget, UnitPreviewSectionWidget } from '@/widgets/home';
 
 export default function LandingPage() {
   return (
     <div className="space-y-12">
-      <HeroSection />
-      <AboutCompanySection variant="who-we-are" />
-      <UnitGridSection showTitleHeader />
+      <HeroSectionWidget />
+      <WhoWeAreSectionWidget />
+      <UnitPreviewSectionWidget showTitleHeader />
     </div>
   );
 }

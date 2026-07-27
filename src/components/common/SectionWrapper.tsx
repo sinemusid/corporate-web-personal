@@ -17,7 +17,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
     <section
       id={id}
       className={`py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${
-        darkBg ? 'bg-zinc-950' : ''
+        darkBg ? 'bg-bg-secondary' : 'bg-bg-primary'
       } ${className}`}
     >
       {children}

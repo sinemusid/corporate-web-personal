@@ -22,11 +22,11 @@ export const UnitHeroSection: React.FC<UnitHeroSectionProps> = ({
 
   return (
     <section className="py-20 text-center space-y-4 max-w-4xl mx-auto px-4">
-      <span className="text-xs font-mono text-red-500 uppercase tracking-widest bg-red-950/40 px-3 py-1 rounded border border-red-900/50">
+      <span className="text-xs font-mono text-content-primary uppercase tracking-widest bg-accent-subtle px-3 py-1 rounded border border-borderToken-subtle">
         {badge}
       </span>
-      <h1 className="text-4xl font-extrabold text-white">{title}</h1>
-      <p className="text-zinc-400 text-sm max-w-xl mx-auto">{subtitle}</p>
+      <h1 className="text-4xl font-heading font-extrabold text-content-primary">{title}</h1>
+      <p className="text-content-secondary font-body text-sm max-w-xl mx-auto">{subtitle}</p>
     </section>
   );
 };

@@ -11,7 +11,7 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-borderToken-subtle bg-bg-primary/80 backdrop-blur-md">
       <div className="w-full px-4 sm:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
@@ -34,10 +34,10 @@ export const Navbar: React.FC = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-lg text-sm font-body font-medium transition-colors ${
                   isActive
-                    ? 'text-white bg-zinc-800/80 font-semibold'
-                    : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
+                    ? 'text-content-primary bg-accent-subtle font-semibold'
+                    : 'text-content-secondary hover:text-content-primary hover:bg-accent-subtle'
                 }`}
               >
                 {item.label}
@@ -49,7 +49,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-zinc-400 hover:text-white p-2"
+          className="md:hidden text-content-secondary hover:text-content-primary p-2"
           aria-label="Toggle Navigation"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -64,13 +64,13 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden border-b border-zinc-800 bg-zinc-950 px-4 pt-2 pb-6 space-y-3">
+        <div className="md:hidden border-b border-borderToken-subtle bg-bg-primary px-4 pt-2 pb-6 space-y-3">
           {mainNavigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-zinc-300 hover:text-white hover:bg-zinc-900"
+              className="block px-3 py-2 rounded-md text-base font-body font-medium text-content-secondary hover:text-content-primary hover:bg-accent-subtle"
             >
               {item.label}
             </Link>
@@ -80,4 +80,3 @@ export const Navbar: React.FC = () => {
     </header>
   );
 };
-

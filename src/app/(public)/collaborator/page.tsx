@@ -1,6 +1,6 @@
 import React from 'react';
-import { PartnerGridSection } from '@/widgets';
+import { CollaboratorPartnersWidget } from '@/widgets/collaborators';
 
 export default function CollaboratorPage() {
-  return <PartnerGridSection />;
+  return <CollaboratorPartnersWidget />;
 }

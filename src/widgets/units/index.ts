@@ -1,2 +1,2 @@
-export * from './UnitHeroSection';
-export * from './UnitGridSection';
+export * from './UnitHeroSectionWidget';
+export * from './UnitGridSectionWidget';

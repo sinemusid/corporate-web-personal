@@ -1,0 +1,28 @@
+import { HomeHeroData, HomeWhoWeAreData, HomeUnitPreviewData } from '../types';
+
+export function mapHomeHero(raw: HomeHeroData): HomeHeroData {
+  return {
+    title: raw.title || '',
+    tagline: raw.tagline || '',
+    backgroundImage: raw.backgroundImage || '',
+  };
+}
+
+export function mapHomeWhoWeAre(raw: HomeWhoWeAreData): HomeWhoWeAreData {
+  return {
+    title: raw.title || '',
+    heading: raw.heading || '',
+    subheading: raw.subheading || '',
+    description: raw.description || '',
+    ctaText: raw.ctaText || '',
+    ctaHref: raw.ctaHref || '',
+  };
+}
+
+export function mapHomeUnitPreview(raw: HomeUnitPreviewData): HomeUnitPreviewData {
+  return {
+    heading: raw.heading || '',
+    subheading: raw.subheading || '',
+    units: raw.units || [],
+  };
+}

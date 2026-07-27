@@ -1,2 +1,2 @@
-export * from './ContactSection';
-export * from './PartnerGridSection';
+export * from './JoinMissionWidget';
+export * from './ContactCompanyWidget';

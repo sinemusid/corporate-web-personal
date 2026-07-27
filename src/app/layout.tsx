@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fontSans, fontHeading, fontMono } from "@/config/fonts";
+import { fontHeading, fontBody, fontMono } from "@/config/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,12 +15,11 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} h-full antialiased`}
+      className={`${fontHeading.variable} ${fontBody.variable} ${fontMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
+      <body className="min-h-full flex flex-col font-body bg-bg-primary text-content-primary">
         {children}
       </body>
     </html>
   );
 }
-

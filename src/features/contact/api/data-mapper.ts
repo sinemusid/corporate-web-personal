@@ -1,5 +1,9 @@
-import { PartnerItem } from '../types';
+import { JoinMissionData, ContactCompanyData } from '../types';
 
-export function mapPartners(data: unknown[]): PartnerItem[] {
-  return data as PartnerItem[];
+export function mapJoinMission(raw: JoinMissionData): JoinMissionData {
+  return { ...raw };
+}
+
+export function mapContactCompany(raw: ContactCompanyData): ContactCompanyData {
+  return { ...raw };
 }
