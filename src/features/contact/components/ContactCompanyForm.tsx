@@ -31,7 +31,10 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
   // Sync externalIsSuccess state if passed
   useEffect(() => {
     if (externalIsSuccess) {
-      setSubmittedSuccess(true);
+      const timer = setTimeout(() => {
+        setSubmittedSuccess(true);
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [externalIsSuccess]);
 
