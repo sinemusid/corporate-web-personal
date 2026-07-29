@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { SectionWrapper } from '@/components/common/SectionWrapper';
 import { HomeWhoWeAre, HomeSkeleton, useHome } from '@/features/home';
 
 export const WhoWeAreSectionWidget: React.FC = () => {
@@ -9,15 +8,15 @@ export const WhoWeAreSectionWidget: React.FC = () => {
 
   if (isLoading || !whoWeAre) {
     return (
-      <SectionWrapper id="who-we-are">
+      <section id="who-we-are" className="w-full h-screen min-h-[600px] flex items-center justify-center">
         <HomeSkeleton />
-      </SectionWrapper>
+      </section>
     );
   }
 
   return (
-    <SectionWrapper id="who-we-are" className="pt-4">
+    <section id="who-we-are" className="w-full h-screen min-h-[600px] relative overflow-hidden flex items-center">
       <HomeWhoWeAre data={whoWeAre} />
-    </SectionWrapper>
+    </section>
   );
 };

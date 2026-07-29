@@ -8,14 +8,14 @@ export const HeroSectionWidget: React.FC = () => {
 
   if (isLoading || !hero) {
     return (
-      <section id="hero" className="w-full">
+      <section id="hero" className="w-full h-screen min-h-[500px] flex items-center justify-center">
         <HomeSkeleton />
       </section>
     );
   }
 
   return (
-    <section id="hero" className="w-full">
+    <section id="hero" className="w-full h-screen min-h-[500px] flex items-center justify-center">
       <HomeHero data={hero} />
     </section>
   );

@@ -3,7 +3,7 @@ import { HeroSectionWidget, WhoWeAreSectionWidget, UnitPreviewSectionWidget } fr
 
 export default function LandingPage() {
   return (
-    <div className="space-y-12">
+    <div className="flex flex-col w-full min-h-screen">
       <HeroSectionWidget />
       <WhoWeAreSectionWidget />
       <UnitPreviewSectionWidget showTitleHeader />
