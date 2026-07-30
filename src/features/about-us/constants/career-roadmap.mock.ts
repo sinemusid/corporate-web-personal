@@ -8,5 +8,8 @@ export const MOCK_CAREER_ROADMAP: CareerRoadmapData = {
     { step: '02', title: 'Academy Incubation', description: 'Mengikuti kelas masterclass, workshop teknis, dan lab penulisan.' },
     { step: '03', title: 'Production Co-Lab', description: 'Terlibat dalam proyek produksi film pendek, dokumenter, atau fitur.' },
     { step: '04', title: 'Distribution & Screen', description: 'Penayangan karya di jejaring eksibisi Sinemus Screen dan festival.' },
+    { step: '05', title: 'Distribution & Screen', description: 'Penayangan karya di jejaring eksibisi Sinemus Screen dan festival.' },
+    { step: '06', title: 'Distribution & Screen', description: 'Penayangan karya di jejaring eksibisi Sinemus Screen dan festival.' },
+    { step: '07', title: 'Distribution & Screen', description: 'Penayangan karya di jejaring eksibisi Sinemus Screen dan festival.' },
   ],
 };

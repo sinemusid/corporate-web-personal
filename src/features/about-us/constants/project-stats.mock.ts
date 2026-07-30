@@ -1,13 +1,14 @@
 import { ProjectStatsData } from '../types';
 
 export const MOCK_PROJECT_STATS: ProjectStatsData = {
-  heading: 'Capaian Perusahaan Dalam Angka',
-  subheading: 'Jejak langkah Sinemus Indonesia dalam membangun ekosistem perfilman.',
+  heading: 'Overview & Statistik',
+  subheading: 'Gambaran skala operasional dan kekuatan jaringan ekosistem PT Sinemus Indonesia.',
   stats: [
-    { label: 'Film Diproduksi', value: '20+', description: 'Film feature, dokumenter, & web series' },
-    { label: 'Penghargaan', value: '15+', description: 'Festival film nasional & internasional' },
-    { label: 'Anggota Komunitas', value: '500+', description: 'Filmmaker & kreator aktif' },
-    { label: 'Mitra Strategis', value: '10+', description: 'Kolaborator ekosistem sinema' },
-    { label: 'Unit Bisnis', value: '4', description: 'Pilar utama ekosistem sinemus' },
+    { label: 'Unit Bisnis', value: '4', description: 'Sektor layanan terintegrasi dalam satu ekosistem' },
+    { label: 'Film Diproduksi', value: '8', description: 'Karya layar lebar, film pendek, & serial orisinal' },
+    { label: 'Profesional Crew', value: '150+', description: 'Tenaga ahli berpengalaman standar industri' },
+    { label: 'Talent', value: '10+', description: 'Aktor & kreator kreatif berbakat' },
+    { label: 'Vendor', value: '10+', description: 'Mitra teknis & fasilitas produksi terpercaya' },
+    { label: 'Community Member', value: '90+', description: 'Jaringan pegiat & jejaring sineas' },
   ],
 };

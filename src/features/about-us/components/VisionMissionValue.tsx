@@ -9,49 +9,48 @@ interface VisionMissionValueProps {
 
 export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) => {
   return (
-    <div className="space-y-12 max-w-5xl mx-auto">
-      <div className="text-center space-y-2">
-        <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-content-primary">{data.heading}</h2>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Vision */}
-        <div className="p-8 rounded-2xl border border-borderToken-subtle bg-bg-elevated space-y-4 backdrop-blur-sm">
-          <div className="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold text-content-primary bg-accent-subtle border border-borderToken-subtle">
-            {data.visionTitle}
-          </div>
-          <p className="text-base sm:text-lg font-body text-content-secondary font-medium leading-relaxed">
+    <div className="relative max-w-6xl mx-auto select-none">
+      <div className="relative z-10 space-y-10">
+        <fieldset className="rounded-3xl border border-white/30 bg-transparent px-6 py-6 sm:px-10 sm:py-8 text-center transition-colors">
+          <legend className="mx-auto px-6 text-xs sm:text-sm font-black tracking-widest text-white uppercase font-heading">
+            {data.visionTitle || 'VISI'}
+          </legend>
+          <p className="text-sm sm:text-base md:text-2lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto pt-2 pb-2">
             {data.visionText}
           </p>
-        </div>
+        </fieldset>
 
-        {/* Mission */}
-        <div className="p-8 rounded-2xl border border-borderToken-subtle bg-bg-elevated space-y-4 backdrop-blur-sm">
-          <div className="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold text-content-primary bg-accent-subtle border border-borderToken-subtle">
-            {data.missionTitle}
-          </div>
-          <ul className="space-y-3">
+        <fieldset className="rounded-3xl border border-white/30 bg-transparent px-4 py-6 sm:px-6 sm:py-8 transition-colors">
+          <legend className="mx-auto px-6 text-xs sm:text-sm font-black tracking-widest text-white uppercase font-heading">
+            {data.missionTitle || 'MISI'}
+          </legend>
+          <div
+            className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${
+              data.missions.length === 6
+                ? 'lg:grid-cols-6'
+                : data.missions.length === 4
+                ? 'lg:grid-cols-4'
+                : 'lg:grid-cols-3'
+            } divide-y sm:divide-y-0 ${
+              data.missions.length === 6
+                ? 'lg:divide-x'
+                : data.missions.length === 4
+                ? 'lg:divide-x'
+                : 'md:divide-x'
+            } divide-white/20 text-center w-full items-stretch pt-2 pb-2`}
+          >
             {data.missions.map((m, idx) => (
-              <li key={idx} className="flex items-start text-xs sm:text-sm font-body text-content-secondary">
-                <span className="text-content-primary mr-2 font-bold">•</span>
-                <span>{m}</span>
-              </li>
+              <div
+                key={idx}
+                className="flex items-center justify-center p-4 sm:p-5 w-full h-full text-center"
+              >
+                <p className="text-sm sm:text-base md:text-2lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto">
+                  {m}
+                </p>
+              </div>
             ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* Values */}
-      <div className="space-y-6 pt-6 border-t border-borderToken-subtle">
-        <h3 className="text-xl font-heading font-bold text-center text-content-primary">{data.valuesTitle}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {data.values.map((val, idx) => (
-            <div key={idx} className="p-6 rounded-xl border border-borderToken-subtle bg-bg-elevated space-y-2">
-              <h4 className="text-sm font-heading font-bold text-content-primary">{val.title}</h4>
-              <p className="text-xs font-body text-content-secondary font-light leading-relaxed">{val.description}</p>
-            </div>
-          ))}
-        </div>
+          </div>
+        </fieldset>
       </div>
     </div>
   );

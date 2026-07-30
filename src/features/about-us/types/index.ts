@@ -3,8 +3,6 @@ export interface AboutCompanyOverviewData {
   title: string;
   heading: string;
   subheading: string;
-  description: string;
-  fullAbout: string;
 }
 
 // 2. Vision, Mission & Value
@@ -79,6 +77,10 @@ export interface StructureNodeData {
   title: string;
   description: string;
   parentRole?: string;
+  level?: 1 | 2 | 3 | 4;
+  badge?: string;
+  focusAreas?: string[];
+  icon?: string;
 }
 
 export interface DesignStructureData {

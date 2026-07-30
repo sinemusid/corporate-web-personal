@@ -16,8 +16,9 @@ export const VisionMissionValueWidget: React.FC = () => {
   }
 
   return (
-    <SectionWrapper id="vision-mission" darkBg>
+    <SectionWrapper id="vision-mission" darkBg className="pt-2 sm:pt-4">
       <VisionMissionValue data={visionMissionValue} />
     </SectionWrapper>
   );
+
 };
