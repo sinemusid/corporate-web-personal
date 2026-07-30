@@ -2,9 +2,9 @@ import { ContactCompanyData } from '../types';
 
 export const MOCK_CONTACT_COMPANY: ContactCompanyData = {
   info: [
-    { type: 'email', label: 'Email Resmi', value: 'halo@sinemus.co.id' },
-    { type: 'phone', label: 'Telepon & WhatsApp', value: '+62 812-3456-7890' },
-    { type: 'address', label: 'Kantor Pusat', value: 'Jakarta South / Indonesia Cinema District' },
+    { type: 'email', label: 'Email Resmi', value: 'sineasmuslimindonesia@gmail.com' },
+    { type: 'phone', label: 'Telepon & WhatsApp', value: '+62 895-2602-0145' },
+    { type: 'address', label: 'Kantor Pusat', value: 'Bandung, Indonesia' },
   ],
   labels: {
     heading: 'Hubungi Perusahaan',
