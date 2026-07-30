@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeroSectionWidget, WhoWeAreSectionWidget, UnitPreviewSectionWidget } from '@/widgets/home';
+import { HeroSectionWidget, WhoWeAreSectionWidget, UnitPreviewSectionWidget, ServicesSectionWidget } from '@/widgets/home';
 
 export default function LandingPage() {
   return (
@@ -7,6 +7,7 @@ export default function LandingPage() {
       <HeroSectionWidget />
       <WhoWeAreSectionWidget />
       <UnitPreviewSectionWidget showTitleHeader />
+      <ServicesSectionWidget />
     </div>
   );
 }
