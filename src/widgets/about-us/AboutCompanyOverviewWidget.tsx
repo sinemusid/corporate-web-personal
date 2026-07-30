@@ -16,8 +16,9 @@ export const AboutCompanyOverviewWidget: React.FC = () => {
   }
 
   return (
-    <SectionWrapper id="about-overview" className="pt-8">
+    <SectionWrapper id="about-overview" className="pt-2 pb-0">
       <AboutCompanyOverview data={companyOverview} />
     </SectionWrapper>
   );
+
 };

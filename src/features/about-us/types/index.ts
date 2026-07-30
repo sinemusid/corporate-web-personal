@@ -3,8 +3,6 @@ export interface AboutCompanyOverviewData {
   title: string;
   heading: string;
   subheading: string;
-  description: string;
-  fullAbout: string;
 }
 
 // 2. Vision, Mission & Value
@@ -50,7 +48,6 @@ export interface MilestoneItemData {
   id: string;
   year: string;
   title: string;
-  description: string;
 }
 
 export interface MilestonesTimelineData {
@@ -63,7 +60,6 @@ export interface MilestonesTimelineData {
 export interface RoadmapStepData {
   step: string;
   title: string;
-  description: string;
 }
 
 export interface CareerRoadmapData {
@@ -79,45 +75,43 @@ export interface StructureNodeData {
   title: string;
   description: string;
   parentRole?: string;
+  level?: 1 | 2 | 3 | 4;
+  badge?: string;
+  focusAreas?: string[];
+  icon?: string;
 }
 
 export interface DesignStructureData {
   heading: string;
-  subheading: string;
+  subheading?: string;
   nodes: StructureNodeData[];
 }
 
-// 7. Our Team
+// 7. Our Team / Leadership
+export interface TeamMemberSocialData {
+  type: 'instagram' | 'email';
+  href: string;
+  label?: string;
+}
+
 export interface TeamMemberData {
   id: string;
   name: string;
   role: string;
   photoUrl: string;
   bio: string;
+  badge?: string;
+  skills?: string[];
+  socials?: TeamMemberSocialData[];
 }
 
-export interface OurTeamData {
+export interface LeadershipData {
   heading: string;
   subheading: string;
   members: TeamMemberData[];
 }
 
-// 8. Services (Layanan Kami)
-export interface ServiceItemData {
-  id: string;
-  title: string;
-  description: string;
-  iconName: string;
-  features: string[];
-}
-
-export interface ServicesData {
-  heading: string;
-  subheading: string;
-  services: ServiceItemData[];
-}
-
-// 9. Portfolio (Karya Kami)
+// 8. Portfolio (Karya Kami)
 export interface PortfolioItemData {
   id: string;
   title: string;
@@ -125,7 +119,13 @@ export interface PortfolioItemData {
   year: string;
   imageUrl: string;
   description: string;
+  director?: string;
+  duration?: string;
+  synopsis?: string;
+  tags?: string[];
+  trailerUrl?: string;
 }
+
 
 export interface PortfolioData {
   heading: string;
@@ -141,8 +141,7 @@ export interface AboutUsContentState {
   milestonesTimeline: MilestonesTimelineData | null;
   careerRoadmap: CareerRoadmapData | null;
   designStructure: DesignStructureData | null;
-  ourTeam: OurTeamData | null;
-  services: ServicesData | null;
+  leadership: LeadershipData | null;
   portfolio: PortfolioData | null;
   isLoading: boolean;
 }

@@ -8,8 +8,7 @@ import {
   MilestonesTimelineData,
   CareerRoadmapData,
   DesignStructureData,
-  OurTeamData,
-  ServicesData,
+  LeadershipData,
   PortfolioData,
 } from '../types';
 import {
@@ -19,8 +18,7 @@ import {
   fetchMilestonesTimeline,
   fetchCareerRoadmap,
   fetchDesignStructure,
-  fetchOurTeam,
-  fetchServices,
+  fetchLeadership,
   fetchPortfolio,
 } from '../api';
 
@@ -31,8 +29,7 @@ export function useAboutUs() {
   const [milestonesTimeline, setMilestonesTimeline] = useState<MilestonesTimelineData | null>(null);
   const [careerRoadmap, setCareerRoadmap] = useState<CareerRoadmapData | null>(null);
   const [designStructure, setDesignStructure] = useState<DesignStructureData | null>(null);
-  const [ourTeam, setOurTeam] = useState<OurTeamData | null>(null);
-  const [services, setServices] = useState<ServicesData | null>(null);
+  const [leadership, setLeadership] = useState<LeadershipData | null>(null);
   const [portfolio, setPortfolio] = useState<PortfolioData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -47,8 +44,7 @@ export function useAboutUs() {
           milestonesData,
           roadmapData,
           structureData,
-          teamData,
-          servicesData,
+          leadershipData,
           portfolioData,
         ] = await Promise.all([
           fetchAboutCompanyOverview(),
@@ -57,8 +53,7 @@ export function useAboutUs() {
           fetchMilestonesTimeline(),
           fetchCareerRoadmap(),
           fetchDesignStructure(),
-          fetchOurTeam(),
-          fetchServices(),
+          fetchLeadership(),
           fetchPortfolio(),
         ]);
 
@@ -68,8 +63,7 @@ export function useAboutUs() {
         setMilestonesTimeline(milestonesData);
         setCareerRoadmap(roadmapData);
         setDesignStructure(structureData);
-        setOurTeam(teamData);
-        setServices(servicesData);
+        setLeadership(leadershipData);
         setPortfolio(portfolioData);
       } catch (err) {
         console.error('Failed loading about-us content:', err);
@@ -88,8 +82,7 @@ export function useAboutUs() {
     milestonesTimeline,
     careerRoadmap,
     designStructure,
-    ourTeam,
-    services,
+    leadership,
     portfolio,
     isLoading,
   };

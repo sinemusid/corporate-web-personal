@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { OurTeamGrid, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { LeadershipSection, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
 
-export const OurTeamGridWidget: React.FC = () => {
-  const { ourTeam, isLoading } = useAboutUs();
+export const LeadershipWidget: React.FC = () => {
+  const { leadership, isLoading } = useAboutUs();
 
-  if (isLoading || !ourTeam) {
+  if (isLoading || !leadership) {
     return (
       <SectionWrapper id="our-team">
         <AboutUsSkeleton />
@@ -17,7 +17,7 @@ export const OurTeamGridWidget: React.FC = () => {
 
   return (
     <SectionWrapper id="our-team">
-      <OurTeamGrid data={ourTeam} />
+      <LeadershipSection data={leadership} />
     </SectionWrapper>
   );
 };

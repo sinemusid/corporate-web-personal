@@ -2,14 +2,17 @@ import { VisionMissionValueData } from '../types';
 
 export const MOCK_VISION_MISSION_VALUE: VisionMissionValueData = {
   heading: 'Visi, Misi & Nilai Perusahaan',
-  visionTitle: 'VISI KAMI',
-  visionText: 'Menjadi ekosistem kreatif Muslim terdepan di Indonesia yang menghasilkan karya berdampak dan bermanfaat untuk ummah.',
-  missionTitle: 'MISI KAMI',
+  visionTitle: 'VISI',
+  visionText:
+    'Menciptakan ekosistem perfilman yang utuh, berkelanjutan, dan berdaya saing, sebagai jembatan untuk menyebarkan nilai-nilai kebaikan, keindahan, dan kebahagiaan dari Indonesia ke kancah global.',
+  missionTitle: 'MISI',
   missions: [
-    'Integrasi sistem produksi & eksibisi film berkualitas secara berkelanjutan.',
-    'Program edukasi & inkubasi komprehensif bagi kreator sinema muda.',
-    'Pemberdayaan ekosistem kreatif yang inklusif, mandiri, dan berkesinambungan.',
-    'Jangkauan karya ke pasar global dengan akar budaya dan nilai lokal yang kuat.',
+    'Menyajikan Narasi yang Menggugah',
+    'Membangun Ekosistem Terintegrasi',
+    'Inovasi Distribusi Digital',
+    'Memberdayakan Kreator dan Komunitas',
+    'Mencetak Talenta Profesional',
+    'Mencapai Standar Global',
   ],
   valuesTitle: 'NILAI KAMI',
   values: [
@@ -26,3 +29,4 @@ export const MOCK_VISION_MISSION_VALUE: VisionMissionValueData = {
     { name: 'LinkedIn', label: 'Sinemus Indonesia', href: '#', type: 'linkedin' },
   ],
 };
+

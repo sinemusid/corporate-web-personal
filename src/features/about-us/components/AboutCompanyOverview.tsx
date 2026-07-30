@@ -9,18 +9,19 @@ interface AboutCompanyOverviewProps {
 
 export const AboutCompanyOverview: React.FC<AboutCompanyOverviewProps> = ({ data }) => {
   return (
-    <div className="space-y-6 max-w-4xl mx-auto text-center">
-      <div className="space-y-2">
-        <span className="text-xs uppercase font-mono tracking-widest text-content-secondary font-bold">
+    <div className="max-w-4xl mx-auto text-center relative z-10 pt-6">
+      {/* Pill Badge */}
+      <div className="inline-block mb-4">
+        <span className="text-xs sm:text-sm font-medium tracking-wide text-gray-200 border border-gray-600/80 rounded-full px-7 py-1.5 backdrop-blur-md bg-transparent">
           {data.title}
         </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-content-primary uppercase tracking-tight">
-          {data.subheading}
-        </h2>
       </div>
-      <p className="text-sm sm:text-base md:text-lg font-body text-content-secondary font-light leading-relaxed">
-        {data.fullAbout}
-      </p>
+
+      {/* Main Title Header */}
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-wider font-heading leading-tight">
+        {data.subheading}
+      </h1>
     </div>
   );
 };
+
