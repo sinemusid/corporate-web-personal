@@ -5,8 +5,7 @@ import {
   MilestonesTimelineData,
   CareerRoadmapData,
   DesignStructureData,
-  OurTeamData,
-  ServicesData,
+  LeadershipData,
   PortfolioData,
 } from '../types';
 
@@ -34,11 +33,7 @@ export function mapDesignStructure(raw: DesignStructureData): DesignStructureDat
   return { ...raw };
 }
 
-export function mapOurTeam(raw: OurTeamData): OurTeamData {
-  return { ...raw };
-}
-
-export function mapServices(raw: ServicesData): ServicesData {
+export function mapLeadership(raw: LeadershipData): LeadershipData {
   return { ...raw };
 }
 

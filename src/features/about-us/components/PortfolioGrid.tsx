@@ -1,45 +1,55 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
-import { PortfolioData } from '../types';
+import React, { useState } from 'react';
+import { PortfolioData, PortfolioItemData } from '../types';
+import { PortfolioCard } from './portfolio/PortfolioCard';
+import { PortfolioDetailModal } from './portfolio/PortfolioDetailModal';
 
 interface PortfolioGridProps {
   data: PortfolioData;
 }
 
 export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ data }) => {
+  const [selectedItem, setSelectedItem] = useState<PortfolioItemData | null>(null);
+
+  const handleOpenModal = (item: PortfolioItemData) => {
+    setSelectedItem(item);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedItem(null);
+  };
+
   return (
-    <div className="space-y-8 max-w-5xl mx-auto">
-      <div className="text-center space-y-2">
-        <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-content-primary">{data.heading}</h2>
-        <p className="text-xs sm:text-sm font-body text-content-secondary font-light max-w-xl mx-auto">{data.subheading}</p>
+    <section className="w-full bg-transparent py-12 sm:py-16 font-sans select-none px-4 sm:px-6 relative z-10">
+      <div className="max-w-1200px mx-auto space-y-10 sm:space-y-12">
+        {/* Section Header */}
+        <div className="text-center flex flex-col items-center justify-center space-y-3 max-w-4xl mx-auto">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-white/5 text-gray-300 border border-white/10">
+            PORTOFOLIO SINEMA
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-wider font-heading leading-tight">
+            {data.heading}
+          </h2>
+          <p className="text-xs sm:text-sm md:text-base font-body text-gray-300 font-light max-w-2xl text-center leading-relaxed">
+            {data.subheading}
+          </p>
+        </div>
+
+        {/* Responsive Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {data.items.map((item) => (
+            <PortfolioCard key={item.id} item={item} onClick={() => handleOpenModal(item)} />
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {data.items.map((item) => (
-          <div key={item.id} className="group rounded-2xl bg-bg-elevated border border-borderToken-subtle overflow-hidden space-y-3">
-            <div className="relative h-48 w-full bg-bg-tertiary">
-              <Image
-                src={item.imageUrl}
-                alt={item.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="p-5 space-y-2">
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-content-primary font-mono font-medium">{item.category}</span>
-                <span className="text-content-muted font-mono">{item.year}</span>
-              </div>
-              <h3 className="text-lg font-heading font-bold text-content-primary group-hover:text-content-primary transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-xs font-body text-content-secondary font-light leading-relaxed">{item.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+      {/* Detail Modal Component */}
+      <PortfolioDetailModal
+        item={selectedItem}
+        isOpen={Boolean(selectedItem)}
+        onClose={handleCloseModal}
+      />
+    </section>
   );
 };

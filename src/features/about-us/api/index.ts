@@ -4,8 +4,7 @@ import { MOCK_PROJECT_STATS } from '../constants/project-stats.mock';
 import { MOCK_MILESTONES_TIMELINE } from '../constants/milestones-timeline.mock';
 import { MOCK_CAREER_ROADMAP } from '../constants/career-roadmap.mock';
 import { MOCK_DESIGN_STRUCTURE } from '../constants/design-structure.mock';
-import { MOCK_OUR_TEAM } from '../constants/our-team.mock';
-import { MOCK_SERVICES } from '../constants/services.mock';
+import { MOCK_LEADERSHIP } from '../constants/leadership.mock';
 import { MOCK_PORTFOLIO } from '../constants/portfolio.mock';
 import {
   mapAboutCompanyOverview,
@@ -14,8 +13,7 @@ import {
   mapMilestonesTimeline,
   mapCareerRoadmap,
   mapDesignStructure,
-  mapOurTeam,
-  mapServices,
+  mapLeadership,
   mapPortfolio,
 } from './data-mapper';
 
@@ -43,12 +41,8 @@ export async function fetchDesignStructure() {
   return mapDesignStructure(MOCK_DESIGN_STRUCTURE);
 }
 
-export async function fetchOurTeam() {
-  return mapOurTeam(MOCK_OUR_TEAM);
-}
-
-export async function fetchServices() {
-  return mapServices(MOCK_SERVICES);
+export async function fetchLeadership() {
+  return mapLeadership(MOCK_LEADERSHIP);
 }
 
 export async function fetchPortfolio() {

@@ -2,7 +2,6 @@ import { DesignStructureData } from '../types';
 
 export const MOCK_DESIGN_STRUCTURE: DesignStructureData = {
   heading: 'Struktur Organisasi Perusahaan',
-  subheading: 'Tata kelola kepemimpinan dan manajerial Sinemus Indonesia.',
   nodes: [
     // Level 1: CEO
     {

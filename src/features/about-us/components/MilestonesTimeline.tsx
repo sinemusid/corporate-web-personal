@@ -111,22 +111,23 @@ export const MilestonesTimeline: React.FC<MilestonesTimelineProps> = ({ data }) 
 
                   {/* Detail Card Directly Under Node */}
                   <div
-                    className={`w-full p-5 mt-2 rounded-2xl border transition-all duration-300 flex flex-col justify-start text-center ${
+                    className={`w-full h-140px p-5 mt-2 rounded-2xl border transition-all duration-300 flex flex-col justify-between text-center group-hover:border-white/40 ${
                       isActive
-                        ? 'border-white/60 bg-white/[0.06] shadow-xl shadow-white/5 backdrop-blur-md scale-[1.02]'
-                        : 'border-white/15 bg-transparent hover:border-white/35 hover:bg-white/[0.02]'
+                        ? 'border-white/70 bg-white/[0.07] shadow-2xl shadow-white/10 backdrop-blur-md scale-[1.02]'
+                        : isPassed
+                        ? 'border-white/20 bg-white/[0.03] hover:bg-white/[0.05]'
+                        : 'border-white/10 bg-transparent hover:bg-white/[0.03]'
                     }`}
                   >
-                    <h3
-                      className={`text-sm sm:text-base font-heading font-extrabold leading-snug transition-colors ${
-                        isActive ? 'text-white' : 'text-gray-200'
-                      }`}
-                    >
-                      {item.title}
-                    </h3>
-                    <p className="text-xs font-body text-gray-400 font-light leading-relaxed mt-2">
-                      {item.description}
-                    </p>
+                    <div className="space-y-2 my-auto">
+                      <h3
+                        className={`text-sm sm:text-base font-heading font-extrabold leading-snug transition-colors line-clamp-3 ${
+                          isActive ? 'text-white' : 'text-gray-200 group-hover:text-white'
+                        }`}
+                      >
+                        {item.title}
+                      </h3>
+                    </div>
                   </div>
                 </div>
               );

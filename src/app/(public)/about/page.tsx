@@ -6,8 +6,7 @@ import {
   MilestonesTimelineWidget,
   CareerRoadmapWidget,
   DesignStructureWidget,
-  OurTeamGridWidget,
-  ServicesGridWidget,
+  LeadershipWidget,
   PortfolioGridWidget,
 } from '@/widgets/about-us';
 
@@ -20,8 +19,7 @@ export default function AboutUsPage() {
       <MilestonesTimelineWidget />
       <CareerRoadmapWidget />
       <DesignStructureWidget />
-      <OurTeamGridWidget />
-      <ServicesGridWidget />
+      <LeadershipWidget />
       <PortfolioGridWidget />
     </div>
   );

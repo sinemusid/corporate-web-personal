@@ -4,6 +4,5 @@ export * from './ProjectStatsWidget';
 export * from './MilestonesTimelineWidget';
 export * from './CareerRoadmapWidget';
 export * from './DesignStructureWidget';
-export * from './OurTeamGridWidget';
-export * from './ServicesGridWidget';
+export * from './LeadershipWidget';
 export * from './PortfolioGridWidget';

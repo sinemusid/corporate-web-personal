@@ -38,7 +38,7 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
 
         {/* Section Header: C-Suite Directors & Staff */}
         <div className="relative flex items-center space-x-3 pt-2 z-10">
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80 -ml-[21px] sm:-ml-[25px]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-gray-300 -ml-[21px] sm:-ml-[25px]" />
           <span className="text-[11px] font-bold tracking-widest text-gray-300 uppercase bg-transparent border border-white/10 px-3 py-1 rounded-full">
             DIRECTORS & DEPARTMENT STAFF
           </span>
