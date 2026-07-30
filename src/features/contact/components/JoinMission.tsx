@@ -34,7 +34,7 @@ export const JoinMission: React.FC<JoinMissionProps> = ({ data }) => {
       <div>
         <a
           href={data.ctaHref}
-          className="inline-flex items-center px-8 py-4 rounded-xl bg-accent-solid text-content-inverse font-body font-bold text-sm hover:bg-accent-solid-hover transition-colors shadow-sm"
+          className="inline-flex items-center px-8 py-3.5 rounded-lg bg-white text-black font-body font-bold text-sm hover:bg-gray-200 transition-colors duration-200"
         >
           {data.ctaText}
         </a>

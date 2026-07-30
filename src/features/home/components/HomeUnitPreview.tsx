@@ -23,27 +23,36 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
         </div>
       )}
 
-      {/* Diagram Branching Tree Architecture (as shown in image 2) */}
-      <div className="hidden lg:flex flex-col items-center w-full mt-6 mb-2">
+      {/* Diagram Branching Tree Architecture with Smooth Curved Corners */}
+      <div className="hidden lg:flex flex-col items-center w-full mt-4 -mb-2 relative">
         {/* Node Badge */}
         <div className="px-6 py-2 rounded-full border border-white/40 bg-bg-elevated/90 text-white font-heading font-black text-xs sm:text-sm tracking-widest uppercase shadow-xl backdrop-blur-md z-10">
           LOGO SINEMUS INDONESIA
         </div>
 
-        {/* Stem down from Node Badge */}
-        <div className="w-[2px] h-8 bg-white/50" />
+        {/* Curved Tree Diagram SVG Connector */}
+        <div className="w-full h-16 relative mt-1">
+          <svg className="w-full h-full pointer-events-none" viewBox="0 0 1000 64" fill="none" preserveAspectRatio="none">
+            {/* Top Vertical Stem from Node Badge */}
+            <path d="M 500 0 V 20" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" strokeLinecap="round" />
 
-        {/* Horizontal Branching Line across 4 Columns */}
-        <div className="w-[78%] max-w-[900px] h-[2px] bg-white/50 relative">
-          {/* 4 Vertical Stems dropping to each of the 4 cards */}
-          <div className="absolute top-0 left-0 w-full flex justify-between px-10">
-            <div className="w-[2px] h-8 bg-white/50 transform -translate-x-1/2" />
-            <div className="w-[2px] h-8 bg-white/50 transform -translate-x-1/2" />
-            <div className="w-[2px] h-8 bg-white/50 transform -translate-x-1/2" />
-            <div className="w-[2px] h-8 bg-white/50 transform translate-x-1/2" />
-          </div>
+            {/* Main Outer Curved Branching Line (Connecting Left & Right Outer Cards with Smooth Rounded Corners) */}
+            <path
+              d="M 125 64 V 34 Q 125 20 141 20 H 859 Q 875 20 875 34 V 64"
+              stroke="rgba(255, 255, 255, 0.4)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+
+            {/* Inner Card 2 Vertical Drop Line */}
+            <path d="M 375 20 V 64" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" strokeLinecap="round" />
+
+            {/* Inner Card 3 Vertical Drop Line */}
+            <path d="M 625 20 V 64" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" strokeLinecap="round" />
+          </svg>
         </div>
-        <div className="h-8" />
       </div>
 
       {/* Cards Grid */}
