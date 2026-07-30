@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   AboutCompanyOverviewWidget,
-  VisionMissionValueWidget,
   ProjectStatsWidget,
   MilestonesTimelineWidget,
   CareerRoadmapWidget,
@@ -12,9 +11,8 @@ import {
 
 export default function AboutUsPage() {
   return (
-    <div className="space-y-8 py-8 sm:py-12">
+    <div className="space-y-8 pt-2 sm:pt-4 pb-8 sm:pb-12">
       <AboutCompanyOverviewWidget />
-      <VisionMissionValueWidget />
       <ProjectStatsWidget />
       <MilestonesTimelineWidget />
       <CareerRoadmapWidget />

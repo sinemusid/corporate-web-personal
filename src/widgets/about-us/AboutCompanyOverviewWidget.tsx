@@ -1,11 +1,10 @@
 'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { AboutCompanyOverview, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { AboutCompanyOverview, AboutUsSkeleton, useAboutUs, VisionMissionValue } from '@/features/about-us';
 
 export const AboutCompanyOverviewWidget: React.FC = () => {
-  const { companyOverview, isLoading } = useAboutUs();
+  const { companyOverview, visionMissionValue, isLoading } = useAboutUs();
 
   if (isLoading || !companyOverview) {
     return (
@@ -16,9 +15,9 @@ export const AboutCompanyOverviewWidget: React.FC = () => {
   }
 
   return (
-    <SectionWrapper id="about-overview" className="pt-2 pb-0">
+    <SectionWrapper id="about-overview" className="flex flex-col items-center justify-center min-h-screen gap-2">
       <AboutCompanyOverview data={companyOverview} />
+      {visionMissionValue && <VisionMissionValue data={visionMissionValue} />}
     </SectionWrapper>
   );
-
 };

@@ -9,7 +9,7 @@ interface VisionMissionValueProps {
 
 export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) => {
   return (
-    <div className="relative max-w-6xl mx-auto select-none">
+    <div className="relative max-w-6xl mx-auto select-none mt-4">
       <div className="relative z-10 space-y-10">
         <fieldset className="rounded-3xl border border-white/30 bg-transparent px-6 py-6 sm:px-10 sm:py-8 text-center transition-colors">
           <legend className="mx-auto px-6 text-xs sm:text-sm font-black tracking-widest text-white uppercase font-heading">
