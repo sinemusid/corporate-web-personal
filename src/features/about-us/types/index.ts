@@ -90,12 +90,23 @@ export interface DesignStructureData {
 }
 
 // 7. Our Team
+export interface TeamMemberSocialData {
+  type: 'linkedin' | 'twitter' | 'github' | 'email' | 'website';
+  href: string;
+}
+
 export interface TeamMemberData {
   id: string;
   name: string;
   role: string;
   photoUrl: string;
   bio: string;
+  department?: string;
+  departmentBadge?: string;
+  isExecutive?: boolean;
+  level?: 'executive' | 'manager' | 'staff';
+  skills?: string[];
+  socials?: TeamMemberSocialData[];
 }
 
 export interface OurTeamData {
