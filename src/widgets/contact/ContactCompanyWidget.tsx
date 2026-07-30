@@ -10,14 +10,14 @@ export const ContactCompanyWidget: React.FC = () => {
 
   if (isLoading || !contactCompany) {
     return (
-      <SectionWrapper id="contact" className="py-8">
+      <SectionWrapper id="contact" className="w-full min-h-screen lg:h-screen min-h-[650px] flex items-center justify-center pt-20 pb-8">
         <ContactSkeleton />
       </SectionWrapper>
     );
   }
 
   return (
-    <SectionWrapper id="contact" className="py-8">
+    <SectionWrapper id="contact" className="w-full min-h-screen lg:h-screen min-h-[650px] flex items-center justify-center pt-20 pb-8">
       <ContactCompanyForm
         data={contactCompany}
         onSubmit={handleSubmit}

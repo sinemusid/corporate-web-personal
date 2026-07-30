@@ -3,6 +3,8 @@ import { MOCK_CONTACT_COMPANY } from '../constants/contact-company.mock';
 import { mapJoinMission, mapContactCompany } from './data-mapper';
 import { ContactFormData } from '../types';
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mojgnbzl';
+
 export async function fetchJoinMission() {
   return mapJoinMission(MOCK_JOIN_MISSION);
 }
@@ -12,10 +14,41 @@ export async function fetchContactCompany() {
 }
 
 export async function submitContactForm(payload: ContactFormData): Promise<boolean> {
-  // Simulate server API latency
-  await new Promise((res) => setTimeout(res, 800));
-  if (!payload.email || !payload.name) {
-    throw new Error('Name and email are required');
+  if (!payload.name || !payload.email || !payload.message) {
+    throw new Error('Nama, email, dan pesan wajib diisi.');
   }
-  return true;
+
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        name: payload.name,
+        email: payload.email,
+        company: payload.company || '-',
+        message: payload.message,
+      }),
+    });
+
+    if (response.ok) {
+      return true;
+    }
+
+    const data = await response.json().catch(() => null);
+    if (data && data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
+      const errorMsg = data.errors.map((e: { message: string }) => e.message).join(', ');
+      throw new Error(`Gagal mengirim pesan: ${errorMsg}`);
+    }
+
+    throw new Error('Gagal mengirim pesan. Silakan periksa kembali data Anda.');
+  } catch (err) {
+    console.error('Formspree submission error:', err);
+    if (err instanceof Error) {
+      throw err;
+    }
+    throw new Error('Terjadi kesalahan saat mengirim pesan. Silakan coba lagi.');
+  }
 }

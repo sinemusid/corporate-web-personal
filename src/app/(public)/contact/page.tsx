@@ -3,7 +3,7 @@ import { JoinMissionWidget, ContactCompanyWidget } from '@/widgets/contact';
 
 export default function ContactUsPage() {
   return (
-    <div className="space-y-12 py-8">
+    <div className="flex flex-col w-full min-h-screen">
       <JoinMissionWidget />
       <ContactCompanyWidget />
     </div>

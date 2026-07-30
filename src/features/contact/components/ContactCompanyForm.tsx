@@ -82,11 +82,16 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
       <div className="lg:col-span-6 bg-bg-elevated border border-borderToken-subtle p-8 sm:p-10 rounded-3xl backdrop-blur-md min-h-[460px] flex flex-col justify-center transition-all duration-500 shadow-2xl relative overflow-hidden">
         {isSuccess ? (
           <div className="flex flex-col items-center justify-center text-center space-y-6 py-8">
-            <div className="w-20 h-20 rounded-full bg-accent-subtle border border-borderToken-default flex items-center justify-center shadow-lg">
-              <Check className="w-10 h-10 text-content-primary stroke-[2.5]" />
+            {/* Animated Glowing Checkmark Badge */}
+            <div className="relative flex items-center justify-center">
+              <div className="absolute w-24 h-24 rounded-full bg-emerald-500/20 animate-ping opacity-75" />
+              <div className="relative w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-500/40 flex items-center justify-center shadow-[0_0_35px_rgba(16,185,129,0.35)] animate-success-circle">
+                <Check className="w-10 h-10 text-emerald-400 stroke-[3] opacity-0 animate-checkmark-pop" />
+              </div>
             </div>
 
-            <div className="space-y-3 max-w-sm">
+            {/* Slide-Up Text Container */}
+            <div className="space-y-3 max-w-sm opacity-0 animate-success-slide-up">
               <h3 className="text-2xl font-heading font-black text-content-primary tracking-tight">
                 {labels.successTitle}
               </h3>
@@ -97,7 +102,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
 
             <button
               onClick={onReset}
-              className="pt-4 text-xs font-body text-content-secondary hover:text-content-primary underline transition-colors"
+              className="pt-2 text-xs font-body text-content-secondary hover:text-content-primary underline transition-colors opacity-0 animate-success-slide-up-delay"
             >
               {labels.sendAnotherButton}
             </button>
@@ -115,6 +120,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
                 <label className="block text-xs font-body font-semibold text-content-secondary mb-1.5">{labels.nameLabel}</label>
                 <input
                   type="text"
+                  name="name"
                   placeholder={labels.namePlaceholder}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -127,6 +133,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
                 <label className="block text-xs font-body font-semibold text-content-secondary mb-1.5">{labels.emailLabel}</label>
                 <input
                   type="email"
+                  name="email"
                   placeholder={labels.emailPlaceholder}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -139,6 +146,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
                 <label className="block text-xs font-body font-semibold text-content-secondary mb-1.5">{labels.companyLabel}</label>
                 <input
                   type="text"
+                  name="company"
                   placeholder={labels.companyPlaceholder}
                   value={form.company}
                   onChange={(e) => setForm({ ...form, company: e.target.value })}
@@ -150,6 +158,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
                 <label className="block text-xs font-body font-semibold text-content-secondary mb-1.5">{labels.messageLabel}</label>
                 <textarea
                   rows={4}
+                  name="message"
                   placeholder={labels.messagePlaceholder}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -161,7 +170,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 rounded-xl bg-accent-solid text-content-inverse font-body font-bold text-sm hover:bg-accent-solid-hover transition-colors disabled:opacity-50 mt-2 shadow-sm"
+                className="w-full py-3.5 rounded-lg bg-white text-black font-body font-bold text-sm hover:bg-gray-200 transition-colors duration-200 disabled:opacity-50 mt-3"
               >
                 {isSubmitting ? labels.submittingButton : labels.submitButton}
               </button>
