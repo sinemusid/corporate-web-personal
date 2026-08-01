@@ -17,14 +17,14 @@ export const UnitPreviewSectionWidget: React.FC<UnitPreviewSectionWidgetProps> =
 
   if (isLoading || !unitPreview) {
     return (
-      <SectionWrapper darkBg={darkBg} id="units-skeleton" className="w-full min-h-screen lg:h-screen min-h-[650px] flex flex-col justify-center items-center py-12">
+      <SectionWrapper darkBg={darkBg} id="units-skeleton" className="w-full py-24 md:py-32 flex flex-col justify-center items-center">
         <HomeSkeleton />
       </SectionWrapper>
     );
   }
 
   return (
-    <SectionWrapper id="units" darkBg={darkBg} className="w-full min-h-screen lg:h-screen min-h-[650px] flex flex-col justify-center py-12">
+    <SectionWrapper id="units" darkBg={darkBg} className="w-full py-24 md:py-32 flex flex-col justify-center">
       <HomeUnitPreview data={unitPreview} showTitleHeader={showTitleHeader} />
     </SectionWrapper>
   );

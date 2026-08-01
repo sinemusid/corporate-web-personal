@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import { HomeWhoWeAreData } from '../types';
 
 interface HomeWhoWeAreProps {
@@ -12,10 +13,10 @@ interface HomeWhoWeAreProps {
 
 export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({
   data,
-  backgroundImage = '/images/sinemus_team_photo.jpg',
+  backgroundImage = '/images/hero/sinemus_team_photo.jpg',
 }) => {
   return (
-    <div className="relative w-full h-screen min-h-[600px] flex items-center overflow-hidden bg-[#09090b]">
+    <div className="relative w-full h-screen min-h-150 flex items-center overflow-hidden bg-[#09090b]">
       {/* Background Image Container (Spans full right half to edge) */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -50,7 +51,7 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({
               className="inline-flex items-center px-7 py-3 rounded-full border border-white/60 bg-transparent text-white hover:bg-white hover:text-black font-body font-semibold text-sm transition-all duration-300 group shadow-lg"
             >
               <span>Learn More</span>
-              <span className="ml-1.5 group-hover:translate-x-1 transition-transform">&gt;</span>
+              <ArrowRight className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>

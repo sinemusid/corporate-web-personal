@@ -9,6 +9,7 @@ export interface NavItem {
   href: string;
   sectionId?: string;
   description?: string;
+  subItems?: NavItem[];
 }
 
 export interface ApiResponse<T> {

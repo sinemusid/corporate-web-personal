@@ -26,9 +26,6 @@ export const HomeServices: React.FC<HomeServicesProps> = ({ data }) => {
             className="p-8 rounded-3xl bg-bg-elevated/80 border border-white/20 hover:border-white/60 transition-all duration-300 backdrop-blur-sm flex flex-col justify-between space-y-6 shadow-xl group"
           >
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                {service.icon}
-              </div>
               <h3 className="text-xl font-heading font-black text-content-primary uppercase tracking-tight">
                 {service.title}
               </h3>

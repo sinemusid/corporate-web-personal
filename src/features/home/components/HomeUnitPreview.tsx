@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';  
 import { HomeUnitPreviewData } from '../types';
 
 interface HomeUnitPreviewProps {
@@ -26,8 +28,15 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
       {/* Diagram Branching Tree Architecture with Smooth Curved Corners */}
       <div className="hidden lg:flex flex-col items-center w-full mt-4 -mb-2 relative">
         {/* Node Badge */}
-        <div className="px-6 py-2 rounded-full border border-white/40 bg-bg-elevated/90 text-white font-heading font-black text-xs sm:text-sm tracking-widest uppercase shadow-xl backdrop-blur-md z-10">
-          LOGO SINEMUS INDONESIA
+        <div className="px-6 py-2.5 rounded-full border border-white/30 bg-bg-elevated/90 shadow-xl backdrop-blur-md z-10 flex items-center justify-center min-w-50 hover:border-white/60 transition-colors">
+          <Image
+            src="/images/sinemus-indonesia.p ng"
+            alt={data.heading || "Sinemus Indonesia"}
+            width={180}
+            height={40}
+            priority
+            className="h-8 sm:h-9 w-auto object-contain brightness-110"
+          />
         </div>
 
         {/* Curved Tree Diagram SVG Connector */}
@@ -60,7 +69,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
         {data.units.map((unit) => (
           <div
             key={unit.id}
-            className="group relative rounded-3xl bg-bg-elevated/80 border border-white/20 p-6 flex flex-col justify-between hover:border-white/60 transition-all duration-300 backdrop-blur-sm overflow-hidden h-full min-h-[300px] shadow-lg"
+            className="group relative rounded-3xl bg-bg-elevated/80 border border-white/20 p-6 flex flex-col justify-between hover:border-white/60 transition-all duration-300 backdrop-blur-sm overflow-hidden h-full min-h-75 shadow-lg"
           >
             <div className="space-y-4">
               <span className="text-[10px] uppercase font-mono tracking-widest text-content-secondary font-bold px-3 py-1 rounded-full bg-white/5 border border-white/10 inline-block">
@@ -80,7 +89,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
                 className="inline-flex items-center px-4 py-2 rounded-full border border-white/30 bg-white/5 text-xs font-body font-semibold text-white hover:bg-white hover:text-black transition-all group-hover:border-white"
               >
                 <span>Learn More</span>
-                <span className="ml-1 group-hover:translate-x-1 transition-transform">&gt;</span>
+                <ArrowRight className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>

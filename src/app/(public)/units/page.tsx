@@ -1,11 +1,6 @@
-import React from 'react';
-import { UnitHeroSectionWidget, UnitGridSectionWidget } from '@/widgets/units';
+import { redirect } from 'next/navigation';
 
-export default function UnitsHubPage() {
-  return (
-    <div>
-      <UnitHeroSectionWidget />
-      <UnitGridSectionWidget darkBg />
-    </div>
-  );
+export default function UnitsPage() {
+  redirect('/units/production');
 }
+
