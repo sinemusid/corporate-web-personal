@@ -31,8 +31,8 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({
       {/* Multi-step Feathered Shadow Gradient Mask from Solid Black on Left to Transparent on Right */}
       <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,#09090b_0%,#09090b_28%,rgba(9,9,11,0.98)_38%,rgba(9,9,11,0.85)_48%,rgba(9,9,11,0.4)_62%,rgba(9,9,11,0.1)_75%,transparent_88%)]" />
 
-      {/* Top and Bottom Subtle Vignette Shadows */}
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,rgba(9,9,11,0.7)_0%,transparent_18%,transparent_82%,rgba(9,9,11,0.85)_100%)] pointer-events-none" />
+      {/* Top and Bottom Seamless Dark Gradient Masks (Connects Section 1 & Section 3 seamlessly) */}
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,#09090b_0%,rgba(9,9,11,0.85)_15%,transparent_35%,transparent_65%,rgba(9,9,11,0.85)_85%,#09090b_100%)] pointer-events-none" />
 
       {/* Left-Aligned Content Container */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-12 xl:px-14">

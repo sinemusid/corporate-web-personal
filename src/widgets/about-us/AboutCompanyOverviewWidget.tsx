@@ -8,14 +8,14 @@ export const AboutCompanyOverviewWidget: React.FC = () => {
 
   if (isLoading || !companyOverview) {
     return (
-      <SectionWrapper id="about-overview" className="pt-8">
+      <SectionWrapper isTopSection id="about-overview">
         <AboutUsSkeleton />
       </SectionWrapper>
     );
   }
 
   return (
-    <SectionWrapper id="about-overview" className="flex flex-col items-center justify-center min-h-screen gap-2">
+    <SectionWrapper isTopSection id="about-overview" className="flex flex-col items-center justify-center gap-8">
       <AboutCompanyOverview data={companyOverview} />
       {visionMissionValue && <VisionMissionValue data={visionMissionValue} />}
     </SectionWrapper>

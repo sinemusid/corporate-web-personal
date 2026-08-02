@@ -76,7 +76,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ data }) =>
                 </h3>
               </div>
 
-              <p className="text-sm sm:text-base text-justify text-gray-300 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-300 font-light leading-relaxed">
                 {ceo.bio}
               </p>
 

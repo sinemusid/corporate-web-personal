@@ -11,11 +11,29 @@ export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Detect modal open state on document.body
+  useEffect(() => {
+    const checkModalOpen = () => {
+      setIsModalOpen(document.body.classList.contains('modal-open'));
+    };
+
+    checkModalOpen();
+
+    const observer = new MutationObserver(() => {
+      checkModalOpen();
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,10 +73,12 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ease-out ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
+        isVisible && !isModalOpen
+          ? 'translate-y-0 opacity-100'
+          : '-translate-y-full opacity-0 pointer-events-none'
       } ${
         lastScrollY > 20 || isOpen
-          ? 'bg-white/10 backdrop-blur-md border-b border-white/15 shadow-lg'
+          ? 'bg-bg-primary/85 backdrop-blur-xl border-b border-borderToken-subtle/80 shadow-2xl shadow-black/80'
           : 'bg-transparent border-none'
       }`}
     >
@@ -81,9 +101,11 @@ export const Navbar: React.FC = () => {
           {mainNavigation.map((item) => {
             const hasSub = Boolean(item.subItems && item.subItems.length > 0);
             const isActive =
-              pathname === item.href ||
-              (item.href !== '/' && pathname.startsWith('/units')) ||
-              (item.href !== '/' && pathname.startsWith(item.href));
+              item.href === '/'
+                ? pathname === '/'
+                : item.href.startsWith('/units')
+                ? pathname.startsWith('/units')
+                : pathname === item.href || pathname.startsWith(item.href);
             const isDropdownOpen = activeDropdown === item.label;
 
             if (hasSub) {
@@ -98,19 +120,19 @@ export const Navbar: React.FC = () => {
                     type="button"
                     className={`relative flex items-center gap-1.5 text-xs sm:text-sm font-heading font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                       isActive || isDropdownOpen
-                        ? 'text-white opacity-100 font-semibold'
-                        : 'text-white/80 hover:text-white hover:opacity-100'
+                        ? 'text-content-primary font-bold'
+                        : 'text-content-secondary hover:text-content-primary'
                     }`}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                        isDropdownOpen ? 'rotate-180 text-white' : 'text-white/60 group-hover:text-white'
+                        isDropdownOpen ? 'rotate-180 text-content-primary' : 'text-content-tertiary group-hover:text-content-primary'
                       }`}
                     />
                     {/* Animated Underline */}
                     <span
-                      className={`absolute -bottom-1 left-0 h-[2px] bg-white rounded-full transition-all duration-300 ease-out ${
+                      className={`absolute -bottom-1 left-0 h-[2px] bg-content-primary rounded-full transition-all duration-300 ease-out ${
                         isActive || isDropdownOpen
                           ? 'w-full opacity-100'
                           : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
@@ -118,16 +140,16 @@ export const Navbar: React.FC = () => {
                     />
                   </button>
 
-                  {/* Mega Dropdown Menu (White Glassmorphism) */}
+                  {/* Mega Dropdown Menu (Dark Glassmorphism) */}
                   {isDropdownOpen && (
                     <div
-                      className="absolute top-full -left-20 w-[540px] p-4 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-2xl shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+                      className="absolute top-full -left-20 w-[540px] p-4 bg-bg-secondary/95 backdrop-blur-2xl border border-borderToken-subtle/80 rounded-2xl shadow-2xl shadow-black/90 animate-in fade-in slide-in-from-top-2 duration-200 z-50"
                       onMouseEnter={() => handleMouseEnter(item.label)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="text-[10px] font-mono uppercase tracking-widest text-white/70 px-3 pt-1 pb-2.5 border-b border-white/15 mb-3 flex items-center justify-between">
-                        <span className="font-bold text-white">Unit Bisnis Sinemus</span>
-                        <span className="text-white/50">4 Pilar Integrasi</span>
+                      <div className="text-[10px] font-mono uppercase tracking-widest text-content-tertiary px-3 pt-1 pb-2.5 border-b border-borderToken-subtle/60 mb-3 flex items-center justify-between">
+                        <span className="font-bold text-content-primary">Unit Bisnis Sinemus</span>
+                        <span className="text-content-muted">4 Pilar Integrasi</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2.5">
                         {item.subItems?.map((sub) => {
@@ -139,18 +161,18 @@ export const Navbar: React.FC = () => {
                               onClick={() => setActiveDropdown(null)}
                               className={`group/sub flex flex-col justify-between p-3.5 rounded-xl border transition-all duration-200 ${
                                 isSubActive
-                                  ? 'bg-white/25 border-white/50 shadow-inner'
-                                  : 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/40'
+                                  ? 'bg-bg-elevated border-borderToken-strong shadow-inner'
+                                  : 'bg-bg-tertiary/60 border-borderToken-subtle/60 hover:bg-bg-elevated/80 hover:border-borderToken-default'
                               }`}
                             >
                               <div className="space-y-1">
                                 <div className="flex items-center justify-between">
-                                  <span className="text-xs font-heading font-bold text-white uppercase tracking-wider group-hover/sub:text-white transition-colors">
+                                  <span className="text-xs font-heading font-bold text-content-primary uppercase tracking-wider group-hover/sub:text-content-primary transition-colors">
                                     {sub.label}
                                   </span>
-                                  <ArrowRight className="w-3.5 h-3.5 text-white/50 group-hover/sub:text-white group-hover/sub:translate-x-1 transition-all" />
+                                  <ArrowRight className="w-3.5 h-3.5 text-content-tertiary group-hover/sub:text-content-primary group-hover/sub:translate-x-1 transition-all" />
                                 </div>
-                                <p className="text-[11px] font-body text-white/80 font-light leading-relaxed line-clamp-2">
+                                <p className="text-[11px] font-body text-content-secondary font-light leading-relaxed line-clamp-2">
                                   {sub.description}
                                 </p>
                               </div>
@@ -169,13 +191,13 @@ export const Navbar: React.FC = () => {
                 key={item.href}
                 href={item.href}
                 className={`relative py-1 text-xs sm:text-sm font-heading font-medium uppercase tracking-wider transition-opacity duration-300 group ${
-                  isActive ? 'text-white opacity-100 font-semibold' : 'text-white/80 hover:text-white hover:opacity-100'
+                  isActive ? 'text-content-primary font-bold' : 'text-content-secondary hover:text-content-primary'
                 }`}
               >
                 <span>{item.label}</span>
                 {/* Animated Underline */}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[2px] bg-white rounded-full transition-all duration-300 ease-out ${
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-content-primary rounded-full transition-all duration-300 ease-out ${
                     isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
                   }`}
                 />
@@ -187,7 +209,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Toggle Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 rounded-xl text-white/90 hover:text-white hover:bg-white/10 focus:outline-hidden transition-all duration-200 border border-white/10"
+          className="md:hidden p-2.5 rounded-xl text-content-primary bg-bg-secondary/60 border border-borderToken-subtle/80 hover:bg-bg-elevated/80 hover:border-content-primary/40 focus:outline-hidden transition-all duration-200 shadow-md"
           aria-label="Toggle Navigation"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -200,38 +222,40 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Drawer (Clean White Glassmorphism) */}
+      {/* Mobile Drawer (Consistent Dark Glassmorphism) */}
       {isOpen && (
-        <div className="md:hidden bg-white/15 backdrop-blur-2xl border-t border-b border-white/20 px-6 pt-4 pb-6 space-y-3 shadow-2xl transition-all duration-300 max-h-[80vh] overflow-y-auto">
+        <div className="md:hidden bg-bg-primary/95 backdrop-blur-2xl border-t border-b border-borderToken-subtle/80 px-6 pt-4 pb-6 space-y-3 shadow-2xl shadow-black/90 transition-all duration-300 max-h-[80vh] overflow-y-auto">
           {mainNavigation.map((item) => {
             const hasSub = Boolean(item.subItems && item.subItems.length > 0);
             const isActive =
-              pathname === item.href ||
-              (item.href !== '/' && pathname.startsWith('/units')) ||
-              (item.href !== '/' && pathname.startsWith(item.href));
+              item.href === '/'
+                ? pathname === '/'
+                : item.href.startsWith('/units')
+                ? pathname.startsWith('/units')
+                : pathname === item.href || pathname.startsWith(item.href);
             const isExpanded = mobileExpanded === item.label;
 
             if (hasSub) {
               return (
-                <div key={item.label} className="rounded-xl border border-white/15 bg-white/5 overflow-hidden transition-all">
+                <div key={item.label} className="rounded-xl border border-borderToken-subtle/80 bg-bg-secondary/60 overflow-hidden transition-all">
                   <button
                     type="button"
                     onClick={() => toggleMobileSubmenu(item.label)}
                     className={`w-full px-4 py-3 flex items-center justify-between text-xs font-heading font-semibold uppercase tracking-wider transition-colors ${
-                      isActive ? 'text-white bg-white/10' : 'text-white/90 hover:text-white hover:bg-white/10'
+                      isActive ? 'text-content-primary bg-bg-elevated/80' : 'text-content-secondary hover:text-content-primary hover:bg-bg-elevated/50'
                     }`}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-300 ${
-                        isExpanded ? 'rotate-180 text-white' : 'text-white/60'
+                        isExpanded ? 'rotate-180 text-content-primary' : 'text-content-tertiary'
                       }`}
                     />
                   </button>
 
                   {/* Submenu Accordion */}
                   {isExpanded && (
-                    <div className="px-3 pb-3 pt-1 space-y-2 border-t border-white/10 bg-white/5">
+                    <div className="px-3 pb-3 pt-1 space-y-2 border-t border-borderToken-subtle/60 bg-bg-tertiary/40">
                       {item.subItems?.map((sub) => {
                         const isSubActive = pathname === sub.href;
                         return (
@@ -244,15 +268,15 @@ export const Navbar: React.FC = () => {
                             }}
                             className={`block p-3 rounded-lg border transition-all ${
                               isSubActive
-                                ? 'bg-white/25 border-white/40 text-white shadow-inner font-bold'
-                                : 'bg-white/5 border-white/10 text-white/80 hover:bg-white/15 hover:border-white/25 hover:text-white'
+                                ? 'bg-bg-elevated border-borderToken-strong text-content-primary shadow-inner font-bold'
+                                : 'bg-bg-tertiary/50 border-borderToken-subtle/50 text-content-secondary hover:bg-bg-elevated/60 hover:border-borderToken-default hover:text-content-primary'
                             }`}
                           >
                             <div className="flex items-center justify-between text-xs font-heading font-bold uppercase tracking-wide">
                               <span>{sub.label}</span>
-                              <ArrowRight className="w-3 h-3 text-white/40" />
+                              <ArrowRight className="w-3.5 h-3.5 text-content-tertiary" />
                             </div>
-                            <p className="text-[11px] text-white/70 font-body normal-case font-light mt-1 leading-tight line-clamp-2">
+                            <p className="text-[11px] text-content-secondary font-body normal-case font-light mt-1 leading-tight line-clamp-2">
                               {sub.description}
                             </p>
                           </Link>
@@ -271,8 +295,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-xl border transition-all text-xs font-heading uppercase tracking-wider ${
                   isActive
-                    ? 'bg-white/20 border-white/35 text-white font-bold shadow-inner'
-                    : 'bg-white/5 border-white/10 text-white/80 hover:bg-white/15 hover:border-white/20 hover:text-white'
+                    ? 'bg-bg-elevated/90 border-borderToken-strong text-content-primary font-bold shadow-inner'
+                    : 'bg-bg-secondary/60 border-borderToken-subtle/60 text-content-secondary hover:bg-bg-elevated/60 hover:border-borderToken-default hover:text-content-primary'
                 }`}
               >
                 {item.label}
@@ -284,4 +308,3 @@ export const Navbar: React.FC = () => {
     </header>
   );
 };
-

@@ -11,7 +11,7 @@ import {
 
 export default function AboutUsPage() {
   return (
-    <div className="space-y-8 pt-2 sm:pt-4 pb-8 sm:pb-12">
+    <div className="space-y-8 pb-8 sm:pb-12">
       <AboutCompanyOverviewWidget />
       <ProjectStatsWidget />
       <MilestonesTimelineWidget />

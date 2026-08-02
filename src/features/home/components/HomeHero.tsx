@@ -11,7 +11,7 @@ interface HomeHeroProps {
 export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
   return (
     <div className="relative w-full h-screen min-h-125 flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 text-center">
-      {/* Background Image */}
+      {/* Background Image & Seamless Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src={data.backgroundImage}
@@ -20,8 +20,8 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
           priority
           className="object-cover object-center filter brightness-[0.45] contrast-105"
         />
-        {/* Smooth Subtle Vignette Overlay */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-bg-primary" />
+        {/* Smooth Vignette & Seamless Bottom Gradient */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.4)_0%,transparent_40%,rgba(9,9,11,0.6)_70%,#09090b_100%)] pointer-events-none" />
       </div>
 
       {/* Hero Central Text */}

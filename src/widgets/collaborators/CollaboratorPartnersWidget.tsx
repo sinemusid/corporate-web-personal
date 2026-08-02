@@ -9,14 +9,14 @@ export const CollaboratorPartnersWidget: React.FC = () => {
 
   if (isLoading || !partnersData) {
     return (
-      <SectionWrapper id="collaborators" className="py-16">
+      <SectionWrapper isTopSection id="collaborators">
         <CollaboratorSkeleton />
       </SectionWrapper>
     );
   }
 
   return (
-    <SectionWrapper id="collaborators" className="py-16">
+    <SectionWrapper isTopSection id="collaborators">
       <CollaboratorPartners data={partnersData} />
     </SectionWrapper>
   );

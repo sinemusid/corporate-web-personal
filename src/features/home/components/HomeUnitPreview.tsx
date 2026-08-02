@@ -13,9 +13,15 @@ interface HomeUnitPreviewProps {
 
 export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitleHeader = true }) => {
   return (
-    <div className="space-y-6 sm:space-y-8 w-full max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="relative space-y-6 sm:space-y-8 w-full max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Top Ambient Glow Seamless Transition from Section 2 */}
+      <div 
+        className="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent-subtle/10 rounded-full blur-3xl opacity-50" 
+        aria-hidden="true" 
+      />
+
       {showTitleHeader && (
-        <div className="text-center max-w-4xl mx-auto space-y-3 px-4">
+        <div className="relative z-10 text-center max-w-4xl mx-auto space-y-3 px-4">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-black tracking-wider text-content-primary uppercase leading-tight">
             {data.heading}
           </h2>
@@ -30,7 +36,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
         {/* Node Badge */}
         <div className="px-6 py-2.5 rounded-full border border-white/30 bg-bg-elevated/90 shadow-xl backdrop-blur-md z-10 flex items-center justify-center min-w-50 hover:border-white/60 transition-colors">
           <Image
-            src="/images/sinemus-indonesia.p ng"
+            src="/images/sinemus-indonesia.png"
             alt={data.heading || "Sinemus Indonesia"}
             width={180}
             height={40}

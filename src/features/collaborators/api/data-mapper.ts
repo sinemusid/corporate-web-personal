@@ -4,6 +4,12 @@ export function mapCollaboratorPartners(raw: CollaboratorPartnersData): Collabor
   return {
     heading: raw.heading || '',
     subheading: raw.subheading || '',
-    partners: raw.partners || [],
+    collaboratorsHeading: raw.collaboratorsHeading || 'Mitra & Kolaborator Strategis',
+    collaboratorsSubheading: raw.collaboratorsSubheading || '',
+    vendorsHeading: raw.vendorsHeading || 'Mitra Vendor & Produksi',
+    vendorsSubheading: raw.vendorsSubheading || '',
+    collaborators: raw.collaborators || [],
+    vendors: raw.vendors || [],
   };
 }
+

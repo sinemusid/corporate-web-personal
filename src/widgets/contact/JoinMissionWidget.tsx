@@ -9,14 +9,14 @@ export const JoinMissionWidget: React.FC = () => {
 
   if (isLoading || !joinMission) {
     return (
-      <SectionWrapper id="join-mission" className="w-full min-h-screen lg:h-screen min-h-[600px] flex items-center justify-center pt-20 pb-8">
+      <SectionWrapper isTopSection id="join-mission" className="w-full min-h-[calc(100vh-112px)] flex flex-col items-center justify-center">
         <ContactSkeleton />
       </SectionWrapper>
     );
   }
 
   return (
-    <SectionWrapper id="join-mission" className="w-full min-h-screen lg:h-screen min-h-[600px] flex items-center justify-center pt-20 pb-8">
+    <SectionWrapper isTopSection id="join-mission" className="w-full min-h-[calc(100vh-112px)] flex flex-col items-center justify-center">
       <JoinMission data={joinMission} />
     </SectionWrapper>
   );

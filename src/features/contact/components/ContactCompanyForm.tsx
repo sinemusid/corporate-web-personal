@@ -55,40 +55,40 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
   };
 
   return (
-    <div id="contact-form" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch max-w-6xl mx-auto my-16 px-4">
+    <div id="contact-form" className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch w-full max-w-6xl mx-auto my-0">
       {/* Left Column: Contact Info & Value Prop */}
-      <div className="lg:col-span-5 flex flex-col justify-between space-y-8 p-8 sm:p-10 rounded-3xl bg-bg-elevated/40 border border-borderToken-subtle/80 backdrop-blur-xl relative overflow-hidden shadow-xl">
+      <div className="lg:col-span-5 flex flex-col justify-between space-y-6 p-6 sm:p-8 md:p-10 rounded-3xl bg-bg-elevated/40 border border-borderToken-subtle/80 backdrop-blur-xl relative overflow-hidden shadow-xl">
         {/* Subtle ambient light */}
         <div className="pointer-events-none absolute -bottom-20 -left-20 w-64 h-64 bg-accent-subtle/20 rounded-full blur-3xl opacity-60" aria-hidden="true" />
         
-        <div className="space-y-5 z-10">
+        <div className="space-y-4 z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent-subtle/30 border border-borderToken-subtle/50 text-xs font-mono font-medium text-content-primary">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Kemitraan Strategis</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
             {labels.heading}
           </h2>
 
-          <p className="text-sm font-body text-content-secondary leading-relaxed font-light">
+          <p className="text-xs sm:text-sm font-body text-content-secondary leading-relaxed font-light">
             {labels.subheading}
           </p>
         </div>
 
         {/* Contact info list */}
-        <div className="space-y-3.5 z-10 pt-4">
+        <div className="space-y-3 z-10 pt-2">
           {info.map((item, idx) => (
             <div 
               key={idx} 
-              className="group flex items-center space-x-4 p-4 rounded-2xl bg-bg-primary/50 border border-borderToken-subtle/60 hover:border-content-primary/30 transition-all duration-300 hover:shadow-md"
+              className="group flex items-center space-x-3.5 p-3.5 sm:p-4 rounded-2xl bg-bg-primary/50 border border-borderToken-subtle/60 hover:border-content-primary/30 transition-all duration-300 hover:shadow-md"
             >
-              <div className="p-3 rounded-xl bg-bg-elevated border border-borderToken-subtle/80 group-hover:scale-105 transition-transform duration-200">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-bg-elevated border border-borderToken-subtle/80 group-hover:scale-105 transition-transform duration-200">
                 {getInfoIcon(item.type)}
               </div>
               <div className="space-y-0.5">
-                <div className="text-[11px] text-content-tertiary font-mono uppercase tracking-wider">{item.label}</div>
-                <div className="font-semibold text-sm text-content-primary font-body">{item.value}</div>
+                <div className="text-[10px] sm:text-[11px] text-content-tertiary font-mono uppercase tracking-wider">{item.label}</div>
+                <div className="font-semibold text-xs sm:text-sm text-content-primary font-body">{item.value}</div>
               </div>
             </div>
           ))}
@@ -96,7 +96,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
       </div>
 
       {/* Right Column: Form Container */}
-      <div className="lg:col-span-7 bg-bg-elevated/80 border border-borderToken-subtle/80 p-8 sm:p-12 rounded-3xl backdrop-blur-xl min-h-[520px] flex flex-col justify-center transition-all duration-500 shadow-2xl relative overflow-hidden">
+      <div className="lg:col-span-7 bg-bg-elevated/80 border border-borderToken-subtle/80 p-6 sm:p-8 md:p-10 rounded-3xl backdrop-blur-xl min-h-[460px] flex flex-col justify-center transition-all duration-500 shadow-2xl relative overflow-hidden">
         {/* Decorative corner glow */}
         <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 bg-accent-subtle/15 rounded-full blur-3xl opacity-50" aria-hidden="true" />
 
