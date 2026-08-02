@@ -120,19 +120,19 @@ export const Navbar: React.FC = () => {
                     type="button"
                     className={`relative flex items-center gap-1.5 text-xs sm:text-sm font-heading font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                       isActive || isDropdownOpen
-                        ? 'text-content-primary font-bold'
-                        : 'text-content-secondary hover:text-content-primary'
+                        ? 'text-white font-bold'
+                        : 'text-white/80 hover:text-white group-hover:text-white'
                     }`}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                        isDropdownOpen ? 'rotate-180 text-content-primary' : 'text-content-tertiary group-hover:text-content-primary'
+                        isDropdownOpen ? 'rotate-180 text-white' : 'text-white/60 group-hover:text-white'
                       }`}
                     />
                     {/* Animated Underline */}
                     <span
-                      className={`absolute -bottom-1 left-0 h-[2px] bg-content-primary rounded-full transition-all duration-300 ease-out ${
+                      className={`absolute -bottom-1 left-0 h-[2px] bg-white rounded-full transition-all duration-300 ease-out ${
                         isActive || isDropdownOpen
                           ? 'w-full opacity-100'
                           : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
@@ -190,14 +190,14 @@ export const Navbar: React.FC = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative py-1 text-xs sm:text-sm font-heading font-medium uppercase tracking-wider transition-opacity duration-300 group ${
-                  isActive ? 'text-content-primary font-bold' : 'text-content-secondary hover:text-content-primary'
+                className={`relative py-1 text-xs sm:text-sm font-heading font-medium uppercase tracking-wider transition-all duration-300 group ${
+                  isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'
                 }`}
               >
                 <span>{item.label}</span>
                 {/* Animated Underline */}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[2px] bg-content-primary rounded-full transition-all duration-300 ease-out ${
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-white rounded-full transition-all duration-300 ease-out ${
                     isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
                   }`}
                 />

@@ -5,6 +5,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Sinemus Indonesia - Corporate Hub",
   description: "Official Corporate Website Sinemus Indonesia",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
