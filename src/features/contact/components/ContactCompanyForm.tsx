@@ -1,24 +1,15 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Check, Send, Loader2, Sparkles } from 'lucide-react';
 import { ContactCompanyData, ContactFormData } from '../types';
+import { submitContactForm } from '../api';
 
 interface ContactCompanyFormProps {
   data: ContactCompanyData;
-  onSubmit: (formData: ContactFormData) => Promise<boolean>;
-  isSubmitting: boolean;
-  isSuccess: boolean;
-  statusMessage: string | null;
-  onReset: () => void;
 }
 
-export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
-  data,
-  onSubmit,
-  isSubmitting,
-  isSuccess,
-  statusMessage,
-  onReset,
-}) => {
+export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({ data }) => {
   const { info, labels } = data;
 
   const [form, setForm] = useState<ContactFormData>({
@@ -27,6 +18,10 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
     company: '',
     message: '',
   });
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (isSuccess) {
@@ -39,8 +34,27 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await onSubmit(form);
+    try {
+      setIsSubmitting(true);
+      setStatusMessage(null);
+      const ok = await submitContactForm(form);
+      if (ok) {
+        setIsSuccess(true);
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Terjadi kesalahan. Silakan coba lagi.';
+      setStatusMessage(msg);
+      setIsSuccess(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const handleReset = () => {
+    setIsSuccess(false);
+    setStatusMessage(null);
+  };
+
 
   const getInfoIcon = (type: string) => {
     switch (type) {
@@ -121,7 +135,7 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({
             </div>
 
             <button
-              onClick={onReset}
+              onClick={handleReset}
               className="pt-2 text-xs font-body font-medium text-content-secondary hover:text-content-primary underline underline-offset-4 transition-colors opacity-0 animate-success-slide-up-delay"
             >
               {labels.sendAnotherButton}

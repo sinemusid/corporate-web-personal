@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
 import { HomeHeroData } from '../types';
@@ -10,7 +8,7 @@ interface HomeHeroProps {
 
 export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
   return (
-    <div className="relative w-full h-screen min-h-125 flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 text-center">
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 text-center">
       {/* Background Image & Seamless Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -27,6 +25,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
       {/* Hero Central Text */}
       <div className="relative z-10 space-y-4 sm:space-y-6 max-w-5xl mx-auto py-8">
         <h1 className="flex justify-center items-center drop-shadow-2xl">
+          <span className="sr-only">{data.title}</span>
           <Image
             src="/images/hero/sinemus-hero.png" 
             alt={data.title}

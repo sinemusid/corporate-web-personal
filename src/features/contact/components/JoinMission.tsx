@@ -17,18 +17,18 @@ export const JoinMission: React.FC<JoinMissionProps> = ({ data }) => {
       />
 
       {/* Header section (Centered) */}
-      <div className="space-y-3 max-w-2xl mx-auto flex flex-col items-center z-10">
+      <header className="space-y-3 max-w-2xl mx-auto flex flex-col items-center z-10">
         <span className="text-[10px] sm:text-xs uppercase font-mono font-semibold text-content-primary tracking-widest px-3.5 py-1 bg-accent-subtle/40 border border-borderToken-subtle/60 rounded-full inline-flex items-center gap-2 shadow-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-content-primary animate-pulse" />
           {data.subheading}
         </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
           {data.heading}
-        </h2>
+        </h1>
         <p className="text-xs sm:text-sm font-body text-content-secondary font-light leading-relaxed max-w-xl mx-auto">
           {data.description}
         </p>
-      </div>
+      </header>
 
       {/* Divider */}
       <div className="w-full max-w-3xl my-6 sm:my-8 border-t border-borderToken-subtle/60 z-10" />

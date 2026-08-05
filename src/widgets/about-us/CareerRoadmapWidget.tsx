@@ -1,19 +1,11 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { CareerRoadmap, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { CareerRoadmap, fetchCareerRoadmap } from '@/features/about-us';
 
-export const CareerRoadmapWidget: React.FC = () => {
-  const { careerRoadmap, isLoading } = useAboutUs();
+export const CareerRoadmapWidget: React.FC = async () => {
+  const careerRoadmap = await fetchCareerRoadmap();
 
-  if (isLoading || !careerRoadmap) {
-    return (
-      <SectionWrapper id="roadmap">
-        <AboutUsSkeleton />
-      </SectionWrapper>
-    );
-  }
+  if (!careerRoadmap) return null;
 
   return (
     <SectionWrapper id="roadmap">
@@ -21,3 +13,4 @@ export const CareerRoadmapWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

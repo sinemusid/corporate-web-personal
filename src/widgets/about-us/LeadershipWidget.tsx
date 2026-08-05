@@ -1,19 +1,11 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { LeadershipSection, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { LeadershipSection, fetchLeadership } from '@/features/about-us';
 
-export const LeadershipWidget: React.FC = () => {
-  const { leadership, isLoading } = useAboutUs();
+export const LeadershipWidget: React.FC = async () => {
+  const leadership = await fetchLeadership();
 
-  if (isLoading || !leadership) {
-    return (
-      <SectionWrapper id="our-team">
-        <AboutUsSkeleton />
-      </SectionWrapper>
-    );
-  }
+  if (!leadership) return null;
 
   return (
     <SectionWrapper id="our-team">
@@ -21,3 +13,4 @@ export const LeadershipWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

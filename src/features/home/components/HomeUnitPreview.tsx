@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,7 +11,8 @@ interface HomeUnitPreviewProps {
 
 export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitleHeader = true }) => {
   return (
-    <div className="relative space-y-6 sm:space-y-8 w-full max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="relative space-y-6 sm:space-y-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
       {/* Top Ambient Glow Seamless Transition from Section 2 */}
       <div 
         className="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent-subtle/10 rounded-full blur-3xl opacity-50" 
@@ -34,7 +33,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
       {/* Diagram Branching Tree Architecture with Smooth Curved Corners */}
       <div className="hidden lg:flex flex-col items-center w-full mt-4 -mb-2 relative">
         {/* Node Badge */}
-        <div className="px-6 py-2.5 rounded-full border border-white/30 bg-bg-elevated/90 shadow-xl backdrop-blur-md z-10 flex items-center justify-center min-w-50 hover:border-white/60 transition-colors">
+        <div className="px-6 py-2.5 bg-bg-elevated/90 shadow-xl backdrop-blur-md z-10 flex items-center justify-center min-w-50 hover:border-white/60 transition-colors">
           <Image
             src="/images/sinemus-indonesia.png"
             alt={data.heading || "Sinemus Indonesia"}

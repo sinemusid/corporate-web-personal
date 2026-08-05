@@ -1,19 +1,11 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { DesignStructure, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { DesignStructure, fetchDesignStructure } from '@/features/about-us';
 
-export const DesignStructureWidget: React.FC = () => {
-  const { designStructure, isLoading } = useAboutUs();
+export const DesignStructureWidget: React.FC = async () => {
+  const designStructure = await fetchDesignStructure();
 
-  if (isLoading || !designStructure) {
-    return (
-      <SectionWrapper id="design-structure" darkBg>
-        <AboutUsSkeleton />
-      </SectionWrapper>
-    );
-  }
+  if (!designStructure) return null;
 
   return (
     <SectionWrapper id="design-structure" darkBg>
@@ -21,3 +13,4 @@ export const DesignStructureWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

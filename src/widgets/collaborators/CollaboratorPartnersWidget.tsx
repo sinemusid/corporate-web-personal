@@ -1,19 +1,9 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { CollaboratorPartners, CollaboratorSkeleton, useCollaborator } from '@/features/collaborators';
+import { CollaboratorPartners, fetchCollaboratorPartners } from '@/features/collaborators';
 
-export const CollaboratorPartnersWidget: React.FC = () => {
-  const { partnersData, isLoading } = useCollaborator();
-
-  if (isLoading || !partnersData) {
-    return (
-      <SectionWrapper isTopSection id="collaborators">
-        <CollaboratorSkeleton />
-      </SectionWrapper>
-    );
-  }
+export const CollaboratorPartnersWidget = async () => {
+  const partnersData = await fetchCollaboratorPartners();
 
   return (
     <SectionWrapper isTopSection id="collaborators">
@@ -21,3 +11,4 @@ export const CollaboratorPartnersWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

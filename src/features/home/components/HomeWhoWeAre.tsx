@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -16,7 +14,7 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({
   backgroundImage = '/images/hero/sinemus_team_photo.jpg',
 }) => {
   return (
-    <div className="relative w-full h-screen min-h-150 flex items-center overflow-hidden bg-[#09090b]">
+    <div className="relative w-full min-h-screen flex items-center overflow-hidden bg-bg-primary">
       {/* Background Image Container (Spans full right half to edge) */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -28,14 +26,14 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({
         />
       </div>
 
-      {/* Multi-step Feathered Shadow Gradient Mask from Solid Black on Left to Transparent on Right */}
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,#09090b_0%,#09090b_28%,rgba(9,9,11,0.98)_38%,rgba(9,9,11,0.85)_48%,rgba(9,9,11,0.4)_62%,rgba(9,9,11,0.1)_75%,transparent_88%)]" />
+      {/* Multi-step Feathered Shadow Gradient Mask from Solid Dark on Left to Transparent on Right */}
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,var(--bg-primary,#09090b)_0%,var(--bg-primary,#09090b)_28%,rgba(9,9,11,0.98)_38%,rgba(9,9,11,0.85)_48%,rgba(9,9,11,0.4)_62%,rgba(9,9,11,0.1)_75%,transparent_88%)]" />
 
-      {/* Top and Bottom Seamless Dark Gradient Masks (Connects Section 1 & Section 3 seamlessly) */}
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,#09090b_0%,rgba(9,9,11,0.85)_15%,transparent_35%,transparent_65%,rgba(9,9,11,0.85)_85%,#09090b_100%)] pointer-events-none" />
+      {/* Top and Bottom Seamless Dark Gradient Masks (Connects Sections seamlessly) */}
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,var(--bg-primary,#09090b)_0%,rgba(9,9,11,0.85)_15%,transparent_35%,transparent_65%,rgba(9,9,11,0.85)_85%,var(--bg-primary,#09090b)_100%)] pointer-events-none" />
 
       {/* Left-Aligned Content Container */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-10 lg:px-12 xl:px-14">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-md sm:max-w-lg lg:max-w-xl space-y-6 text-left">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
             {data.subheading}

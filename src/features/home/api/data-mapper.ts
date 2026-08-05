@@ -1,4 +1,4 @@
-import { HomeHeroData, HomeWhoWeAreData, HomeUnitPreviewData } from '../types';
+import { HomeHeroData, HomeWhoWeAreData, HomeUnitPreviewData, HomeServicesData } from '../types';
 
 export function mapHomeHero(raw: HomeHeroData): HomeHeroData {
   return {
@@ -26,3 +26,13 @@ export function mapHomeUnitPreview(raw: HomeUnitPreviewData): HomeUnitPreviewDat
     units: raw.units || [],
   };
 }
+
+export function mapHomeServices(raw: HomeServicesData): HomeServicesData {
+  return {
+    heading: raw.heading || '',
+    subheading: raw.subheading || '',
+    description: raw.description || '',
+    services: raw.services || [],
+  };
+}
+

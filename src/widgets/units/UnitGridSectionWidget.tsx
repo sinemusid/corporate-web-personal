@@ -1,27 +1,19 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { UnitGrid, UnitSkeleton, useUnits } from '@/features/units';
+import { UnitGrid, fetchUnits } from '@/features/units';
 
 interface UnitGridSectionWidgetProps {
   showTitleHeader?: boolean;
   darkBg?: boolean;
 }
 
-export const UnitGridSectionWidget: React.FC<UnitGridSectionWidgetProps> = ({
+export const UnitGridSectionWidget: React.FC<UnitGridSectionWidgetProps> = async ({
   showTitleHeader = false,
   darkBg = false,
 }) => {
-  const { units, isLoading } = useUnits();
+  const units = await fetchUnits();
 
-  if (isLoading) {
-    return (
-      <SectionWrapper darkBg={darkBg} id="unit-grid-skeleton">
-        <UnitSkeleton />
-      </SectionWrapper>
-    );
-  }
+  if (!units || units.length === 0) return null;
 
   return (
     <SectionWrapper id="units-list" darkBg={darkBg} className={showTitleHeader ? 'pb-20' : ''}>
@@ -39,3 +31,4 @@ export const UnitGridSectionWidget: React.FC<UnitGridSectionWidgetProps> = ({
     </SectionWrapper>
   );
 };
+

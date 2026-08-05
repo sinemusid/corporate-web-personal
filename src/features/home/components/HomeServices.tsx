@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { HomeServicesData } from '../constants/home-services.mock';
 
@@ -9,7 +7,7 @@ interface HomeServicesProps {
 
 export const HomeServices: React.FC<HomeServicesProps> = ({ data }) => {
   return (
-    <div className="space-y-10 max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="space-y-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center max-w-4xl mx-auto space-y-3 px-4">
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-black tracking-wider text-content-primary uppercase leading-tight">
           {data.heading}

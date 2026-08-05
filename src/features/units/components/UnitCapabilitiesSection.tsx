@@ -13,9 +13,9 @@ export const UnitCapabilitiesSection: React.FC<UnitCapabilitiesSectionProps> = (
   return (
     <section className="space-y-6">
       <div className="flex flex-col space-y-1">
-        <h3 className="text-xl md:text-2xl font-heading font-bold text-content-primary">
+        <h2 className="text-xl md:text-2xl font-heading font-bold text-content-primary">
           Pilar Kapabilitas & Layanan Utama
-        </h3>
+        </h2>
         <p className="text-sm text-content-secondary font-body">
           Spesialisasi dan kompetensi operasional berstandar tinggi dari {unitTitle}.
         </p>
@@ -31,9 +31,9 @@ export const UnitCapabilitiesSection: React.FC<UnitCapabilitiesSectionProps> = (
               <div className="w-10 h-10 rounded-lg bg-bg-primary text-content-primary font-mono font-bold flex items-center justify-center text-sm border border-borderToken-subtle group-hover:scale-105 transition-transform">
                 0{idx + 1}
               </div>
-              <h4 className="font-heading font-semibold text-content-primary text-lg">
+              <h3 className="font-heading font-semibold text-content-primary text-lg">
                 {cap.title}
-              </h4>
+              </h3>
               <p className="text-sm font-body text-content-secondary leading-relaxed">
                 {cap.description}
               </p>

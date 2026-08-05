@@ -11,25 +11,28 @@ export const CollaboratorSkeleton: React.FC = () => {
         <div className="h-5 bg-bg-tertiary rounded-lg w-1/2" />
       </div>
 
-      {/* Section 1 skeleton */}
+      {/* Section 1 skeleton (10 items in 5-column layout: 2 inline rows x 5 logos) */}
       <div className="space-y-6">
         <div className="h-7 bg-bg-tertiary rounded-lg w-1/3" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={`skel-1-${i}`} className="h-48 bg-bg-tertiary rounded-2xl" />
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div key={`skel-1-${i}`} className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-0.8rem)] h-28 sm:h-32 bg-bg-tertiary rounded-2xl" />
           ))}
         </div>
       </div>
 
-      {/* Section 2 skeleton */}
+      {/* Section 2 skeleton (4 items) */}
       <div className="space-y-6">
         <div className="h-7 bg-bg-tertiary rounded-lg w-1/4" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={`skel-2-${i}`} className="h-48 bg-bg-tertiary rounded-2xl" />
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={`skel-2-${i}`} className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-0.8rem)] h-28 sm:h-32 bg-bg-tertiary rounded-2xl" />
           ))}
         </div>
       </div>
     </div>
   );
 };
+
+
+

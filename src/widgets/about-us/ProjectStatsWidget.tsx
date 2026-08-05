@@ -1,19 +1,11 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { ProjectStats, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { ProjectStats, fetchProjectStats } from '@/features/about-us';
 
-export const ProjectStatsWidget: React.FC = () => {
-  const { projectStats, isLoading } = useAboutUs();
+export const ProjectStatsWidget: React.FC = async () => {
+  const projectStats = await fetchProjectStats();
 
-  if (isLoading || !projectStats) {
-    return (
-      <SectionWrapper id="project-stats">
-        <AboutUsSkeleton />
-      </SectionWrapper>
-    );
-  }
+  if (!projectStats) return null;
 
   return (
     <SectionWrapper id="project-stats">
@@ -21,3 +13,4 @@ export const ProjectStatsWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

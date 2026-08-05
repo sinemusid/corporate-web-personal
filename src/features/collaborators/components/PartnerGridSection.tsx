@@ -8,38 +8,40 @@ interface PartnerGridSectionProps {
   title: string;
   subtitle?: string;
   items: PartnerItem[];
-  columnsDesktop?: 3 | 4;
+  columnsDesktop?: 3 | 4 | 5;
 }
 
 export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
   title,
   subtitle,
   items,
-  columnsDesktop = 4,
+  columnsDesktop = 5,
 }) => {
   if (!items || items.length === 0) return null;
 
   const gridColsClass =
-    columnsDesktop === 3
+    columnsDesktop === 5
+      ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'
+      : columnsDesktop === 3
       ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-      : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4';
+      : 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-4';
 
   return (
-    <div className="space-y-6 w-full z-10 pt-6">
-      {/* Section Header */}
-      <div className="text-left space-y-1 border-b border-borderToken-subtle/30 pb-4">
-        <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-content-primary uppercase tracking-tight">
+    <div className="space-y-6 w-full z-10 pt-4">
+      {/* Section Header (Centered) */}
+      <div className="text-center flex flex-col items-center justify-center space-y-1.5 pb-2 max-w-2xl mx-auto">
+        <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-content-primary uppercase tracking-tight text-center">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-xs sm:text-sm font-body text-content-secondary font-light">
+          <p className="text-xs sm:text-sm font-body text-content-secondary font-light text-center">
             {subtitle}
           </p>
         )}
       </div>
 
-      {/* Partners / Vendors Grid */}
-      <div className={`grid ${gridColsClass} gap-4 sm:gap-6 w-full`}>
+      {/* Partners / Vendors Grid (CSS Grid: Exactly 5 items per inline row on desktop) */}
+      <div className={`grid ${gridColsClass} gap-4 sm:gap-5 w-full`}>
         {items.map((item) => (
           <PartnerCard key={item.id} partner={item} />
         ))}
@@ -47,3 +49,6 @@ export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
     </div>
   );
 };
+
+
+

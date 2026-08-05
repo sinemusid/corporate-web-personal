@@ -1,31 +1,14 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { ContactCompanyForm, ContactSkeleton, useContact } from '@/features/contact';
+import { ContactCompanyForm, fetchContactCompany } from '@/features/contact';
 
-export const ContactCompanyWidget: React.FC = () => {
-  const { contactCompany, isLoading, isSubmitting, isSuccess, statusMessage, handleSubmit, resetFormState } =
-    useContact();
-
-  if (isLoading || !contactCompany) {
-    return (
-      <SectionWrapper id="contact" className="w-full flex items-center justify-center">
-        <ContactSkeleton />
-      </SectionWrapper>
-    );
-  }
+export const ContactCompanyWidget = async () => {
+  const contactCompany = await fetchContactCompany();
 
   return (
     <SectionWrapper id="contact" className="w-full flex items-center justify-center">
-      <ContactCompanyForm
-        data={contactCompany}
-        onSubmit={handleSubmit}
-        isSubmitting={isSubmitting}
-        isSuccess={isSuccess}
-        statusMessage={statusMessage}
-        onReset={resetFormState}
-      />
+      <ContactCompanyForm data={contactCompany} />
     </SectionWrapper>
   );
 };
+

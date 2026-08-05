@@ -4,9 +4,7 @@ export const MOCK_COLLABORATOR_PARTNERS: CollaboratorPartnersData = {
   heading: 'EKOSISTEM & JARINGAN KERJASAMA',
   subheading: 'Bersama para institusi, komunitas, dan vendor profesional dalam memajukan industri sinema Indonesia.',
   collaboratorsHeading: 'Mitra & Kolaborator Strategis',
-  collaboratorsSubheading: 'Jejaring institusi pemerintah, akademisi, dan komunitas independen yang berkolaborasi dalam karya & riset.',
   vendorsHeading: 'Mitra Vendor & Produksi',
-  vendorsSubheading: 'Dukungan teknis, persewaan peralatan, dan studio kreatif terbaik untuk kualitas produksi standar industri.',
   collaborators: [
     {
       id: 'collab-1',
@@ -110,4 +108,5 @@ export const MOCK_COLLABORATOR_PARTNERS: CollaboratorPartnersData = {
     },
   ],
 };
+
 

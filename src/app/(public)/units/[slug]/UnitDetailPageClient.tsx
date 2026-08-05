@@ -1,7 +1,5 @@
 'use client';
 
-import React, { use } from 'react';
-import { notFound } from 'next/navigation';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
 import {
   UnitHeroBanner,
@@ -10,29 +8,17 @@ import {
   UnitProjectsSection,
   UnitWorkflowSection,
   UnitCtaSection,
-  useUnitDetail,
-  UnitSkeleton,
+  BusinessUnit,
 } from '@/features/units';
 
 interface UnitDetailPageClientProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  unit: BusinessUnit;
 }
 
-export const UnitDetailPageClient: React.FC<UnitDetailPageClientProps> = ({ params }) => {
-  const resolvedParams = use(params);
-  const { unit, isLoading } = useUnitDetail(resolvedParams.slug);
-
-  if (!isLoading && !unit) {
-    notFound();
-  }
-
+export const UnitDetailPageClient: React.FC<UnitDetailPageClientProps> = ({ unit }) => {
   return (
-    <SectionWrapper isTopSection>
-      {isLoading || !unit ? (
-        <UnitSkeleton />
-      ) : (
+    <main>
+      <SectionWrapper isTopSection>
         <div className="space-y-12 sm:space-y-16">
           <UnitHeroBanner unit={unit} />
           <UnitOverviewSection about={unit.about} tagline={unit.tagline} />
@@ -41,7 +27,8 @@ export const UnitDetailPageClient: React.FC<UnitDetailPageClientProps> = ({ para
           <UnitWorkflowSection workflow={unit.workflow} />
           <UnitCtaSection unitTitle={unit.title} />
         </div>
-      )}
-    </SectionWrapper>
+      </SectionWrapper>
+    </main>
   );
 };
+

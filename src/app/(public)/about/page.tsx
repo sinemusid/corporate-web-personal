@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import {
   AboutCompanyOverviewWidget,
   ProjectStatsWidget,
@@ -8,10 +9,18 @@ import {
   LeadershipWidget,
   PortfolioGridWidget,
 } from '@/widgets/about-us';
+import { constructMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Tentang Kami',
+  description:
+    'Mengenal lebih dekat profil, visi misi, jajaran kepemimpinan, serta rekam jejak Sinemus Indonesia.',
+  canonicalUrl: '/about',
+});
 
 export default function AboutUsPage() {
   return (
-    <div className="space-y-8 pb-8 sm:pb-12">
+    <main className="space-y-8 pb-8 sm:pb-12">
       <AboutCompanyOverviewWidget />
       <ProjectStatsWidget />
       <MilestonesTimelineWidget />
@@ -19,7 +28,9 @@ export default function AboutUsPage() {
       <DesignStructureWidget />
       <LeadershipWidget />
       <PortfolioGridWidget />
-    </div>
+    </main>
   );
 }
+
+
 

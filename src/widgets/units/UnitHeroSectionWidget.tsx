@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
 import { UnitHeroBanner } from '@/features/units';
@@ -11,3 +9,4 @@ export const UnitHeroSectionWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

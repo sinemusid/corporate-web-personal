@@ -1,19 +1,11 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { PortfolioGrid, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { PortfolioGrid, fetchPortfolio } from '@/features/about-us';
 
-export const PortfolioGridWidget: React.FC = () => {
-  const { portfolio, isLoading } = useAboutUs();
+export const PortfolioGridWidget: React.FC = async () => {
+  const portfolio = await fetchPortfolio();
 
-  if (isLoading || !portfolio) {
-    return (
-      <SectionWrapper id="portfolio">
-        <AboutUsSkeleton />
-      </SectionWrapper>
-    );
-  }
+  if (!portfolio) return null;
 
   return (
     <SectionWrapper id="portfolio">
@@ -21,3 +13,4 @@ export const PortfolioGridWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

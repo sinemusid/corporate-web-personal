@@ -1,19 +1,11 @@
-'use client';
-
 import React from 'react';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
-import { MilestonesTimeline, AboutUsSkeleton, useAboutUs } from '@/features/about-us';
+import { MilestonesTimeline, fetchMilestonesTimeline } from '@/features/about-us';
 
-export const MilestonesTimelineWidget: React.FC = () => {
-  const { milestonesTimeline, isLoading } = useAboutUs();
+export const MilestonesTimelineWidget: React.FC = async () => {
+  const milestonesTimeline = await fetchMilestonesTimeline();
 
-  if (isLoading || !milestonesTimeline) {
-    return (
-      <SectionWrapper id="milestones" darkBg>
-        <AboutUsSkeleton />
-      </SectionWrapper>
-    );
-  }
+  if (!milestonesTimeline) return null;
 
   return (
     <SectionWrapper id="milestones" darkBg>
@@ -21,3 +13,4 @@ export const MilestonesTimelineWidget: React.FC = () => {
     </SectionWrapper>
   );
 };
+

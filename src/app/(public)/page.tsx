@@ -1,13 +1,24 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { HeroSectionWidget, WhoWeAreSectionWidget, UnitPreviewSectionWidget, ServicesSectionWidget } from '@/widgets/home';
+import { constructMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Corporate Web & Solution Partner',
+  description:
+    'Sinemus Indonesia adalah penyedia solusi bisnis dan teknologi terpercaya dengan berbagai unit usaha unggulan di Indonesia.',
+  canonicalUrl: '/',
+});
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col w-full min-h-screen">
+    <main className="flex flex-col w-full min-h-screen">
       <HeroSectionWidget />
       <WhoWeAreSectionWidget />
       <UnitPreviewSectionWidget showTitleHeader />
       <ServicesSectionWidget />
-    </div>
+    </main>
   );
 }
+
+

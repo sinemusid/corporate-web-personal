@@ -15,7 +15,7 @@ export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) 
           <legend className="mx-auto px-6 text-xs sm:text-sm font-black tracking-widest text-white uppercase font-heading">
             {data.visionTitle || 'VISI'}
           </legend>
-          <p className="text-sm sm:text-base md:text-2lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto pt-2 pb-2">
+          <p className="text-sm sm:text-base md:text-lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto pt-2 pb-2">
             {data.visionText}
           </p>
         </fieldset>
@@ -44,7 +44,7 @@ export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) 
                 key={idx}
                 className="flex items-center justify-center p-4 sm:p-5 w-full h-full text-center"
               >
-                <p className="text-sm sm:text-base md:text-2lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto">
+                <p className="text-sm sm:text-base md:text-lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto">
                   {m}
                 </p>
               </div>

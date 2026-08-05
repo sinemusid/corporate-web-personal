@@ -21,6 +21,7 @@ export const UnitCard: React.FC<UnitCardProps> = ({
             src={unit.bannerUrl}
             alt={unit.title}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover opacity-25 group-hover:opacity-35 transition-opacity duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent" />
