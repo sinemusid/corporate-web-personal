@@ -11,7 +11,7 @@ interface PartnerCardProps {
 export const PartnerCard: React.FC<PartnerCardProps> = ({ partner }) => {
   return (
     <div
-      className="group relative w-full h-28 sm:h-32 p-4 sm:p-5 rounded-2xl bg-bg-primary/40 flex items-center justify-center backdrop-blur-md overflow-hidden text-center border border-border-subtle/30 hover:border-accent-primary/40 hover:bg-bg-primary/70 transition-all duration-300 ease-out"
+      className="group relative w-full h-28 sm:h-32 p-4 sm:p-5 rounded-2xl bg-bg-primary/40 flex items-center justify-center backdrop-blur-md overflow-hidden text-center hover:border-accent-primary/40 hover:bg-bg-primary/70 transition-all duration-300 ease-out"
       title={partner.name}
       aria-label={`Logo ${partner.name}`}
     >

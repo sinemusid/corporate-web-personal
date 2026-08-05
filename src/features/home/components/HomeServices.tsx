@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeServicesData } from '../constants/home-services.mock';
+import { HomeServicesData } from '../types';
 
 interface HomeServicesProps {
   data: HomeServicesData;
@@ -17,26 +17,26 @@ export const HomeServices: React.FC<HomeServicesProps> = ({ data }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
         {data.services.map((service) => (
           <div
             key={service.id}
-            className="p-8 rounded-3xl bg-bg-elevated/80 border border-white/20 hover:border-white/60 transition-all duration-300 backdrop-blur-sm flex flex-col justify-between space-y-6 shadow-xl group"
+            className="p-6 rounded-3xl bg-bg-elevated/80 border border-white/20 hover:border-white/60 transition-all duration-300 backdrop-blur-sm flex flex-col justify-between space-y-6 shadow-xl group h-full"
           >
-            <div className="space-y-4">
-              <h3 className="text-xl font-heading font-black text-content-primary uppercase tracking-tight">
+            <div className="space-y-3">
+              <h3 className="text-base sm:text-lg font-heading font-black text-content-primary uppercase tracking-tight group-hover:text-white transition-colors">
                 {service.title}
               </h3>
-              <p className="text-xs sm:text-sm font-body text-content-secondary font-light leading-relaxed">
+              <p className="text-xs font-body text-content-secondary font-light leading-relaxed line-clamp-4">
                 {service.description}
               </p>
             </div>
 
             <ul className="space-y-2 pt-4 border-t border-white/10">
               {service.features.map((feat, idx) => (
-                <li key={idx} className="text-xs font-body text-content-secondary flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/60 mr-2.5 shrink-0" />
-                  <span>{feat}</span>
+                <li key={idx} className="text-[11px] sm:text-xs font-body text-content-secondary flex items-start">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/60 mr-2 mt-1 shrink-0" />
+                  <span className="leading-snug">{feat}</span>
                 </li>
               ))}
             </ul>

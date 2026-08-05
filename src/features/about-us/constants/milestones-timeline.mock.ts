@@ -1,7 +1,7 @@
 import { MilestonesTimelineData } from '../types';
 
 export const MOCK_MILESTONES_TIMELINE: MilestonesTimelineData = {
-  heading: 'Milestones Perusahaan',
+  heading: 'Milestones',
   subheading: 'Perjalanan perkembangan Sineas Muslim Indonesia',
   milestones: [
     { id: 'm-1', year: 'Jan 2025', title: 'Film Pertama & Resmi Berdiri'},

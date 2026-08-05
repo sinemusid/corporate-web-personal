@@ -43,9 +43,11 @@ export const CardItem: React.FC<CardItemProps> = ({
       </h3>
 
       {/* Description */}
-      <p className="text-[11px] sm:text-xs text-gray-400 font-light leading-relaxed px-1 line-clamp-2">
-        {node.description}
-      </p>
+      {node.description && (
+        <p className="text-[11px] sm:text-xs text-gray-400 font-light leading-relaxed px-1 line-clamp-2">
+          {node.description}
+        </p>
+      )}
     </div>
   );
 };

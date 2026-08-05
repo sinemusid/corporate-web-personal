@@ -19,21 +19,27 @@ export const MOCK_HOME_SERVICES: HomeServicesData = {
   services: [
     {
       id: 'service-production',
-      title: 'Produksi Film & Audiovisual',
-      description: 'Layanan produksi film layar lebar, dokumenter, dan serial dengan standar teknis dan artistik tinggi.',
-      features: ['Feature Film & Series', 'Commercial & Corporate Media', 'Post-Production & Sound Design'],
+      title: 'Produksi',
+      description: 'Layanan pembuatan karya sinema, film dokumenter, dan media audiovisual dengan standar teknis & kualitas visual tinggi.',
+      features: ['Film & Serial', 'Video Komersial & Branding'],
     },
     {
       id: 'service-screen',
-      title: 'Eksibisi & Distribusi Sinema',
-      description: 'Penayangan sinema, eksibisi komunitas, dan jejaring distribusi karya ke pemirsa nasional dan internasional.',
-      features: ['Alternative Screening Hub', 'Film Festival Distribution', 'Digital Screening Network'],
+      title: 'Distribusi',
+      description: 'Penayangan karya, event eksebisi, serta jejaring distribusi film ke audiens yang luas.',
+      features: ['Festival Film', 'Platform Penayangan Digital'],
     },
     {
       id: 'service-academy',
-      title: 'Inkubasi & Pelatihan Sineas',
-      description: 'Program masterclass, workshop teknis, dan inkubasi talenta muda untuk mematangkan ide dan skenario karya.',
-      features: ['Scriptwriting Incubator', 'Technical Filmmaking Lab', 'Directing & Producing Workshop'],
+      title: 'Edukasi',
+      description: 'Program pelatihan intensif, workshop teknis sinema, dan kelas praktisi untuk meningkatkan kapasitas sineas.',
+      features: ['Kelas Film', 'Workshop Film', 'E-Course Film'],
+    },
+    {
+      id: 'service-community',
+      title: 'Inkubasi',
+      description: 'Pemberdayaan sineas dan pengembangan relasi hingga dapat berkolaborasi dalam karya.',
+      features: ['Forum Networking', 'Event Collaborasi'],
     },
   ],
 };

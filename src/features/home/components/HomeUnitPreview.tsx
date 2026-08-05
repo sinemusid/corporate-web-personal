@@ -15,7 +15,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
 
       {/* Top Ambient Glow Seamless Transition from Section 2 */}
       <div 
-        className="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent-subtle/10 rounded-full blur-3xl opacity-50" 
+        className="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-175 h-87.5 bg-accent-subtle/10 rounded-full blur-3xl opacity-50" 
         aria-hidden="true" 
       />
 
@@ -31,21 +31,20 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
       )}
 
       {/* Diagram Branching Tree Architecture with Smooth Curved Corners */}
-      <div className="hidden lg:flex flex-col items-center w-full mt-4 -mb-2 relative">
-        {/* Node Badge */}
-        <div className="px-6 py-2.5 bg-bg-elevated/90 shadow-xl backdrop-blur-md z-10 flex items-center justify-center min-w-50 hover:border-white/60 transition-colors">
+      <div className="hidden lg:flex flex-col items-center w-full mt-20 -mb-2 relative">
+        {/* Node Logo Container */}
+        <div className="z-10 flex items-center justify-center">
           <Image
             src="/images/sinemus-indonesia.png"
             alt={data.heading || "Sinemus Indonesia"}
             width={180}
             height={40}
             priority
-            className="h-8 sm:h-9 w-auto object-contain brightness-110"
+            className="h-10 sm:h-11 w-auto object-contain brightness-110"
           />
         </div>
-
         {/* Curved Tree Diagram SVG Connector */}
-        <div className="w-full h-16 relative mt-1">
+        <div className="w-full h-16 relative mt-5">
           <svg className="w-full h-full pointer-events-none" viewBox="0 0 1000 64" fill="none" preserveAspectRatio="none">
             {/* Top Vertical Stem from Node Badge */}
             <path d="M 500 0 V 20" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" strokeLinecap="round" />
@@ -77,9 +76,6 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
             className="group relative rounded-3xl bg-bg-elevated/80 border border-white/20 p-6 flex flex-col justify-between hover:border-white/60 transition-all duration-300 backdrop-blur-sm overflow-hidden h-full min-h-75 shadow-lg"
           >
             <div className="space-y-4">
-              <span className="text-[10px] uppercase font-mono tracking-widest text-content-secondary font-bold px-3 py-1 rounded-full bg-white/5 border border-white/10 inline-block">
-                {unit.slug}
-              </span>
               <h3 className="text-lg sm:text-xl font-heading font-black text-content-primary group-hover:text-white transition-colors uppercase tracking-tight">
                 {unit.title}
               </h3>

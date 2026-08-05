@@ -59,14 +59,6 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
           })}
         </div>
 
-        {/* Section Header: Special Unit */}
-        <div className="relative flex items-center space-x-3 pt-6 z-10">
-          <div className="w-2.5 h-2.5 rounded-full bg-gray-400 -ml-[21px] sm:-ml-[25px]" />
-          <span className="text-[11px] font-bold tracking-widest text-gray-300 uppercase bg-transparent border border-white/10 px-3 py-1 rounded-full">
-            SPECIAL UNIT — PRODUCTION DIVISION
-          </span>
-        </div>
-
         {/* Special Unit Nodes Stacked */}
         <div className="space-y-4 pt-2">
           {specialUnitNodes.map((item, idx) => {

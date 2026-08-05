@@ -73,7 +73,7 @@ export interface StructureNodeData {
   id: string;
   role: string;
   title: string;
-  description: string;
+  description?: string;
   parentRole?: string;
   level?: 1 | 2 | 3 | 4;
   badge?: string;

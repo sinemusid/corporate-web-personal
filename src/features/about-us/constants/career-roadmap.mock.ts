@@ -1,8 +1,8 @@
 import { CareerRoadmapData } from '../types';
 
 export const MOCK_CAREER_ROADMAP: CareerRoadmapData = {
-  heading: 'Roadmap & Pengembangan Talenta',
-  subheading: 'Alur inkubasi dan pengembangan karir sineas dalam ekosistem Sinemus.',
+  heading: 'Roadmap',
+  subheading: 'Rencana pertumbuhan dan perkembangan karir Sineas Muslim Indonesia.',
   steps: [
     { step: '2026', title: 'Ecosystem Building'},
     { step: '2027', title: 'Long Movie Non Theater'},
