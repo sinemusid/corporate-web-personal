@@ -31,6 +31,7 @@ export interface BusinessUnit extends BaseEntity {
   about: string;
   features: string[];
   bannerUrl?: string;
+  externalUrl?: string;
   stats?: {
     label: string;
     value: string;
@@ -39,4 +40,5 @@ export interface BusinessUnit extends BaseEntity {
   featuredProjects: UnitProject[];
   workflow: UnitWorkflowStep[];
 }
+
 

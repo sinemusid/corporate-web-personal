@@ -12,7 +12,6 @@ export const CardItem: React.FC<CardItemProps> = ({
   node,
   highlight,
   isStaff,
-  levelBadge,
 }) => {
   if (!node) return null;
 
@@ -26,13 +25,6 @@ export const CardItem: React.FC<CardItemProps> = ({
           : 'border-white/10 hover:border-white/30 hover:bg-white/[0.02]'
       }`}
     >
-      {/* Optional Minimalist Level Badge */}
-      {levelBadge && (
-        <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-gray-200 border border-white/20">
-          {levelBadge}
-        </span>
-      )}
-
       {/* Role Title */}
       <h3
         className={`text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide leading-snug transition-colors ${

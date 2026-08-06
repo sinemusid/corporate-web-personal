@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/config/site.config';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
 
@@ -21,3 +23,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...routes, ...unitRoutes];
 }
+
