@@ -20,7 +20,7 @@ export const metadata: Metadata = constructMetadata({
 
 export default function AboutUsPage() {
   return (
-    <main className="space-y-8 pb-8 sm:pb-12">
+    <main className="flex flex-col w-full min-h-screen">
       <AboutCompanyOverviewWidget />
       <ProjectStatsWidget />
       <MilestonesTimelineWidget />

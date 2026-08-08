@@ -8,7 +8,7 @@ export const DesignStructureWidget: React.FC = async () => {
   if (!designStructure) return null;
 
   return (
-    <SectionWrapper id="design-structure" darkBg>
+    <SectionWrapper id="design-structure">
       <DesignStructure data={designStructure} />
     </SectionWrapper>
   );

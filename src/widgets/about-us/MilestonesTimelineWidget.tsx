@@ -8,7 +8,7 @@ export const MilestonesTimelineWidget: React.FC = async () => {
   if (!milestonesTimeline) return null;
 
   return (
-    <SectionWrapper id="milestones" darkBg>
+    <SectionWrapper id="milestones">
       <MilestonesTimeline data={milestonesTimeline} />
     </SectionWrapper>
   );

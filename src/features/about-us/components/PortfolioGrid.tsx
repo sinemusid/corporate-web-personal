@@ -25,9 +25,6 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ data }) => {
       <div className="max-w-1200px mx-auto space-y-10 sm:space-y-12">
         {/* Section Header */}
         <div className="text-center flex flex-col items-center justify-center space-y-3 max-w-4xl mx-auto">
-          <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 shadow-xs">
-            PORTOFOLIO SINEMA
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 uppercase tracking-tight font-heading leading-tight">
             {data.heading}
           </h2>

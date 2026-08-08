@@ -34,9 +34,6 @@ export const CareerRoadmap: React.FC<CareerRoadmapProps> = ({ data }) => {
     <div className="space-y-10 max-w-6xl mx-auto select-none px-4 sm:px-6 py-6">
       {/* Section Header */}
       <div className="text-center space-y-3 flex flex-col items-center justify-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-semibold uppercase tracking-wider">
-          Pengembangan Karir
-        </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-slate-900 uppercase tracking-tight text-center">
           {data.heading}
         </h2>

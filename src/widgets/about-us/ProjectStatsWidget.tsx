@@ -8,7 +8,7 @@ export const ProjectStatsWidget: React.FC = async () => {
   if (!projectStats) return null;
 
   return (
-    <SectionWrapper id="project-stats">
+    <SectionWrapper id="project-stats" darkBg>
       <ProjectStats data={projectStats} />
     </SectionWrapper>
   );

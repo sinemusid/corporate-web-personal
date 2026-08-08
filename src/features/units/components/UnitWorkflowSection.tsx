@@ -9,8 +9,8 @@ export const UnitWorkflowSection: React.FC<UnitWorkflowSectionProps> = ({ workfl
   if (!workflow || workflow.length === 0) return null;
 
   return (
-    <section className="bg-slate-50 border border-slate-200/80 rounded-3xl p-8 md:p-10 space-y-6">
-      <div className="flex flex-col space-y-1">
+    <section className="bg-slate-50/70 border border-slate-200/80 rounded-3xl p-8 md:p-10 space-y-6">
+      <div className="flex flex-col space-y-1.5 border-l-4 border-blue-600 pl-4">
         <h3 className="text-xl md:text-2xl font-heading font-bold text-slate-900">
           Alur Kerja &amp; Kolaborasi
         </h3>
@@ -23,9 +23,9 @@ export const UnitWorkflowSection: React.FC<UnitWorkflowSectionProps> = ({ workfl
         {workflow.map((step, idx) => (
           <div
             key={idx}
-            className="p-6 bg-white border border-slate-200/80 rounded-2xl space-y-3 relative shadow-xs"
+            className="p-6 bg-white border border-slate-200/80 rounded-2xl space-y-3 relative shadow-xs hover:shadow-md hover:border-blue-400/60 transition-all duration-300"
           >
-            <div className="text-3xl font-mono font-extrabold text-blue-600/30">
+            <div className="text-3xl font-mono font-extrabold text-blue-600/40">
               {step.stepNumber}
             </div>
             <h4 className="font-heading font-bold text-slate-900 text-base">

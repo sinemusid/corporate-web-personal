@@ -30,11 +30,11 @@ export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
     <div className="space-y-6 w-full z-10 pt-4">
       {/* Section Header (Centered) */}
       <div className="text-center flex flex-col items-center justify-center space-y-1.5 pb-2 max-w-2xl mx-auto">
-        <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-content-primary uppercase tracking-tight text-center">
+        <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 uppercase tracking-tight text-center">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-xs sm:text-sm font-body text-content-secondary font-light text-center">
+          <p className="text-xs sm:text-sm font-body text-slate-600 font-normal text-center">
             {subtitle}
           </p>
         )}

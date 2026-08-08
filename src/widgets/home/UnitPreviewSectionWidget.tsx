@@ -9,7 +9,7 @@ interface UnitPreviewSectionWidgetProps {
 
 export const UnitPreviewSectionWidget: React.FC<UnitPreviewSectionWidgetProps> = async ({
   showTitleHeader = true,
-  darkBg = false,
+  darkBg = true,
 }) => {
   const unitPreview = await fetchHomeUnitPreview();
 

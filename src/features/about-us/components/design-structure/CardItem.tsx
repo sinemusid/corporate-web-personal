@@ -17,12 +17,12 @@ export const CardItem: React.FC<CardItemProps> = ({
 
   return (
     <div
-      className={`w-full bg-white border border-slate-200/80 rounded-2xl p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2 transition-all duration-300 group h-full shadow-xs ${
+      className={`w-full bg-white border rounded-2xl p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2 transition-all duration-300 group h-full ${
         isStaff ? 'min-h-[105px] sm:min-h-[115px]' : 'min-h-[130px] sm:min-h-[140px]'
       } ${
         highlight
-          ? 'border-blue-500 bg-blue-50/30 hover:border-blue-600 shadow-md'
-          : 'hover:border-blue-300 hover:shadow-md'
+          ? 'border-blue-500/80 bg-blue-50/40 hover:border-blue-600 shadow-sm shadow-blue-900/10'
+          : 'border-slate-200/80 hover:border-blue-400/60 shadow-xs hover:shadow-md'
       }`}
     >
       {/* Role Title */}

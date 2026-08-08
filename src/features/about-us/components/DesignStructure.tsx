@@ -23,9 +23,6 @@ export const DesignStructure: React.FC<DesignStructureProps> = ({ data }) => {
     <section className="w-full bg-transparent py-16 sm:py-20 font-sans select-none px-4 sm:px-6 relative z-10">
       <div className="max-w-1400px mx-auto space-y-12 sm:space-y-16">
         <div className="text-center flex flex-col items-center justify-center space-y-4 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-semibold uppercase tracking-wider">
-            Struktur Organisasi
-          </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 uppercase tracking-tight font-heading leading-tight">
             {heading}
           </h2>

@@ -11,7 +11,7 @@ export const UnitProjectsSection: React.FC<UnitProjectsSectionProps> = ({ projec
 
   return (
     <section className="space-y-6">
-      <div className="flex flex-col space-y-1">
+      <div className="flex flex-col space-y-1.5 border-l-4 border-blue-600 pl-4">
         <h3 className="text-xl md:text-2xl font-heading font-bold text-slate-900">
           Showcase Karya &amp; Proyek Unggulan
         </h3>
@@ -24,7 +24,7 @@ export const UnitProjectsSection: React.FC<UnitProjectsSectionProps> = ({ projec
         {projects.map((proj, idx) => (
           <div
             key={idx}
-            className="group overflow-hidden rounded-2xl border border-slate-200/80 bg-white hover:border-blue-500 hover:shadow-lg transition-all flex flex-col md:flex-row shadow-xs"
+            className="group overflow-hidden rounded-2xl border border-slate-200/80 bg-white hover:border-blue-400/60 hover:shadow-md transition-all duration-300 flex flex-col md:flex-row shadow-xs"
           >
             {proj.imageUrl && (
               <div className="relative w-full md:w-48 h-48 bg-slate-100 flex-shrink-0 overflow-hidden">

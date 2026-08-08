@@ -16,10 +16,13 @@ export const CollaboratorPartners: React.FC<CollaboratorPartnersProps> = ({ data
     >
       {/* Main Header */}
       <header className="space-y-3 max-w-3xl mx-auto flex flex-col items-center z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
+        <span className="px-3 py-1 text-[11px] font-mono font-medium rounded-full bg-blue-50/80 text-blue-700 border border-blue-200/60 uppercase tracking-wider">
+          EKOSISTEM &amp; JARINGAN SINEMUS
+        </span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-slate-900 uppercase tracking-tight leading-tight">
           {data.heading}
         </h1>
-        <p className="text-xs sm:text-sm md:text-base font-body text-content-secondary font-light leading-relaxed max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm md:text-base font-body text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
           {data.subheading}
         </p>
       </header>
