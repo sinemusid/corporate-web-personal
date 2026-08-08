@@ -5,7 +5,7 @@ export const HeroSectionWidget: React.FC = async () => {
   const hero = await fetchHomeHero();
 
   return (
-    <section id="hero" className="w-full min-h-screen flex items-center justify-center">
+    <section id="hero" className="w-full">
       <HomeHero data={hero} />
     </section>
   );

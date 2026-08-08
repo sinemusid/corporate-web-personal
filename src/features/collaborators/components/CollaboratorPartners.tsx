@@ -11,15 +11,9 @@ interface CollaboratorPartnersProps {
 export const CollaboratorPartners: React.FC<CollaboratorPartnersProps> = ({ data }) => {
   return (
     <section 
-      className="relative overflow-hidden rounded-3xl bg-bg-elevated/40 p-5 sm:p-10 md:p-14 max-w-6xl mx-auto backdrop-blur-xl flex flex-col items-center justify-center text-center space-y-8 sm:space-y-12"
+      className="relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center text-center space-y-8 sm:space-y-12"
       aria-label="Mitra dan Kolaborator Sinemus"
     >
-      {/* Background Glow */}
-      <div
-        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent-subtle/15 rounded-full blur-3xl opacity-60"
-        aria-hidden="true"
-      />
-
       {/* Main Header */}
       <header className="space-y-3 max-w-3xl mx-auto flex flex-col items-center z-10">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">

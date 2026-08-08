@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
@@ -9,55 +11,93 @@ interface HomeWhoWeAreProps {
 }
 
 export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [hasVideoError, setHasVideoError] = React.useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
+
   const bgImage = data.backgroundImage || '/images/hero/sinemus_team_photo.jpg';
 
-  return (
-    <div className="relative w-full overflow-hidden bg-blue-950 py-20 sm:py-28">
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().then(() => {
+        setIsVideoLoaded(true);
+      }).catch(() => {
+        // Autoplay policy or play error fallback
+        setHasVideoError(true);
+      });
+    }
+  }, [data.backgroundVideo]);
 
-      {/* Background Media Container (Full screen width & height like HomeHero) */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        {data.backgroundVideo ? (
+  return (
+    <div className="relative w-full min-h-[85vh] sm:min-h-screen flex flex-col justify-end lg:justify-center overflow-hidden bg-slate-950 px-6 sm:px-12 pb-12 sm:pb-16 lg:pb-0">
+
+      {/* 1. Background Media Container (Pure Video OR Image Fallback — No Opacity Stacking) */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none bg-slate-950">
+        {/* Video Element — Shown when valid & loaded */}
+        {data.backgroundVideo && !hasVideoError ? (
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
             aria-hidden="true"
-            className="absolute inset-0 block w-full h-full object-cover object-center opacity-40"
+            onLoadedData={() => setIsVideoLoaded(true)}
+            onError={() => setHasVideoError(true)}
+            className={`absolute inset-0 block w-full h-full object-cover object-center transition-opacity duration-700 ${
+              isVideoLoaded ? 'opacity-80' : 'opacity-0'
+            }`}
           >
             <source src={data.backgroundVideo} type="video/mp4" />
             <source src="/images/hero/Video-screen-1.mov" type="video/quicktime" />
           </video>
-        ) : (
+        ) : null}
+
+        {/* Fallback Image — Rendered ONLY if video fails, has error, or is not provided */}
+        {(!data.backgroundVideo || hasVideoError || !isVideoLoaded) && (
           <Image
             src={bgImage}
-            alt={data.subheading}
+            alt={data.subheading || 'Sinemus Indonesia'}
             fill
             priority
-            className="object-cover object-center opacity-30"
+            sizes="100vw"
+            className="object-cover object-center opacity-60"
           />
         )}
       </div>
 
-      {/* Left-aligned Content Container matching Navbar alignment (px-6 sm:px-12 max-w-7xl) */}
-      <div className="relative z-10 w-full max-w-10xl mx-auto px-6 sm:px-12">
-        <div className="space-y-6 max-w-3xl text-left">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white uppercase tracking-tight leading-tight">
+      {/* 2. Seamless Section Transition Gradients */}
+      {/* Top-to-Bottom Subtle Blend Gradient from Hero Section 1 */}
+      <div 
+        aria-hidden="true" 
+        className="absolute top-0 left-0 right-0 h-20 sm:h-28 z-1 pointer-events-none bg-gradient-to-b from-slate-950 via-slate-950/50 to-transparent" 
+      />
+
+      {/* SpaceX-style Text legibility gradient */}
+      <div 
+        aria-hidden="true" 
+        className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-t from-slate-950/95 via-slate-950/75 via-40% to-transparent to-60% lg:bg-gradient-to-r lg:from-slate-950/95 lg:via-slate-950/65 lg:via-40% lg:to-transparent lg:to-55%" 
+      />
+
+      {/* 3. Text Content Container Overlay */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div className="space-y-4 sm:space-y-6 max-w-xl sm:max-w-2xl text-left">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white uppercase tracking-tight leading-tight sm:leading-snug">
             {data.subheading}
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl font-body font-normal text-blue-200 tracking-wide leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg font-body font-normal text-slate-300 sm:text-blue-100 tracking-normal leading-relaxed">
             {data.description}
           </p>
 
-          <div className="pt-4 flex justify-start">
+          <div className="pt-2 sm:pt-4 flex justify-start">
             <Link
               href={data.ctaHref}
-              className="inline-flex items-center px-8 py-3.5 rounded-full bg-blue-600 text-white hover:bg-blue-500 font-body font-semibold text-sm transition-all duration-300 group shadow-lg shadow-blue-600/30 active:scale-95 cursor-pointer"
+              className="inline-flex items-center px-6 py-3 sm:px-7 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/15 hover:border-white/30 backdrop-blur-md font-body font-medium text-sm transition-all duration-300 group active:scale-95 cursor-pointer shadow-lg shadow-black/20"
             >
               <span>Selengkapnya</span>
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 w-4 h-4 text-blue-400 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
@@ -66,3 +106,4 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
     </div>
   );
 };
+

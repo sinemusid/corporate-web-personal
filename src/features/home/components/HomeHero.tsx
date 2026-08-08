@@ -8,9 +8,7 @@ interface HomeHeroProps {
 
 export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
   return (
-    <div className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 text-center bg-blue-950 pt-20">
-
-      {/* Background Media — Video if available, fallback to Image */}
+    <div className="relative w-full min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 text-center bg-slate-950 pt-20">
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         {data.backgroundVideo ? (
           <video
@@ -36,6 +34,12 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
           />
         )}
       </div>
+
+      {/* Subtle Bottom-to-Top Transition Gradient to Section 2 (Who We Are) */}
+      <div 
+        aria-hidden="true" 
+        className="absolute bottom-0 left-0 right-0 h-24 sm:h-36 z-1 pointer-events-none bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" 
+      />
 
       {/* Hero Central Text */}
       <div className="relative z-10 space-y-5 sm:space-y-7 max-w-5xl mx-auto py-12">
