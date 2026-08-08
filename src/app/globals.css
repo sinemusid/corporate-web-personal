@@ -6,64 +6,61 @@
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Canvas / Surfaces */
+  /* Canvas / Surfaces (Clean White Default Theme) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-elevated: #ffffff;
+  --bg-inverse: #09090b;
+
+  /* Content / Typography */
+  --content-primary: #0f172a;
+  --content-secondary: #475569;
+  --content-tertiary: #64748b;
+  --content-muted: #94a3b8;
+  --content-inverse: #ffffff;
+
+  /* Borders & Dividers */
+  --border-subtle: #e2e8f0;
+  --border-default: #cbd5e1;
+  --border-strong: #0f172a;
+  --border-focus: #2563eb;
+
+  /* Interactive States (Sinemus Corporate Blue Identity) */
+  --accent-solid: #2563eb;
+  --accent-solid-hover: #1d4ed8;
+  --accent-subtle: #eff6ff;
+  --accent-subtle-hover: #dbeafe;
+}
+
+.dark {
+  /* Dark Contrast Theme Surface tokens if explicitly needed */
   --bg-primary: #09090b;
   --bg-secondary: #121215;
   --bg-tertiary: #18181b;
   --bg-elevated: #27272a;
   --bg-inverse: #ffffff;
 
-  /* Content / Typography */
   --content-primary: #f4f4f5;
   --content-secondary: #a1a1aa;
   --content-tertiary: #71717a;
   --content-muted: #52525b;
   --content-inverse: #09090b;
 
-  /* Borders & Dividers */
   --border-subtle: #27272a;
   --border-default: #3f3f46;
   --border-strong: #a1a1aa;
-  --border-focus: #ffffff;
+  --border-focus: #2563eb;
 
-  /* Interactive States (Primary Accent = Charcoal Obsidian / Pure White in Dark) */
-  --accent-solid: #ffffff;
-  --accent-solid-hover: #e4e4e7;
-  --accent-subtle: #18181b;
-  --accent-subtle-hover: #27272a;
-}
-
-.light {
-  /* Light Mode Canvas / Surfaces */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f1f3f5;
-  --bg-elevated: #ffffff;
-  --bg-inverse: #09090b;
-
-  /* Content / Typography */
-  --content-primary: #09090b;
-  --content-secondary: #52525b;
-  --content-tertiary: #71717a;
-  --content-muted: #a1a1aa;
-  --content-inverse: #ffffff;
-
-  /* Borders & Dividers */
-  --border-subtle: #e4e4e7;
-  --border-default: #d4d4d8;
-  --border-strong: #27272a;
-  --border-focus: #09090b;
-
-  /* Interactive States */
-  --accent-solid: #09090b;
-  --accent-solid-hover: #27272a;
-  --accent-subtle: #f4f4f5;
-  --accent-subtle-hover: #e4e4e7;
+  --accent-solid: #2563eb;
+  --accent-solid-hover: #1d4ed8;
+  --accent-subtle: #1e293b;
+  --accent-subtle-hover: #334155;
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -188,17 +185,19 @@ p, span, li, body, .font-body {
 
 /* Glass Card SSOT Tokens */
 .glass-card {
-  background: rgba(18, 18, 21, 0.75);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
 
 .glass-card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .glass-card-hover:hover {
-  background: rgba(39, 39, 42, 0.85);
-  border-color: var(--border-default);
+  background: rgba(255, 255, 255, 1);
+  border-color: #2563eb;
+  box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transform: translateY(-2px);
 }
 

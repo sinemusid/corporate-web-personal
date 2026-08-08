@@ -29,13 +29,16 @@ export const MilestonesTimeline: React.FC<MilestonesTimelineProps> = ({ data }) 
   };
 
   return (
-    <div className="space-y-10 max-w-6xl mx-auto select-none px-4 sm:px-6">
+    <div className="space-y-10 max-w-6xl mx-auto select-none px-4 sm:px-6 py-6">
       {/* Section Header */}
       <div className="text-center space-y-3 flex flex-col items-center justify-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-white uppercase tracking-tight text-center">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-semibold uppercase tracking-wider">
+          Rekam Jejak &amp; Milestones
+        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-slate-900 uppercase tracking-tight text-center">
           {data.heading}
         </h2>
-        <p className="text-xs sm:text-sm md:text-base font-body text-gray-300 font-light max-w-2xl text-center leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-base font-body text-slate-600 font-normal max-w-2xl text-center leading-relaxed">
           {data.subheading}
         </p>
       </div>
@@ -62,10 +65,10 @@ export const MilestonesTimeline: React.FC<MilestonesTimelineProps> = ({ data }) 
                   <div
                     className={`px-4 py-1 rounded-full text-xs font-mono font-bold tracking-widest transition-all duration-300 ${
                       isActive
-                        ? 'border border-white bg-white text-black shadow-[0_0_16px_rgba(255,255,255,0.6)] scale-105'
+                        ? 'border border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/30 scale-105'
                         : isPassed
-                        ? 'border border-white/60 bg-black text-white'
-                        : 'border border-white/20 bg-black/90 text-gray-400 group-hover:border-white/40 group-hover:text-gray-200'
+                        ? 'border border-blue-200 bg-blue-50 text-blue-700'
+                        : 'border border-slate-200 bg-slate-100 text-slate-600 group-hover:border-blue-300 group-hover:text-blue-600'
                     }`}
                   >
                     {item.year}
@@ -74,7 +77,7 @@ export const MilestonesTimeline: React.FC<MilestonesTimelineProps> = ({ data }) 
                   {/* Node Dot Circle & Connecting Line Container */}
                   <div className="relative flex items-center justify-center h-8 w-full">
                     <div
-                      className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-white/20 z-0 pointer-events-none"
+                      className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 z-0 pointer-events-none"
                       style={{
                         left: idx === 0 ? '50%' : '-1rem',
                         right: idx === total - 1 ? '50%' : '-1rem',
@@ -84,7 +87,7 @@ export const MilestonesTimeline: React.FC<MilestonesTimelineProps> = ({ data }) 
                     {/* Smooth Active Progress Line Fill */}
                     {isPassed && (
                       <div
-                        className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-white z-0 pointer-events-none transition-all duration-500 ease-in-out"
+                        className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-blue-600 z-0 pointer-events-none transition-all duration-500 ease-in-out"
                         style={{
                           left: idx === 0 ? '50%' : '-1rem',
                           right: idx === activeIndex ? '50%' : '-1rem',
@@ -94,35 +97,35 @@ export const MilestonesTimeline: React.FC<MilestonesTimelineProps> = ({ data }) 
 
                     {/* Outer Pulsing Glow Circle for Active Node */}
                     {isActive && (
-                      <div className="absolute w-8 h-8 rounded-full bg-white/30 animate-ping pointer-events-none z-10" />
+                      <div className="absolute w-8 h-8 rounded-full bg-blue-500/20 animate-ping pointer-events-none z-10" />
                     )}
 
                     {/* Center Node Dot Circle */}
                     <div
                       className={`w-5 h-5 rounded-full border-2 transition-all duration-300 relative z-20 ${
                         isActive
-                          ? 'border-white bg-white shadow-[0_0_16px_rgba(255,255,255,0.9)] scale-125'
+                          ? 'border-blue-600 bg-blue-600 shadow-md shadow-blue-600/50 scale-125'
                           : isPassed
-                          ? 'border-white bg-black'
-                          : 'border-white/30 bg-black group-hover:border-white/60'
+                          ? 'border-blue-600 bg-white'
+                          : 'border-slate-300 bg-white group-hover:border-blue-400'
                       }`}
                     />
                   </div>
 
                   {/* Detail Card Directly Under Node */}
                   <div
-                    className={`w-full h-140px p-5 mt-2 rounded-2xl border transition-all duration-300 flex flex-col justify-between text-center group-hover:border-white/40 ${
+                    className={`w-full h-140px p-5 mt-2 rounded-2xl border transition-all duration-300 flex flex-col justify-between text-center ${
                       isActive
-                        ? 'border-white/70 bg-white/[0.07] shadow-2xl shadow-white/10 backdrop-blur-md scale-[1.02]'
+                        ? 'border-blue-500 bg-white shadow-lg scale-[1.02]'
                         : isPassed
-                        ? 'border-white/20 bg-white/[0.03] hover:bg-white/[0.05]'
-                        : 'border-white/10 bg-transparent hover:bg-white/[0.03]'
+                        ? 'border-slate-200 bg-white shadow-xs hover:border-blue-300'
+                        : 'border-slate-200/70 bg-slate-50/80 hover:bg-white'
                     }`}
                   >
                     <div className="space-y-2 my-auto">
                       <h3
-                        className={`text-sm sm:text-base font-heading font-extrabold leading-snug transition-colors line-clamp-3 ${
-                          isActive ? 'text-white' : 'text-gray-200 group-hover:text-white'
+                        className={`text-sm sm:text-base font-heading font-bold leading-snug transition-colors line-clamp-3 ${
+                          isActive ? 'text-blue-600 font-extrabold' : 'text-slate-900 group-hover:text-blue-600'
                         }`}
                       >
                         {item.title}

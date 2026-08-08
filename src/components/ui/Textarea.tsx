@@ -8,13 +8,13 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
 export const Textarea: React.FC<TextareaProps> = ({ label, error, className = '', ...props }) => {
   return (
     <div className="w-full">
-      {label && <label className="block text-xs font-body font-medium text-content-secondary mb-1.5">{label}</label>}
+      {label && <label className="block text-xs font-body font-medium text-slate-700 mb-1.5">{label}</label>}
       <textarea
         rows={4}
-        className={`w-full bg-bg-primary border border-borderToken-default rounded-lg px-4 py-2.5 text-sm font-body text-content-primary placeholder:text-content-muted focus:outline-none focus:border-borderToken-focus transition-colors ${className}`}
+        className={`w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-body text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition-all ${className}`}
         {...props}
       />
-      {error && <span className="text-xs font-body text-content-secondary mt-1 block">{error}</span>}
+      {error && <span className="text-xs font-body text-red-500 mt-1 block">{error}</span>}
     </div>
   );
 };

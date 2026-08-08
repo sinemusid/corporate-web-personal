@@ -17,18 +17,18 @@ export const CardItem: React.FC<CardItemProps> = ({
 
   return (
     <div
-      className={`w-full bg-transparent border backdrop-blur-sm rounded-xl p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2 transition-all duration-300 group h-full ${
+      className={`w-full bg-white border border-slate-200/80 rounded-2xl p-4 sm:p-5 text-center flex flex-col items-center justify-center space-y-2 transition-all duration-300 group h-full shadow-xs ${
         isStaff ? 'min-h-[105px] sm:min-h-[115px]' : 'min-h-[130px] sm:min-h-[140px]'
       } ${
         highlight
-          ? 'border-gray-300/40 hover:border-gray-200/80 shadow-[0_0_15px_rgba(255,255,255,0.05)] bg-white/[0.03]'
-          : 'border-white/10 hover:border-white/30 hover:bg-white/[0.02]'
+          ? 'border-blue-500 bg-blue-50/30 hover:border-blue-600 shadow-md'
+          : 'hover:border-blue-300 hover:shadow-md'
       }`}
     >
       {/* Role Title */}
       <h3
         className={`text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide leading-snug transition-colors ${
-          highlight ? 'text-gray-100' : 'text-gray-100 group-hover:text-white'
+          highlight ? 'text-blue-700' : 'text-slate-900 group-hover:text-blue-600'
         }`}
       >
         {node.title}
@@ -36,7 +36,7 @@ export const CardItem: React.FC<CardItemProps> = ({
 
       {/* Description */}
       {node.description && (
-        <p className="text-[11px] sm:text-xs text-gray-400 font-light leading-relaxed px-1 line-clamp-2">
+        <p className="text-[11px] sm:text-xs text-slate-600 font-normal leading-relaxed px-1 line-clamp-2">
           {node.description}
         </p>
       )}

@@ -5,6 +5,7 @@ export function mapHomeHero(raw: HomeHeroData): HomeHeroData {
     title: raw.title || '',
     tagline: raw.tagline || '',
     backgroundImage: raw.backgroundImage || '',
+    backgroundVideo: raw.backgroundVideo || undefined,
   };
 }
 
@@ -16,6 +17,8 @@ export function mapHomeWhoWeAre(raw: HomeWhoWeAreData): HomeWhoWeAreData {
     description: raw.description || '',
     ctaText: raw.ctaText || '',
     ctaHref: raw.ctaHref || '',
+    backgroundImage: raw.backgroundImage || '',
+    backgroundVideo: raw.backgroundVideo || undefined,
   };
 }
 

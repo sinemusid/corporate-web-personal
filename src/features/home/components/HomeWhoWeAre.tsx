@@ -6,54 +6,63 @@ import { HomeWhoWeAreData } from '../types';
 
 interface HomeWhoWeAreProps {
   data: HomeWhoWeAreData;
-  backgroundImage?: string;
 }
 
-export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({
-  data,
-  backgroundImage = '/images/hero/sinemus_team_photo.jpg',
-}) => {
+export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
+  const bgImage = data.backgroundImage || '/images/hero/sinemus_team_photo.jpg';
+
   return (
-    <div className="relative w-full min-h-screen flex items-center overflow-hidden bg-bg-primary">
-      {/* Background Image Container (Spans full right half to edge) */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={backgroundImage}
-          alt={data.subheading}
-          fill
-          priority
-          className="object-cover object-right filter brightness-90 contrast-105"
-        />
+    <div className="relative w-full overflow-hidden bg-blue-950 py-20 sm:py-28">
+
+      {/* Background Media Container (Full screen width & height like HomeHero) */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none">
+        {data.backgroundVideo ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="absolute inset-0 block w-full h-full object-cover object-center opacity-40"
+          >
+            <source src={data.backgroundVideo} type="video/mp4" />
+            <source src="/images/hero/Video-screen-1.mov" type="video/quicktime" />
+          </video>
+        ) : (
+          <Image
+            src={bgImage}
+            alt={data.subheading}
+            fill
+            priority
+            className="object-cover object-center opacity-30"
+          />
+        )}
       </div>
 
-      {/* Multi-step Feathered Shadow Gradient Mask from Solid Dark on Left to Transparent on Right */}
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,var(--bg-primary,#09090b)_0%,var(--bg-primary,#09090b)_28%,rgba(9,9,11,0.98)_38%,rgba(9,9,11,0.85)_48%,rgba(9,9,11,0.4)_62%,rgba(9,9,11,0.1)_75%,transparent_88%)]" />
-
-      {/* Top and Bottom Seamless Dark Gradient Masks (Connects Sections seamlessly) */}
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,var(--bg-primary,#09090b)_0%,rgba(9,9,11,0.85)_15%,transparent_35%,transparent_65%,rgba(9,9,11,0.85)_85%,var(--bg-primary,#09090b)_100%)] pointer-events-none" />
-
-      {/* Left-Aligned Content Container */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md sm:max-w-lg lg:max-w-xl space-y-6 text-left">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
+      {/* Left-aligned Content Container matching Navbar alignment (px-6 sm:px-12 max-w-7xl) */}
+      <div className="relative z-10 w-full max-w-10xl mx-auto px-6 sm:px-12">
+        <div className="space-y-6 max-w-3xl text-left">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white uppercase tracking-tight leading-tight">
             {data.subheading}
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-content-secondary font-body font-light leading-relaxed max-w-md sm:max-w-lg">
+          <p className="text-base sm:text-lg md:text-xl font-body font-normal text-blue-200 tracking-wide leading-relaxed">
             {data.description}
           </p>
 
-          <div className="pt-4">
+          <div className="pt-4 flex justify-start">
             <Link
               href={data.ctaHref}
-              className="inline-flex items-center px-7 py-3 rounded-full border border-white/60 bg-transparent text-white hover:bg-white hover:text-black font-body font-semibold text-sm transition-all duration-300 group shadow-lg"
+              className="inline-flex items-center px-8 py-3.5 rounded-full bg-blue-600 text-white hover:bg-blue-500 font-body font-semibold text-sm transition-all duration-300 group shadow-lg shadow-blue-600/30 active:scale-95 cursor-pointer"
             >
-              <span>Learn More</span>
-              <ArrowRight className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <span>Selengkapnya</span>
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
       </div>
+
     </div>
   );
 };

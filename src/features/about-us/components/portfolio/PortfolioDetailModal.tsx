@@ -64,7 +64,7 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md transition-opacity duration-300 animate-in fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300 animate-in fade-in"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -72,20 +72,20 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
     >
       {/* Modal Container */}
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0d0d0d] border border-white/15 shadow-2xl text-white select-none no-scrollbar flex flex-col"
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-slate-200 shadow-2xl text-slate-900 select-none no-scrollbar flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Floating Close Button */}
         <button
           onClick={onClose}
           aria-label="Tutup detail modal"
-          className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/60 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all duration-300 shadow-lg group"
+          className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/90 hover:bg-slate-100 text-slate-700 border border-slate-200 backdrop-blur-md transition-all duration-300 shadow-md group cursor-pointer"
         >
-          <CloseIcon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
+          <CloseIcon className="w-5 h-5 text-slate-600 group-hover:text-slate-900 transition-colors" />
         </button>
 
         {/* Hero Media Header */}
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-white/5 flex-shrink-0">
+        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-slate-100 flex-shrink-0">
           <Image
             src={item.imageUrl}
             alt={item.title}
@@ -95,14 +95,14 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
             priority
           />
           {/* Subtle Bottom Gradient Fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
 
           {/* Top Left Badges */}
           <div className="absolute bottom-4 left-4 sm:left-8 right-4 flex flex-wrap items-center gap-2 z-10">
-            <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold tracking-wider text-white bg-white/10 border border-white/20 backdrop-blur-md shadow-md">
+            <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold tracking-wider text-blue-700 bg-blue-50 border border-blue-200 shadow-xs">
               {item.category}
             </span>
-            <span className="px-3 py-1 rounded-full text-xs font-mono font-medium text-gray-300 bg-black/60 border border-white/10 backdrop-blur-md">
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-medium text-slate-700 bg-white/90 border border-slate-200 backdrop-blur-md">
               {item.year}
             </span>
           </div>
@@ -114,36 +114,36 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
           <div className="space-y-3">
             <h2
               id="portfolio-modal-title"
-              className="text-2xl sm:text-3xl md:text-4xl font-heading font-black text-white uppercase tracking-wide leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold text-slate-900 uppercase tracking-wide leading-tight"
             >
               {item.title}
             </h2>
 
             {/* Quick Spec Pills */}
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-gray-300 pt-1">
+            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-600 pt-1">
               {item.director && (
-                <div className="flex items-center gap-1.5 bg-white/[0.04] px-3 py-1.5 rounded-lg border border-white/10">
-                  <UserIcon className="w-4 h-4 text-gray-400" />
+                <div className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+                  <UserIcon className="w-4 h-4 text-blue-600" />
                   <span>{item.director}</span>
                 </div>
               )}
               {item.duration && (
-                <div className="flex items-center gap-1.5 bg-white/[0.04] px-3 py-1.5 rounded-lg border border-white/10">
-                  <ClockIcon className="w-4 h-4 text-gray-400" />
+                <div className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+                  <ClockIcon className="w-4 h-4 text-blue-600" />
                   <span>{item.duration}</span>
                 </div>
               )}
             </div>
           </div>
 
-          <hr className="border-white/10" />
+          <hr className="border-slate-100" />
 
           {/* Synopsis Narrative */}
           <div className="space-y-2">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400">
-              Sinopsis & Deskripsi Karya
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
+              Sinopsis &amp; Deskripsi Karya
             </h3>
-            <p className="text-xs sm:text-sm md:text-base font-body text-gray-300 font-light leading-relaxed text-justify">
+            <p className="text-xs sm:text-sm md:text-base font-body text-slate-700 font-normal leading-relaxed text-justify">
               {item.synopsis || item.description}
             </p>
           </div>
@@ -151,14 +151,14 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
           {/* Tags Highlight */}
           {item.tags && item.tags.length > 0 && (
             <div className="space-y-2 pt-2">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
                 Karakteristik Karya
               </h3>
               <div className="flex flex-wrap gap-2">
                 {item.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="text-xs font-mono text-gray-300 bg-white/5 border border-white/10 px-3 py-1 rounded-md"
+                    className="text-xs font-mono text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full font-medium"
                   >
                     #{tag}
                   </span>
@@ -168,10 +168,10 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
           )}
 
           {/* Footer Action Buttons */}
-          <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-end gap-3">
+          <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-end gap-3">
             <button
               onClick={onClose}
-              className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-white/20 text-xs font-bold font-mono uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/10 transition-all"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-slate-200 text-xs font-bold font-mono uppercase tracking-wider text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
             >
               Tutup
             </button>
@@ -180,9 +180,9 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
                 href={item.trailerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-white text-black hover:bg-gray-200 text-xs font-bold font-mono uppercase tracking-wider transition-all shadow-lg hover:shadow-white/20"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-blue-600 text-white hover:bg-blue-700 text-xs font-bold font-mono uppercase tracking-wider transition-all shadow-md shadow-blue-600/25 cursor-pointer"
               >
-                <PlayIcon className="w-4 h-4 fill-black" />
+                <PlayIcon className="w-4 h-4 fill-white" />
                 <span>Lihat Teaser / Detail Karya</span>
               </a>
             )}

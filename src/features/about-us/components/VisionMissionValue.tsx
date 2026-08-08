@@ -9,19 +9,19 @@ interface VisionMissionValueProps {
 
 export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) => {
   return (
-    <div className="relative max-w-6xl mx-auto select-none mt-4">
+    <div className="relative max-w-6xl mx-auto select-none py-6">
       <div className="relative z-10 space-y-10">
-        <fieldset className="rounded-3xl border border-white/30 bg-transparent px-6 py-6 sm:px-10 sm:py-8 text-center transition-colors">
-          <legend className="mx-auto px-6 text-xs sm:text-sm font-black tracking-widest text-white uppercase font-heading">
+        <fieldset className="rounded-3xl border border-slate-200 bg-white shadow-xs px-6 py-6 sm:px-10 sm:py-8 text-center transition-colors">
+          <legend className="mx-auto px-6 py-1.5 rounded-full text-xs sm:text-sm font-extrabold tracking-widest text-white bg-blue-600 uppercase font-heading shadow-md shadow-blue-600/20">
             {data.visionTitle || 'VISI'}
           </legend>
-          <p className="text-sm sm:text-base md:text-lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto pt-2 pb-2">
+          <p className="text-sm sm:text-base md:text-lg text-slate-700 font-body leading-relaxed max-w-4xl mx-auto pt-3 pb-2 font-normal">
             {data.visionText}
           </p>
         </fieldset>
 
-        <fieldset className="rounded-3xl border border-white/30 bg-transparent px-4 py-6 sm:px-6 sm:py-8 transition-colors">
-          <legend className="mx-auto px-6 text-xs sm:text-sm font-black tracking-widest text-white uppercase font-heading">
+        <fieldset className="rounded-3xl border border-slate-200 bg-white shadow-xs px-4 py-6 sm:px-6 sm:py-8 transition-colors">
+          <legend className="mx-auto px-6 py-1.5 rounded-full text-xs sm:text-sm font-extrabold tracking-widest text-white bg-blue-600 uppercase font-heading shadow-md shadow-blue-600/20">
             {data.missionTitle || 'MISI'}
           </legend>
           <div
@@ -37,14 +37,14 @@ export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) 
                 : data.missions.length === 4
                 ? 'lg:divide-x'
                 : 'md:divide-x'
-            } divide-white/20 text-center w-full items-stretch pt-2 pb-2`}
+            } divide-slate-200 text-center w-full items-stretch pt-3 pb-2`}
           >
             {data.missions.map((m, idx) => (
               <div
                 key={idx}
                 className="flex items-center justify-center p-4 sm:p-5 w-full h-full text-center"
               >
-                <p className="text-sm sm:text-base md:text-lg text-gray-200 font-body leading-relaxed max-w-4xl mx-auto">
+                <p className="text-sm sm:text-base text-slate-700 font-body leading-relaxed max-w-4xl mx-auto font-normal">
                   {m}
                 </p>
               </div>

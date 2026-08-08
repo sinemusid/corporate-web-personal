@@ -9,12 +9,12 @@ export const UnitWorkflowSection: React.FC<UnitWorkflowSectionProps> = ({ workfl
   if (!workflow || workflow.length === 0) return null;
 
   return (
-    <section className="bg-bg-elevated border border-borderToken-subtle rounded-2xl p-8 md:p-10 space-y-6">
+    <section className="bg-slate-50 border border-slate-200/80 rounded-3xl p-8 md:p-10 space-y-6">
       <div className="flex flex-col space-y-1">
-        <h3 className="text-xl md:text-2xl font-heading font-bold text-content-primary">
-          Alur Kerja & Kolaborasi
+        <h3 className="text-xl md:text-2xl font-heading font-bold text-slate-900">
+          Alur Kerja &amp; Kolaborasi
         </h3>
-        <p className="text-sm text-content-secondary font-body">
+        <p className="text-sm text-slate-600 font-body">
           Tahapan sistematis untuk merealisasikan kerja sama yang terstruktur.
         </p>
       </div>
@@ -23,15 +23,15 @@ export const UnitWorkflowSection: React.FC<UnitWorkflowSectionProps> = ({ workfl
         {workflow.map((step, idx) => (
           <div
             key={idx}
-            className="p-6 bg-bg-primary border border-borderToken-subtle rounded-xl space-y-3 relative"
+            className="p-6 bg-white border border-slate-200/80 rounded-2xl space-y-3 relative shadow-xs"
           >
-            <div className="text-3xl font-mono font-extrabold text-content-tertiary/40">
+            <div className="text-3xl font-mono font-extrabold text-blue-600/30">
               {step.stepNumber}
             </div>
-            <h4 className="font-heading font-semibold text-content-primary text-base">
+            <h4 className="font-heading font-bold text-slate-900 text-base">
               {step.title}
             </h4>
-            <p className="text-xs font-body text-content-secondary leading-relaxed">
+            <p className="text-xs font-body text-slate-600 leading-relaxed">
               {step.description}
             </p>
           </div>

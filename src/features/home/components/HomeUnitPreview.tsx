@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';  
+import { ArrowRight } from 'lucide-react';
 import { HomeUnitPreviewData } from '../types';
 
 interface HomeUnitPreviewProps {
@@ -11,86 +11,99 @@ interface HomeUnitPreviewProps {
 
 export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitleHeader = true }) => {
   return (
-    <div className="relative space-y-6 sm:space-y-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      {/* Top Ambient Glow Seamless Transition from Section 2 */}
-      <div 
-        className="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-175 h-87.5 bg-accent-subtle/10 rounded-full blur-3xl opacity-50" 
-        aria-hidden="true" 
-      />
+    <div className="relative space-y-6 sm:space-y-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
       {showTitleHeader && (
         <div className="relative z-10 text-center max-w-4xl mx-auto space-y-3 px-4">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-black tracking-wider text-content-primary uppercase leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-extrabold tracking-tight text-slate-900 uppercase leading-tight">
             {data.heading}
           </h2>
-          <p className="text-xs sm:text-sm md:text-base font-body text-content-secondary font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base font-body text-slate-500 font-normal leading-relaxed max-w-3xl mx-auto">
             {data.subheading}
           </p>
         </div>
       )}
 
-      {/* Diagram Branching Tree Architecture with Smooth Curved Corners */}
-      <div className="hidden lg:flex flex-col items-center w-full mt-20 -mb-2 relative">
-        {/* Node Logo Container */}
-        <div className="z-10 flex items-center justify-center">
+      {/* Diagram Branching Tree — Desktop Only */}
+      <div className="hidden lg:flex flex-col items-center w-full mt-16 -mb-2 relative">
+        {/* Sinemus Root Node */}
+        <div className="z-10 flex items-center justify-center px-5 py-2.5">
           <Image
             src="/images/sinemus-indonesia.png"
-            alt={data.heading || "Sinemus Indonesia"}
+            alt={data.heading || 'Sinemus Indonesia'}
             width={180}
             height={40}
             priority
-            className="h-10 sm:h-11 w-auto object-contain brightness-110"
+            className="h-9 sm:h-10 w-auto object-contain"
           />
         </div>
-        {/* Curved Tree Diagram SVG Connector */}
-        <div className="w-full h-16 relative mt-5">
-          <svg className="w-full h-full pointer-events-none" viewBox="0 0 1000 64" fill="none" preserveAspectRatio="none">
-            {/* Top Vertical Stem from Node Badge */}
-            <path d="M 500 0 V 20" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" strokeLinecap="round" />
 
-            {/* Main Outer Curved Branching Line (Connecting Left & Right Outer Cards with Smooth Rounded Corners) */}
+        {/* SVG Branch Connector — Blue-200 for clear but subtle brand connection */}
+        <div className="w-full h-16 relative mt-4">
+          <svg
+            className="w-full h-full pointer-events-none"
+            viewBox="0 0 1000 64"
+            fill="none"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            {/* Vertical stem down from root node */}
+            <path
+              d="M 500 0 V 20"
+              stroke="#bfdbfe"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            {/* Main horizontal branching arc */}
             <path
               d="M 125 64 V 34 Q 125 20 141 20 H 859 Q 875 20 875 34 V 64"
-              stroke="rgba(255, 255, 255, 0.4)"
-              strokeWidth="2"
+              stroke="#cbd5e1"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
             />
-
-            {/* Inner Card 2 Vertical Drop Line */}
-            <path d="M 375 20 V 64" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" strokeLinecap="round" />
-
-            {/* Inner Card 3 Vertical Drop Line */}
-            <path d="M 625 20 V 64" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" strokeLinecap="round" />
+            {/* Card 2 vertical drop */}
+            <path
+              d="M 375 20 V 64"
+              stroke="#cbd5e1"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            {/* Card 3 vertical drop */}
+            <path
+              d="M 625 20 V 64"
+              stroke="#cbd5e1"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {data.units.map((unit) => (
           <div
             key={unit.id}
-            className="group relative rounded-3xl bg-bg-elevated/80 border border-white/20 p-6 flex flex-col justify-between hover:border-white/60 transition-all duration-300 backdrop-blur-sm overflow-hidden h-full min-h-75 shadow-lg"
+            className="group relative rounded-2xl bg-white border border-slate-200 p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-500 hover:shadow-sm h-full min-h-[300px]"
           >
-            <div className="space-y-4">
-              <h3 className="text-lg sm:text-xl font-heading font-black text-content-primary group-hover:text-white transition-colors uppercase tracking-tight">
+            <div className="space-y-3">
+              <h3 className="text-base sm:text-lg font-heading font-bold text-slate-900 group-hover:text-blue-600 transition-colors uppercase tracking-tight">
                 {unit.title}
               </h3>
-              <p className="text-xs sm:text-sm font-body text-content-secondary font-light leading-relaxed line-clamp-4">
+              <p className="text-xs sm:text-sm font-body text-slate-500 font-normal leading-relaxed line-clamp-4">
                 {unit.description}
               </p>
             </div>
 
-            <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
+            <div className="pt-5 mt-4 border-t border-slate-100">
               <Link
                 href={`/units/${unit.slug}`}
-                className="inline-flex items-center px-4 py-2 rounded-full border border-white/30 bg-white/5 text-xs font-body font-semibold text-white hover:bg-white hover:text-black transition-all group-hover:border-white"
+                className="inline-flex items-center text-xs font-body font-semibold text-slate-400 hover:text-blue-600 transition-colors group/link"
               >
-                <span>Learn More</span>
-                <ArrowRight className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>Pelajari Lebih Lanjut</span>
+                <ArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>

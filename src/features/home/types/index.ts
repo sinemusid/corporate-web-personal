@@ -2,6 +2,7 @@ export interface HomeHeroData {
   title: string;
   tagline: string;
   backgroundImage: string;
+  backgroundVideo?: string;
 }
 
 export interface HomeWhoWeAreData {
@@ -11,6 +12,8 @@ export interface HomeWhoWeAreData {
   description: string;
   ctaText: string;
   ctaHref: string;
+  backgroundImage?: string;
+  backgroundVideo?: string;
 }
 
 export interface HomeUnitItem {

@@ -8,37 +8,53 @@ interface HomeHeroProps {
 
 export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 text-center">
-      {/* Background Image & Seamless Gradient Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={data.backgroundImage}
-          alt={data.title}
-          fill
-          priority
-          className="object-cover object-center filter brightness-[0.45] contrast-105"
-        />
-        {/* Smooth Vignette & Seamless Bottom Gradient */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.4)_0%,transparent_40%,rgba(9,9,11,0.6)_70%,#09090b_100%)] pointer-events-none" />
+    <div className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 text-center bg-blue-950 pt-20">
+
+      {/* Background Media — Video if available, fallback to Image */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none">
+        {data.backgroundVideo ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="absolute inset-0 block w-full h-full object-cover object-center opacity-40"
+          >
+            <source src={data.backgroundVideo} type="video/mp4" />
+            <source src="/images/hero/Video-screen-1.mov" type="video/quicktime" />
+          </video>
+        ) : (
+          <Image
+            src={data.backgroundImage}
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            className="object-cover object-center opacity-30"
+          />
+        )}
       </div>
 
       {/* Hero Central Text */}
-      <div className="relative z-10 space-y-4 sm:space-y-6 max-w-5xl mx-auto py-8">
-        <h1 className="flex justify-center items-center drop-shadow-2xl">
+      <div className="relative z-10 space-y-5 sm:space-y-7 max-w-5xl mx-auto py-12">
+        <h1 className="flex justify-center items-center">
           <span className="sr-only">{data.title}</span>
           <Image
-            src="/images/hero/sinemus-hero.png" 
+            src="/images/hero/sinemus-hero.png"
             alt={data.title}
             width={600}
             height={150}
             priority
-            className="h-12 sm:h-20 md:h-24 lg:h-32 object-contain"
+            className="h-14 sm:h-20 md:h-24 lg:h-32 object-contain brightness-0 invert drop-shadow-[0_2px_24px_rgba(255,255,255,0.08)]"
           />
         </h1>
-        <p className="text-sm sm:text-lg md:text-xl font-body font-light text-content-secondary tracking-wide max-w-2xl mx-auto drop-shadow-md">
+        <p className="text-base sm:text-lg md:text-xl font-body font-normal text-blue-200 tracking-wide max-w-2xl mx-auto leading-relaxed">
           {data.tagline}
         </p>
       </div>
+
     </div>
   );
 };

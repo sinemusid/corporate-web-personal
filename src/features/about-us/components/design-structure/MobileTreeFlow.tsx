@@ -28,19 +28,19 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
           <CardItem node={ceoNode} highlight levelBadge="LEVEL 1 — EXECUTIVE LEADERSHIP" />
         </div>
         {/* Connector Line from CEO down into Trunk */}
-        <div className="w-[1px] h-8 bg-gray-800" />
+        <div className="w-[1px] h-8 bg-slate-300" />
       </div>
 
       {/* 2. Main Tree Wrapper with Continuous Left Vertical Trunk Line */}
       <div className="relative pl-7 sm:pl-9 space-y-6">
         {/* Continuous Left Vertical Stem */}
-        <div className="absolute top-0 bottom-6 left-3 sm:left-4 w-[1px] bg-gray-800" />
+        <div className="absolute top-0 bottom-6 left-3 sm:left-4 w-[1px] bg-slate-300" />
 
         {/* Section Header: C-Suite Directors & Staff */}
         <div className="relative flex items-center space-x-3 pt-2 z-10">
-          <div className="w-2.5 h-2.5 rounded-full bg-gray-300 -ml-[21px] sm:-ml-[25px]" />
-          <span className="text-[11px] font-bold tracking-widest text-gray-300 uppercase bg-transparent border border-white/10 px-3 py-1 rounded-full">
-            DIRECTORS & DEPARTMENT STAFF
+          <div className="w-2.5 h-2.5 rounded-full bg-blue-600 -ml-[21px] sm:-ml-[25px]" />
+          <span className="text-[11px] font-bold tracking-widest text-blue-700 uppercase bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+            DIRECTORS &amp; DEPARTMENT STAFF
           </span>
         </div>
 
@@ -50,7 +50,7 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
             if (!item.node) return null;
             return (
               <div key={idx} className="relative flex items-center pl-3">
-                <div className="absolute top-1/2 -translate-y-1/2 left-[-16px] sm:left-[-20px] w-4 sm:w-5 h-[1px] bg-gray-800" />
+                <div className="absolute top-1/2 -translate-y-1/2 left-[-16px] sm:left-[-20px] w-4 sm:w-5 h-[1px] bg-slate-300" />
                 <div className="w-full">
                   <CardItem node={item.node} isStaff={item.isStaff} />
                 </div>
@@ -65,7 +65,7 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
             if (!item.node) return null;
             return (
               <div key={idx} className="relative flex items-center pl-3">
-                <div className="absolute top-1/2 -translate-y-1/2 left-[-16px] sm:left-[-20px] w-4 sm:w-5 h-[1px] bg-gray-800" />
+                <div className="absolute top-1/2 -translate-y-1/2 left-[-16px] sm:left-[-20px] w-4 sm:w-5 h-[1px] bg-slate-300" />
                 <div className="w-full">
                   <CardItem node={item.node} isStaff={item.isStaff} />
                 </div>

@@ -9,7 +9,7 @@ export const ServicesSectionWidget: React.FC = async () => {
   if (!servicesData) return null;
 
   return (
-    <SectionWrapper id="services" darkBg className="w-full py-24 md:py-32 flex flex-col justify-center">
+    <SectionWrapper id="services" className="w-full py-24 md:py-32 flex flex-col justify-center">
       <HomeServices data={servicesData} />
     </SectionWrapper>
   );

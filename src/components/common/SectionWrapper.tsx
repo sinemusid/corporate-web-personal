@@ -23,7 +23,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
     <section
       id={id}
       className={`${spacingClass} px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${
-        darkBg ? 'bg-bg-secondary' : 'bg-bg-primary'
+        darkBg ? 'bg-slate-50/80' : 'bg-white'
       } ${className}`}
     >
       {children}
