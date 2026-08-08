@@ -83,11 +83,11 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
       {/* 3. Text Content Container Overlay */}
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         <div className="space-y-4 sm:space-y-6 max-w-xl sm:max-w-2xl text-left">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white uppercase tracking-tight leading-tight sm:leading-snug">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white tracking-tight leading-tight sm:leading-snug">
             {data.subheading}
           </h2>
 
-          <p className="text-sm sm:text-base lg:text-lg font-body font-normal text-slate-300 sm:text-blue-100 tracking-normal leading-relaxed">
+          <p className="text-base sm:text-lg font-body font-normal text-slate-300 sm:text-blue-100 tracking-normal leading-relaxed">
             {data.description}
           </p>
 

@@ -13,7 +13,7 @@ export interface HomeServicesData {
 }
 
 export const MOCK_HOME_SERVICES: HomeServicesData = {
-  heading: 'LAYANAN KAMI',
+  heading: 'Layanan Kami',
   subheading:
     'Layanan holistik ekosistem perfilman terintegrasi untuk mendukung produksi, eksibisi, hingga inkubasi karya berkualitas.',
   services: [

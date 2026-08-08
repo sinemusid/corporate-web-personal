@@ -1,14 +1,14 @@
 import { HomeUnitPreviewData } from '../types';
 
 export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
-  heading: 'SATU EKOSISTEM TERINTEGRASI',
+  heading: 'Satu Ekosistem Terintegrasi',
   subheading:
     'Kami mengintegrasikan kreativitas, teknologi, dan nilai-nilai luhur untuk menghadirkan karya perfilman yang berdampak melalui beberapa unit:',
   units: [
     {
       id: 'unit-production',
       slug: 'production',
-      title: 'SINEMUS PRODUCTION',
+      title: 'Sinemus Production',
       subtitle: 'Film Feature & Studio Content Studio',
       description: 'Mesin kreatif yang berfokus pada penciptaan karya visual berkualitas tinggi',
       bannerUrl: '/images/khoas_poster.png',
@@ -17,7 +17,7 @@ export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
     {
       id: 'unit-screen',
       slug: 'screen',
-      title: 'SINEMUS SCREEN',
+      title: 'Sinemus Screen',
       subtitle: 'Exhibition & Digital Screening Platform',
       description: 'Solusi untuk memastikan setiap karya sampai ke tangan penonton yang tepat.',
       bannerUrl: '/images/khoas_poster.png',
@@ -26,7 +26,7 @@ export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
     {
       id: 'unit-academy',
       slug: 'academy',
-      title: 'SINEMUS ACADEMY',
+      title: 'Sinemus Academy',
       subtitle: 'Creative Talent & Technical Education',
       description: 'Pusat pengembangan skill perfilman untuk mencetak generasi sineas muslim yang profesional',
       bannerUrl: '/images/khoas_poster.png',
@@ -35,7 +35,7 @@ export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
     {
       id: 'unit-community',
       slug: 'community',
-      title: 'SINEMUS COMMUNITY',
+      title: 'Sinemus Community',
       subtitle: 'Filmmakers Network & Arts Collective',
       description: 'Wadah berkumpulnya para sineas dan penggiat dakwah visual',
       bannerUrl: '/images/khoas_poster.png',
