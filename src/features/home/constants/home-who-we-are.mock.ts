@@ -9,5 +9,5 @@ export const MOCK_HOME_WHO_WE_ARE: HomeWhoWeAreData = {
   ctaText: 'About Sinemus',
   ctaHref: '/about',
   backgroundImage: '/images/hero/sinemus_team_photo.jpg',
-  backgroundVideo: '/videos/hero-video-bg.mp4',
+  backgroundVideo: '/videos/hero-video-bg1.mp4',
 };

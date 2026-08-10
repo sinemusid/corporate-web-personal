@@ -15,10 +15,10 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
 
       {showTitleHeader && (
         <div className="relative z-10 text-center max-w-3xl mx-auto space-y-2.5 px-4">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wider text-slate-900 leading-tight">
             {data.heading}
           </h2>
-          <p className="text-xs sm:text-sm md:text-base font-body text-slate-500 font-normal leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-slate-500 font-normal tracking-wide leading-relaxed max-w-2xl mx-auto">
             {data.subheading}
           </p>
         </div>
@@ -89,10 +89,10 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
             className="group relative rounded-2xl bg-white border border-slate-200 p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-500 hover:shadow-sm h-full min-h-[300px]"
           >
             <div className="space-y-3">
-              <h3 className="text-base sm:text-lg font-heading font-bold text-slate-900 group-hover:text-blue-600 transition-colors tracking-tight">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors tracking-wide">
                 {unit.title}
               </h3>
-              <p className="text-xs sm:text-sm font-body text-slate-500 font-normal leading-relaxed line-clamp-4">
+              <p className="text-xs sm:text-sm text-slate-500 font-normal tracking-wide leading-relaxed line-clamp-4">
                 {unit.description}
               </p>
             </div>
@@ -100,7 +100,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
             <div className="pt-5 mt-4 border-t border-slate-100">
               <Link
                 href={`/units/${unit.slug}`}
-                className="inline-flex items-center text-sm font-body font-semibold text-slate-400 group-hover:text-blue-600 transition-colors"
+                className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-blue-600 transition-colors"
               >
                 <span>Pelajari Lebih Lanjut</span>
                 <ArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

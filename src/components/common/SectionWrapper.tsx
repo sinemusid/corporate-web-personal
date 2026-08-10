@@ -19,7 +19,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
     ? 'pt-[88px] sm:pt-[108px] lg:pt-[112px] pb-12 sm:pb-16 lg:pb-20'
     : 'py-12 sm:py-16 lg:py-20';
 
-  const bgStyle = darkBg ? 'bg-slate-50/80 border-y border-slate-200/60' : 'bg-white';
+  const bgStyle = 'bg-white bg-white-pattern bg-repeat';
 
   return (
     <section id={id} className={`w-full ${bgStyle}`}>

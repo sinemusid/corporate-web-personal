@@ -35,7 +35,7 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
         />
       </div>
 
-      {/* Main Container Aligned directly with Navbar Logo (px-6 sm:px-12) */}
+      {/* Main Container Aligned directly with Navbar (w-full px-6 sm:px-12) */}
       <div className="relative z-10 w-full px-6 sm:px-12 space-y-4 lg:space-y-6">
         {/* Breadcrumb Navigation - Positioned closer to Navbar */}
         <nav className="flex items-center gap-2 text-xs sm:text-sm text-slate-400 font-medium">
@@ -68,9 +68,8 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
             </p>
           </div>
 
-          {/* Action Buttons & Horizontal Stats Bar Aligned Sejajar */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pt-2">
-            {/* Action Buttons */}
+          {/* Action Buttons */}
+          <div className="pt-2">
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
               <Link
                 href="/contact"
@@ -92,30 +91,6 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
                 </a>
               )}
             </div>
-
-            {/* Horizontal 1-Row Stat Glassmorphism Bar Sejajar */}
-            {unit.stats && unit.stats.length > 0 && (
-              <div className="bg-slate-900/60 backdrop-blur-md border border-slate-800/80 hover:border-slate-700/80 rounded-2xl p-4 sm:p-5 flex items-center justify-around gap-4 sm:gap-8 shadow-lg shadow-black/20 flex-1 max-w-2xl transition-all">
-                {unit.stats.map((st, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="p-2 sm:p-2.5 bg-blue-500/10 rounded-xl border border-blue-500/20 shrink-0">
-                      {statIcons[i % statIcons.length]}
-                    </div>
-                    <div className="text-left">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-mono font-bold text-white tracking-tight leading-none">
-                        {st.value}
-                      </div>
-                      <div className="text-[11px] sm:text-xs text-slate-400 font-medium leading-tight mt-1">
-                        {st.label}
-                      </div>
-                    </div>
-                    {i < unit.stats!.length - 1 && (
-                      <div className="hidden sm:block h-8 w-[1px] bg-slate-800 ml-2 sm:ml-4" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
 

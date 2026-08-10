@@ -22,6 +22,11 @@ export interface UnitWorkflowStep {
   description: string;
 }
 
+export interface UnitStat {
+  label: string;
+  value: string;
+}
+
 export interface BusinessUnit extends BaseEntity {
   slug: UnitSlug;
   title: string;
@@ -32,10 +37,7 @@ export interface BusinessUnit extends BaseEntity {
   features: string[];
   bannerUrl?: string;
   externalUrl?: string;
-  stats?: {
-    label: string;
-    value: string;
-  }[];
+  stats?: UnitStat[];
   capabilities: UnitCapability[];
   featuredProjects: UnitProject[];
   workflow: UnitWorkflowStep[];

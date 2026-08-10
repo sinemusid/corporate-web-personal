@@ -13,7 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseStyle = 'inline-flex items-center justify-center font-body font-medium transition-all duration-300 rounded-lg disabled:opacity-50 cursor-pointer';
+  const baseStyle = 'inline-flex items-center justify-center font-bold uppercase tracking-widest transition-all duration-300 rounded-lg disabled:opacity-50 cursor-pointer';
   
   const variants = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700 border border-blue-600 shadow-md shadow-blue-600/20',

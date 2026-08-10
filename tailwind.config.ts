@@ -14,10 +14,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["var(--font-heading)", "sans-serif"],
-        body: ["var(--font-body)", "sans-serif"],
+        heading: ["'D-DIN'", "'DIN Alternate'", "var(--font-heading)", "sans-serif"],
+        body: ["'D-DIN'", "'DIN Alternate'", "var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
-        sans: ["var(--font-body)", "sans-serif"],
+        sans: ["'D-DIN'", "'DIN Alternate'", "var(--font-body)", "sans-serif"],
+        din: ["'D-DIN'", "'DIN Alternate'", "sans-serif"],
       },
       colors: {
         bg: {
@@ -68,6 +69,9 @@ const config: Config = {
       },
       animation: {
         slowPan: "slowPan 30s ease-in-out infinite alternate",
+      },
+      backgroundImage: {
+        "white-pattern": "url('/images/white-bg-pattern.png')",
       },
     },
   },

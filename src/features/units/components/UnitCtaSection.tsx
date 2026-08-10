@@ -8,7 +8,7 @@ interface UnitCtaSectionProps {
 
 export const UnitCtaSection: React.FC<UnitCtaSectionProps> = ({ unitTitle }) => {
   return (
-    <section className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-slate-200/80">
+    <section className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4">
       <Link href="/">
         <Button variant="secondary" size="sm">
           ← Kembali ke Beranda

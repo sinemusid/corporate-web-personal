@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Fonts */
-  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  /* Fonts - D-DIN Primary Typography System */
+  --font-heading: 'D-DIN', 'DIN Alternate', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'D-DIN', 'DIN Alternate', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Canvas / Surfaces (Clean White Default Theme) */
@@ -257,3 +257,12 @@ p, span, li, body, .font-body {
 .animate-success-slide-up-delay {
   animation: successFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
+
+/* White Section Background Pattern */
+.bg-white-pattern {
+  background-color: #ffffff;
+  background-image: url('/images/white-bg-pattern.png');
+  background-repeat: repeat;
+  background-position: center;
+}
+

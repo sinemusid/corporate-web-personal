@@ -136,7 +136,7 @@ export const Navbar: React.FC = () => {
                 {hasSub ? (
                   <button
                     type="button"
-                    className={`relative flex items-center gap-1.5 text-xs sm:text-sm font-heading font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                    className={`relative flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer ${
                       useWhiteNavText
                         ? isActive || isDropdownOpen
                           ? 'text-blue-400 font-bold'
@@ -170,7 +170,7 @@ export const Navbar: React.FC = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className={`relative py-1 text-xs sm:text-sm font-heading font-semibold uppercase tracking-wider transition-all duration-300 group ${
+                    className={`relative py-1 text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 group ${
                       useWhiteNavText
                         ? isActive
                           ? 'text-blue-400 font-bold'
