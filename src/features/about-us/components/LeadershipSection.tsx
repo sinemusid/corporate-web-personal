@@ -68,7 +68,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ data }) =>
                 <span className="text-xs font-mono text-blue-600 font-bold uppercase tracking-widest">
                   {ceo.role}
                 </span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading uppercase tracking-wide group-hover:text-blue-600 transition-colors">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading uppercase tracking-wide">
                   {ceo.name}
                 </h3>
               </div>

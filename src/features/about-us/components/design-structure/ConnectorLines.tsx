@@ -10,7 +10,6 @@ export const JointDot: React.FC<{ className?: string }> = ({ className = '' }) =
 export const CEOTrunkLine: React.FC = () => (
   <div className="flex flex-col items-center z-10">
     <div className="w-[1px] h-8 bg-slate-300" />
-    <JointDot className="-mt-1.5 hidden md:block" />
   </div>
 );
 

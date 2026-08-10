@@ -266,3 +266,36 @@ p, span, li, body, .font-body {
   background-position: center;
 }
 
+/* Custom Timeline Horizontal Scrollbar */
+.timeline-scrollbar::-webkit-scrollbar {
+  height: 8px !important;
+}
+.timeline-scrollbar::-webkit-scrollbar-button,
+.timeline-scrollbar::-webkit-scrollbar-button:single-button,
+.timeline-scrollbar::-webkit-scrollbar-button:horizontal:decrement,
+.timeline-scrollbar::-webkit-scrollbar-button:horizontal:increment,
+.timeline-scrollbar::-webkit-scrollbar-button:start,
+.timeline-scrollbar::-webkit-scrollbar-button:end {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+.timeline-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+  border-radius: 9999px !important;
+}
+.timeline-scrollbar::-webkit-scrollbar-thumb {
+  background: #2563eb !important;
+  border-radius: 9999px !important;
+}
+.timeline-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8 !important;
+}
+.timeline-scrollbar {
+  scrollbar-width: thin !important;
+  scrollbar-color: #2563eb #f1f5f9 !important;
+}
+
+
