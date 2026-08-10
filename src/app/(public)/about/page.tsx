@@ -11,6 +11,8 @@ import {
 } from '@/widgets/about-us';
 import { constructMetadata } from '@/lib/seo';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = constructMetadata({
   title: 'Tentang Kami',
   description:

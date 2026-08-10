@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { CollaboratorPartnersData } from '../types';
 import { PartnerGridSection } from './PartnerGridSection';

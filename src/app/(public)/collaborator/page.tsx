@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { CollaboratorPartnersWidget } from '@/widgets/collaborators';
 import { constructMetadata } from '@/lib/seo';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = constructMetadata({
   title: 'Mitra & Kolaborator Strategis',
   description:

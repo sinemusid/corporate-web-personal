@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { PartnerItem } from '../types';
 import { PartnerCard } from './PartnerCard';

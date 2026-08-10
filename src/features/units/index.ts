@@ -9,8 +9,4 @@ export * from './components/UnitCtaSection';
 export * from './components/UnitStatsSection';
 export * from './mock/units-mock';
 export * from './types';
-export * from './hooks/use-units';
-export * from './hooks/use-unit-detail';
 export * from './api';
-
-

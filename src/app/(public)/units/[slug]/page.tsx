@@ -4,7 +4,9 @@ import { notFound } from 'next/navigation';
 import { fetchUnitBySlug } from '@/features/units/api';
 import { siteConfig } from '@/config/site.config';
 import { constructMetadata } from '@/lib/seo';
-import { UnitDetailPageClient } from './UnitDetailPageClient';
+import { UnitDetailWidget } from '@/widgets/units';
+
+export const revalidate = 3600;
 
 interface UnitDetailPageProps {
   params: Promise<{
@@ -48,5 +50,9 @@ export default async function UnitDetailPage({ params }: UnitDetailPageProps) {
     notFound();
   }
 
-  return <UnitDetailPageClient unit={unit} />;
+  return (
+    <main>
+      <UnitDetailWidget unit={unit} />
+    </main>
+  );
 }

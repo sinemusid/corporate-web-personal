@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { JoinMissionWidget, ContactCompanyWidget } from '@/widgets/contact';
 import { constructMetadata } from '@/lib/seo';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = constructMetadata({
   title: 'Hubungi Kami & Kemitraan Strategis',
   description:

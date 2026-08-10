@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { HeroSectionWidget, WhoWeAreSectionWidget, UnitPreviewSectionWidget, ServicesSectionWidget } from '@/widgets/home';
 import { constructMetadata } from '@/lib/seo';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = constructMetadata({
   title: 'Corporate Web & Solution Partner',
   description:
