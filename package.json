@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:build": "npx --legacy-peer-deps @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "eslint"
   },
@@ -31,6 +31,6 @@
     "eslint-config-next": "16.2.11",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "wrangler": "^4.120.1"
+    "wrangler": "^4.121.0"
   }
 }
