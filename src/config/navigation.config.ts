@@ -2,7 +2,7 @@ import { NavItem } from '@/types';
 
 export const mainNavigation: NavItem[] = [
   {
-    label: 'Home',
+    label: 'Beranda',
     href: '/',
     description: 'Halaman Utama Ekosistem Sinemus Indonesia',
   },
@@ -34,17 +34,17 @@ export const mainNavigation: NavItem[] = [
     ],
   },
   {
-    label: 'About Us',
+    label: 'Tentang Kami',
     href: '/about',
     description: 'Tentang Perusahaan, Visi Misi, Tim, dan Portofolio',
   },
   {
-    label: 'Collaborator',
+    label: 'Kolaborator',
     href: '/collaborator',
     description: 'Mitra & Kolaborator Strategis Sinemus',
   },
   {
-    label: 'Contact Us',
+    label: 'Hubungi Kami',
     href: '/contact',
     description: 'Hubungi Kami & Bergabung dalam Misi',
   },

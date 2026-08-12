@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { mainNavigation } from '@/config/navigation.config';
+import { Button } from '@/components/ui/Button';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -270,23 +271,44 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Mobile Toggle Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`md:hidden p-2.5 rounded-xl border focus:outline-hidden transition-all duration-200 shadow-xs ${
+        <Button
+          className={`group md:hidden ${
             isTransparentTop && isDarkHeroPage
-              ? 'text-white bg-white/10 border-white/15 hover:bg-white/20'
-              : 'text-slate-900 bg-slate-50 border-slate-200 hover:bg-slate-100'
+              ? 'text-white bg-white/10 border-white/15 hover:bg-white/20 hover:text-white'
+              : 'text-slate-900 bg-slate-50 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
           }`}
-          aria-label="Toggle Navigation"
+          variant="outline"
+          size="icon"
+          onClick={() => setIsOpen((prevState) => !prevState)}
+          aria-expanded={isOpen}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
         >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
+          <svg
+            className="pointer-events-none"
+            width={16}
+            height={16}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 12L20 12"
+              className="origin-center -translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
+            />
+            <path
+              d="M4 12H20"
+              className="origin-center transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
+            />
+            <path
+              d="M4 12H20"
+              className="origin-center translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
+            />
           </svg>
-        </button>
+        </Button>
       </div>
 
       {/* Mobile Drawer (Adaptive Theme) */}
