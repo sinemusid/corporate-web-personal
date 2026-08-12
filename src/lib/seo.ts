@@ -8,6 +8,8 @@ interface ConstructMetadataParams {
   canonicalUrl?: string;
   noIndex?: boolean;
   type?: 'website' | 'article';
+  keywords?: string[];
+  googleVerification?: string;
 }
 
 /**
@@ -21,13 +23,26 @@ export function constructMetadata({
   canonicalUrl,
   noIndex = false,
   type = 'website',
+  keywords,
+  googleVerification = siteConfig.verification.google,
 }: ConstructMetadataParams = {}): Metadata {
-  const metaTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const metaTitle = title ? `${title} - ${siteConfig.name}` : siteConfig.name;
 
   return {
     title: metaTitle,
     description,
+    keywords: keywords && keywords.length > 0 ? keywords : undefined,
     metadataBase: new URL(siteConfig.url),
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/favicon.ico',
+    },
+    verification: googleVerification
+      ? {
+          google: googleVerification,
+        }
+      : undefined,
     alternates: {
       canonical: canonicalUrl || '/',
     },
@@ -41,7 +56,10 @@ export function constructMetadata({
       images: [
         {
           url: image,
+          width: 1200,
+          height: 630,
           alt: metaTitle,
+          type: 'image/png',
         },
       ],
     },
@@ -50,6 +68,8 @@ export function constructMetadata({
       title: metaTitle,
       description,
       images: [image],
+      creator: '@sineasmuslim_id',
+      site: '@sineasmuslim_id',
     },
     robots: {
       index: !noIndex,

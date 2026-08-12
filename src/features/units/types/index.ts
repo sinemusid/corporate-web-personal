@@ -36,6 +36,7 @@ export interface BusinessUnit extends BaseEntity {
   about: string;
   features: string[];
   bannerUrl?: string;
+  ogImage?: string;
   externalUrl?: string;
   stats?: UnitStat[];
   capabilities: UnitCapability[];

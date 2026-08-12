@@ -6,7 +6,7 @@ export const CollaboratorPartnersWidget = async () => {
   const partnersData = await fetchCollaboratorPartners();
 
   return (
-    <SectionWrapper isTopSection darkBg id="collaborators">
+    <SectionWrapper isTopSection id="collaborators">
       <CollaboratorPartners data={partnersData} />
     </SectionWrapper>
   );
