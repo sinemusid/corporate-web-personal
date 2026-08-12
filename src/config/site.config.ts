@@ -1,7 +1,13 @@
 export const siteConfig = {
   name: 'Sinemus Indonesia',
   description: 'Sinemus Indonesia adalah platform ekosistem sinema dan solusi teknologi terintegrasi. Menghadirkan layanan streaming film, event screening komunitatis, hingga solusi digital terpercaya di Indonesia.',
-  url: 'https://sinemus.id',
+  url: process.env.NEXT_PUBLIC_SITE_URL
+    ? (process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
+        ? process.env.NEXT_PUBLIC_SITE_URL
+        : `https://${process.env.NEXT_PUBLIC_SITE_URL}`)
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'https://sinemus.id',
   ogImage: '/share/sinemus-indonesia.PNG',
   links: {
     instagram: 'https://www.instagram.com/sineasmuslim.id',
