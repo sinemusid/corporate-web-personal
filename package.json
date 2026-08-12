@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy": "git push personal staging:main --force",
     "start": "next start",
     "lint": "eslint"
   },
@@ -17,7 +18,6 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.13",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/postcss": "^4",
