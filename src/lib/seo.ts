@@ -13,6 +13,30 @@ interface ConstructMetadataParams {
 }
 
 /**
+ * Helper untuk mendapatkan Base URL secara dinamis sesuai environment:
+ * 1. NEXT_PUBLIC_SITE_URL (jika di-set eksplisit)
+ * 2. VERCEL_PROJECT_PRODUCTION_URL / VERCEL_URL (jika di Vercel Preview/Staging)
+ * 3. siteConfig.url (default https://sinemus.id)
+ */
+export function getBaseUrl(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : `https://${process.env.NEXT_PUBLIC_SITE_URL}`;
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  if (process.env.NODE_ENV === 'development') {
+    return `http://localhost:${process.env.PORT || 3000}`;
+  }
+  return siteConfig.url;
+}
+
+/**
  * Utility helper untuk menggenerasi objek Metadata Next.js secara dinamis,
  * terstandarisasi, dan terpusat sesuai aturan .ai/context/seo-performance.md.
  */
@@ -27,12 +51,17 @@ export function constructMetadata({
   googleVerification = siteConfig.verification.google,
 }: ConstructMetadataParams = {}): Metadata {
   const metaTitle = title ? `${title} - ${siteConfig.name}` : siteConfig.name;
+  const baseUrl = getBaseUrl();
+
+  const absoluteImageUrl = image.startsWith('http')
+    ? image
+    : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
 
   return {
     title: metaTitle,
     description,
     keywords: keywords && keywords.length > 0 ? keywords : undefined,
-    metadataBase: new URL(siteConfig.url),
+    metadataBase: new URL(baseUrl),
     icons: {
       icon: '/favicon.ico',
       shortcut: '/favicon.ico',
@@ -55,7 +84,8 @@ export function constructMetadata({
       type,
       images: [
         {
-          url: image,
+          url: absoluteImageUrl,
+          secureUrl: absoluteImageUrl,
           width: 1200,
           height: 630,
           alt: metaTitle,
@@ -67,7 +97,7 @@ export function constructMetadata({
       card: 'summary_large_image',
       title: metaTitle,
       description,
-      images: [image],
+      images: [absoluteImageUrl],
       creator: '@sineasmuslim_id',
       site: '@sineasmuslim_id',
     },
