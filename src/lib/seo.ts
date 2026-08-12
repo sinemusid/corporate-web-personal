@@ -47,8 +47,14 @@ export function constructMetadata({
   keywords,
   googleVerification = siteConfig.verification.google,
 }: ConstructMetadataParams = {}): Metadata {
-  const metaTitle = title ? `${title} - ${siteConfig.name}` : siteConfig.name;
+  const metaTitle = title ? `${title} - ${siteConfig.brandName}` : siteConfig.name;
   const baseUrl = getBaseUrl();
+  const productionBase = siteConfig.productionUrl || 'https://sinemus.id';
+
+  const rawPath = canonicalUrl || '/';
+  const canonicalTarget = rawPath.startsWith('http')
+    ? rawPath
+    : `${productionBase}${rawPath.startsWith('/') ? rawPath : `/${rawPath}`}`;
 
   const absoluteImageUrl = image.startsWith('http')
     ? image
@@ -70,12 +76,12 @@ export function constructMetadata({
         }
       : undefined,
     alternates: {
-      canonical: canonicalUrl || '/',
+      canonical: canonicalTarget,
     },
     openGraph: {
       title: metaTitle,
       description,
-      url: canonicalUrl || '/',
+      url: canonicalTarget,
       siteName: siteConfig.name,
       locale: 'id_ID',
       type,
@@ -111,3 +117,4 @@ export function constructMetadata({
     },
   };
 }
+

@@ -7,19 +7,22 @@ import { WebSiteJsonLd } from '@/components/seo/json-ld';
 export const revalidate = 3600;
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Platform Ekosistem Sinema & Solusi Digital Indonesia',
+  title: 'Platform Ekosistem Sinema & Solusi Digital',
   description:
-    'Sinemus Indonesia adalah platform ekosistem sinema dan penyedia solusi teknologi terintegrasi. Menghadirkan layanan produksi film, event screening komunitas, hingga solusi digital terpercaya di Indonesia.',
+    'Sineas Muslim Indonesia (Sinemus) adalah platform ekosistem sinema dan penyedia solusi teknologi terintegrasi di Indonesia. Menghadirkan layanan produksi film, event screening komunitas, edukasi perfilman, hingga ekosistem digital.',
   canonicalUrl: '/',
   image: '/share/sinemus-indonesia.PNG',
   keywords: [
+    'Sineas Muslim Indonesia',
+    'Sinemus',
     'Sinemus Indonesia',
     'Ekosistem Sinema Indonesia',
-    'Solusi Digital Terpercaya',
     'Produksi Film Indonesia',
     'Event Screening Komunitas',
-    'Sineas Muslim Indonesia',
-    'Platform Cinema Digital',
+    'Sinemus Academy',
+    'Sinemus Screen',
+    'Sinemus Production',
+    'Sinemus Community',
   ],
 });
 

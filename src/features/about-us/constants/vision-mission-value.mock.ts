@@ -22,11 +22,9 @@ export const MOCK_VISION_MISSION_VALUE: VisionMissionValueData = {
   ],
   socialChannelsTitle: 'Kanal Resmi',
   socials: [
-    { name: 'Website', label: 'sinemus.co.id', href: 'https://sinemus.co.id', type: 'website' },
-    { name: 'Instagram', label: '@sinemus.id', href: '#', type: 'instagram' },
-    { name: 'Youtube', label: 'Sinemus Indonesia', href: '#', type: 'youtube' },
-    { name: 'Twitter', label: '@sinemus_id', href: '#', type: 'twitter' },
-    { name: 'LinkedIn', label: 'Sinemus Indonesia', href: '#', type: 'linkedin' },
+    { name: 'Website', label: 'sinemus.id', href: 'https://sinemus.id', type: 'website' },
+    { name: 'Instagram', label: '@sineasmuslim.id', href: 'https://www.instagram.com/sineasmuslim.id', type: 'instagram' },
+    { name: 'TikTok', label: '@sineasmuslimindonesia', href: 'https://www.tiktok.com/@sineasmuslimindonesia', type: 'tiktok' },
+    { name: 'Youtube', label: '@sineasmuslim_id', href: 'https://youtube.com/@sineasmuslim_id', type: 'youtube' },
   ],
 };
-

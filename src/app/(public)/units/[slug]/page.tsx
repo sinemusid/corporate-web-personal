@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { fetchUnitBySlug } from '@/features/units/api';
 import { siteConfig } from '@/config/site.config';
 import { constructMetadata } from '@/lib/seo';
-import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
+import { BreadcrumbJsonLd, UnitJsonLd } from '@/components/seo/json-ld';
 import { UnitDetailWidget } from '@/widgets/units';
 
 export const revalidate = 3600;
@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: UnitDetailPageProps): Promise
     keywords: [
       unit.title,
       `Sinemus ${unit.title}`,
+      'Sineas Muslim Indonesia',
       'Sinemus Indonesia',
       'Unit Bisnis Sinemus',
       ...(unit.features || []),
@@ -69,7 +70,9 @@ export default async function UnitDetailPage({ params }: UnitDetailPageProps) {
           { name: unit.title, item: `/units/${unit.slug}` },
         ]}
       />
+      <UnitJsonLd unit={unit} />
       <UnitDetailWidget unit={unit} />
     </main>
   );
 }
+

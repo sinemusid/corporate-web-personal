@@ -1,10 +1,15 @@
 export const siteConfig = {
-  name: 'Sinemus Indonesia',
-  description: 'Sinemus Indonesia adalah platform ekosistem sinema dan solusi teknologi terintegrasi. Menghadirkan layanan streaming film, event screening komunitatis, hingga solusi digital terpercaya di Indonesia.',
+  name: 'Sineas Muslim Indonesia (Sinemus)',
+  brandName: 'Sinemus',
+  legalName: 'PT Sineas Muslim Indonesia',
+  alternateName: ['Sinemus', 'Sinemus Indonesia'],
+  description:
+    'Sineas Muslim Indonesia (Sinemus) adalah platform ekosistem sinema dan penyedia solusi teknologi terintegrasi. Menghadirkan layanan produksi film, event screening komunitas, hingga solusi digital terpercaya di Indonesia.',
+  productionUrl: 'https://sinemus.id',
   url: process.env.NEXT_PUBLIC_SITE_URL
-    ? (process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
-        ? process.env.NEXT_PUBLIC_SITE_URL
-        : `https://${process.env.NEXT_PUBLIC_SITE_URL}`)
+    ? process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : `https://${process.env.NEXT_PUBLIC_SITE_URL}`
     : process.env.VERCEL
       ? 'https://sinemus.vercel.app'
       : 'https://sinemus.id',
@@ -24,3 +29,4 @@ export const siteConfig = {
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || '',
   },
 };
+
