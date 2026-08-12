@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy": "git push personal staging:main --force",
     "start": "next start",
     "lint": "eslint"
   },
