@@ -11,7 +11,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
     about: 'Sinemus Production hadir sebagai studio film komprehensif yang memadukan kedalaman estetika naratif dan presisi teknis tingkat tinggi. Kami mengelola seluruh siklus hidup karya audio-visual mulai dari riset cerita, pengembangan skenario, eksekusi syuting sinematik, hingga pasca-produksi Dolby-certified.',
     bannerUrl: '/images/hero/khoas_poster.png',
     ogImage: '/share/sinemus-production.PNG',
-    externalUrl: 'https://production.sinemus.com',
+    externalUrl: 'https://production.sinemus.id',
     features: ['Feature Film Production', 'Commercial & Music Video', 'Post-Production & VFX'],
     stats: [
       { label: 'Judul Film', value: '20+' },
@@ -78,8 +78,8 @@ export const MOCK_UNITS: BusinessUnit[] = [
     description: 'Jaringan eksibisi sinema, pemutaran independen, dan platform penayangan digital terintegrasi.',
     about: 'Sinemus Screen berfokus membuka akses penayangan film alternatif dan indie agar dapat menjangkau penonton secara inklusif. Melalui jaringan ruang pemutaran komunitas, festival keliling, serta platform pemutaran digital mandiri, kami menghidupkan ekosumsi apresiasi sinema.',
     bannerUrl: '/images/hero/khoas_poster.png',
-    ogImage: '/share/sinemus-indonesia.PNG',
-    externalUrl: 'https://screen.sinemus.com',
+    ogImage: '/share/sinemus-screen.PNG',
+    externalUrl: 'https://screen.sinemus.id',
     features: ['Private Screening Hub', 'Digital VOD Platform', 'Film Festival Partner'],
     stats: [
       { label: 'Layar Penayangan', value: '150+' },
@@ -147,7 +147,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
     about: 'Sinemus Academy meretas kesenjangan antara pendidikan formal dan kebutuhan nyata industri sinema. Melalui program bootcamp teknis, laboratorium penulisan, dan mentorship intensif dari praktisi aktif, kami membina talenta baru agar siap berkarya di panggung profesional.',
     bannerUrl: '/images/hero/khoas_poster.png',
     ogImage: '/share/sinemus-academy.PNG',
-    externalUrl: 'https://academy.sinemus.com',
+    externalUrl: 'https://academy.sinemus.id',
     features: ['Masterclass Director', 'Screenwriting Lab', 'Technical Workshop'],
     stats: [
       { label: 'Alumni Trainee', value: '1,200+' },
@@ -215,7 +215,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
     about: 'Sinemus Community membangun iklim apresiasi sinema yang inklusif dan suportif. Kami mengabungkan ruang diskusi kritis, pemutaran independen berkala, serta program stimulan dana hibah kecil (*micro-grants*) untuk mendorong pertumbuhan sineas muda di berbagai daerah.',
     bannerUrl: '/images/hero/khoas_poster.png',
     ogImage: '/share/sinemus-community.PNG',
-    externalUrl: 'https://community.sinemus.com',
+    externalUrl: 'https://community.sinemus.id',
     features: ['Community Screening', 'Filmmaker Gathering', 'Funding Lab Grants'],
     stats: [
       { label: 'Anggota Komunitas', value: '500+' },
