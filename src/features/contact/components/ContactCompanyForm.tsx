@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Check, Send, Loader2, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Check, Send, Loader2 } from 'lucide-react';
 import { ContactCompanyData, ContactFormData } from '../types';
 import { submitContactForm } from '../api';
 
@@ -76,11 +76,6 @@ export const ContactCompanyForm: React.FC<ContactCompanyFormProps> = ({ data }) 
         <div className="pointer-events-none absolute -bottom-20 -left-20 w-64 h-64 bg-accent-subtle/20 rounded-full blur-3xl opacity-60" aria-hidden="true" />
         
         <div className="space-y-4 z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent-subtle/30 border border-borderToken-subtle/50 text-xs font-mono font-medium text-content-primary">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Kemitraan Strategis</span>
-          </div>
-
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-content-primary uppercase tracking-tight leading-tight">
             {labels.heading}
           </h2>
