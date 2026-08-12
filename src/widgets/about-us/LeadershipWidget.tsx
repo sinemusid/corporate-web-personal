@@ -8,7 +8,7 @@ export const LeadershipWidget: React.FC = async () => {
   if (!leadership) return null;
 
   return (
-    <SectionWrapper id="our-team" darkBg>
+    <SectionWrapper id="our-team">
       <LeadershipSection data={leadership} />
     </SectionWrapper>
   );

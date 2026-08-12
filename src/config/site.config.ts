@@ -1,16 +1,32 @@
 export const siteConfig = {
-  name: 'Sinemus Indonesia',
-  description: 'Ekosistem Kreatif & Perusahaan Produksi Sinematik Terdepan di Indonesia.',
-  url: 'https://sinemus.co.id',
-  ogImage: 'https://sinemus.co.id/og-image.jpg',
+  name: 'Sineas Muslim Indonesia (Sinemus)',
+  brandName: 'Sinemus',
+  legalName: 'PT Sineas Muslim Indonesia',
+  alternateName: ['Sinemus', 'Sinemus Indonesia'],
+  description:
+    'Sineas Muslim Indonesia (Sinemus) adalah platform ekosistem sinema dan penyedia solusi teknologi terintegrasi. Menghadirkan layanan produksi film, event screening komunitas, hingga solusi digital terpercaya di Indonesia.',
+  productionUrl: 'https://sinemus.id',
+  url: process.env.NEXT_PUBLIC_SITE_URL
+    ? process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : `https://${process.env.NEXT_PUBLIC_SITE_URL}`
+    : process.env.VERCEL
+      ? 'https://sinemus.vercel.app'
+      : 'https://sinemus.id',
+  ogImage: '/share/sinemus-indonesia.PNG',
   links: {
-    instagram: 'https://instagram.com/sinemus.id',
-    linkedin: 'https://linkedin.com/company/sinemus-indonesia',
-    youtube: 'https://youtube.com/@sinemusindonesia',
+    instagram: 'https://www.instagram.com/sineasmuslim.id',
+    tiktok: 'https://www.tiktok.com/@sineasmuslimindonesia',
+    youtube: 'https://youtube.com/@sineasmuslim_id',
   },
   contact: {
-    email: 'info@sinemus.co.id',
-    phone: '+62 812 3456 7890',
-    address: 'Jakarta South Creative Hub, DKI Jakarta, Indonesia',
+    email: 'sineasmuslimindonesia@gmail.com',
+    phone: '+62 895-2602-0145',
+    address: 'Bandung, Indonesia',
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || '',
   },
 };
+

@@ -21,7 +21,6 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
             className="absolute inset-0 block w-full h-full object-cover object-center opacity-40"
           >
             <source src={data.backgroundVideo} type="video/mp4" />
-            <source src="/images/hero/Video-screen-1.mov" type="video/quicktime" />
           </video>
         ) : (
           <Image
@@ -42,7 +41,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
       />
 
       {/* Hero Central Text */}
-      <div className="relative z-10 space-y-5 sm:space-y-7 max-w-5xl mx-auto py-12">
+      <div className="relative z-10 space-y-3 sm:space-y-4 lg:space-y-7 max-w-5xl mx-auto py-6 sm:py-8 lg:py-12">
         <h1 className="flex justify-center items-center">
           <span className="sr-only">{data.title}</span>
           <Image
@@ -51,10 +50,10 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
             width={600}
             height={150}
             priority
-            className="h-14 sm:h-20 md:h-24 lg:h-32 object-contain brightness-0 invert drop-shadow-[0_2px_24px_rgba(255,255,255,0.08)]"
+            className="h-9 sm:h-14 md:h-20 lg:h-32 object-contain brightness-0 invert drop-shadow-[0_2px_24px_rgba(255,255,255,0.08)]"
           />
         </h1>
-        <p className="text-base sm:text-lg md:text-xl font-body font-normal text-blue-200 tracking-wide max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-base lg:text-xl font-body font-normal text-blue-200 tracking-wide max-w-xs sm:max-w-lg lg:max-w-2xl mx-auto leading-relaxed">
           {data.tagline}
         </p>
       </div>

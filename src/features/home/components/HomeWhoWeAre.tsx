@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
@@ -11,51 +9,26 @@ interface HomeWhoWeAreProps {
 }
 
 export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [hasVideoError, setHasVideoError] = React.useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
-
   const bgImage = data.backgroundImage || '/images/hero/sinemus_team_photo.jpg';
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().then(() => {
-        setIsVideoLoaded(true);
-      }).catch(() => {
-        // Autoplay policy or play error fallback
-        setHasVideoError(true);
-      });
-    }
-  }, [data.backgroundVideo]);
 
   return (
     <div className="relative w-full min-h-[85vh] sm:min-h-screen flex flex-col justify-end lg:justify-center overflow-hidden bg-slate-950 px-6 sm:px-12 pb-12 sm:pb-16 lg:pb-0">
 
-      {/* 1. Background Media Container (Pure Video OR Image Fallback — No Opacity Stacking) */}
+      {/* 1. Background Media Container */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none bg-slate-950">
-        {/* Video Element — Shown when valid & loaded */}
-        {data.backgroundVideo && !hasVideoError ? (
+        {data.backgroundVideo ? (
           <video
-            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             aria-hidden="true"
-            onLoadedData={() => setIsVideoLoaded(true)}
-            onError={() => setHasVideoError(true)}
-            className={`absolute inset-0 block w-full h-full object-cover object-center transition-opacity duration-700 ${
-              isVideoLoaded ? 'opacity-80' : 'opacity-0'
-            }`}
+            className="absolute inset-0 block w-full h-full object-cover object-center opacity-60"
           >
             <source src={data.backgroundVideo} type="video/mp4" />
-            <source src="/images/hero/Video-screen-1.mov" type="video/quicktime" />
           </video>
-        ) : null}
-
-        {/* Fallback Image — Rendered ONLY if video fails, has error, or is not provided */}
-        {(!data.backgroundVideo || hasVideoError || !isVideoLoaded) && (
+        ) : (
           <Image
             src={bgImage}
             alt={data.subheading || 'Sinemus Indonesia'}

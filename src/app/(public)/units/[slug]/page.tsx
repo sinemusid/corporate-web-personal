@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { fetchUnitBySlug } from '@/features/units/api';
 import { siteConfig } from '@/config/site.config';
 import { constructMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd, UnitJsonLd } from '@/components/seo/json-ld';
 import { UnitDetailWidget } from '@/widgets/units';
 
 export const revalidate = 3600;
@@ -34,11 +35,21 @@ export async function generateMetadata({ params }: UnitDetailPageProps): Promise
     });
   }
 
+  const shareImage = unit.ogImage || siteConfig.ogImage;
+
   return constructMetadata({
     title: unit.title,
     description: unit.description,
-    image: unit.bannerUrl || siteConfig.ogImage,
+    image: shareImage,
     canonicalUrl: `/units/${unit.slug}`,
+    keywords: [
+      unit.title,
+      `Sinemus ${unit.title}`,
+      'Sineas Muslim Indonesia',
+      'Sinemus Indonesia',
+      'Unit Bisnis Sinemus',
+      ...(unit.features || []),
+    ],
   });
 }
 
@@ -52,7 +63,16 @@ export default async function UnitDetailPage({ params }: UnitDetailPageProps) {
 
   return (
     <main>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Beranda', item: '/' },
+          { name: 'Unit Bisnis', item: '/' },
+          { name: unit.title, item: `/units/${unit.slug}` },
+        ]}
+      />
+      <UnitJsonLd unit={unit} />
       <UnitDetailWidget unit={unit} />
     </main>
   );
 }
+

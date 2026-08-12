@@ -4,7 +4,7 @@ import { siteConfig } from '@/config/site.config';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url;
+  const baseUrl = siteConfig.productionUrl || 'https://sinemus.id';
 
   const routes = ['', '/about', '/collaborator', '/contact'].map((route) => ({
     url: `${baseUrl}${route}`,
@@ -23,4 +23,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...routes, ...unitRoutes];
 }
+
 

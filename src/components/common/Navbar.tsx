@@ -80,7 +80,6 @@ export const Navbar: React.FC = () => {
   
   // Theme logic for top vs scrolled header
   const isTransparentTop = !isScrolled;
-  const isDarkText = !isDarkHeroPage && isTransparentTop;
 
   return (
     <header

@@ -8,7 +8,7 @@ export const VisionMissionValueWidget: React.FC = async () => {
   if (!visionMissionValue) return null;
 
   return (
-    <SectionWrapper id="vision-mission" darkBg className="pt-2 sm:pt-4">
+    <SectionWrapper id="vision-mission" className="pt-2 sm:pt-4">
       <VisionMissionValue data={visionMissionValue} />
     </SectionWrapper>
   );

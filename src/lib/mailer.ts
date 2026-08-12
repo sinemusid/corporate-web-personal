@@ -7,9 +7,7 @@ export interface MailPayload {
   message: string;
 }
 
-export async function sendContactEmail(payload: MailPayload): Promise<{ success: boolean; message: string }> {
-  // Mock mailer integration driver
-  console.log('[Mailer] Dispatching contact email:', payload);
+export async function sendContactEmail(): Promise<{ success: boolean; message: string }> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({

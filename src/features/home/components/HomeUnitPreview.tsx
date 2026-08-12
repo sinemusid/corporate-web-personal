@@ -86,24 +86,40 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
         {data.units.map((unit) => (
           <div
             key={unit.id}
-            className="group relative rounded-2xl bg-white border border-slate-200 p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-500 hover:shadow-sm h-full min-h-[300px]"
+            className="group relative rounded-2xl overflow-hidden border border-slate-200/80 hover:border-blue-500/80 p-6 flex flex-col justify-between transition-all duration-500 hover:shadow-xl hover:-translate-y-1 h-full min-h-[300px]"
           >
-            <div className="space-y-3">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors tracking-wide">
+            {/* Background Image Showcase */}
+            <Image
+              src="/images/hero/bg-unit-preview.jpeg"
+              alt={unit.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+
+            {/* Dark Glass Overlay for High Contrast Legibility */}
+            <div 
+              aria-hidden="true" 
+              className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-900/65 group-hover:via-slate-950/75 transition-colors duration-500 z-0 pointer-events-none" 
+            />
+
+            {/* Card Content Overlay */}
+            <div className="relative z-10 space-y-3">
+              <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-blue-300 transition-colors tracking-wide">
                 {unit.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-500 font-normal tracking-wide leading-relaxed line-clamp-4">
+              <p className="text-xs sm:text-sm text-slate-200/90 font-normal tracking-wide leading-relaxed line-clamp-4">
                 {unit.description}
               </p>
             </div>
 
-            <div className="pt-5 mt-4 border-t border-slate-100">
+            <div className="relative z-10 pt-5 mt-4 border-t border-white/15">
               <Link
                 href={`/units/${unit.slug}`}
-                className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-blue-600 transition-colors"
+                className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-blue-300 group-hover:text-white transition-colors"
               >
                 <span>Pelajari Lebih Lanjut</span>
-                <ArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-blue-400 group-hover:text-white" />
               </Link>
             </div>
           </div>

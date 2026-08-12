@@ -8,7 +8,7 @@ export const CareerRoadmapWidget: React.FC = async () => {
   if (!careerRoadmap) return null;
 
   return (
-    <SectionWrapper id="roadmap" darkBg>
+    <SectionWrapper id="roadmap">
       <CareerRoadmap data={careerRoadmap} />
     </SectionWrapper>
   );

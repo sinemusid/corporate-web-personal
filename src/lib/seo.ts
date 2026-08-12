@@ -8,6 +8,29 @@ interface ConstructMetadataParams {
   canonicalUrl?: string;
   noIndex?: boolean;
   type?: 'website' | 'article';
+  keywords?: string[];
+  googleVerification?: string;
+}
+
+/**
+ * Helper untuk mendapatkan Base URL secara dinamis sesuai environment:
+ * 1. NEXT_PUBLIC_SITE_URL (jika di-set eksplisit)
+ * 2. VERCEL_PROJECT_PRODUCTION_URL / VERCEL_URL (jika di Vercel Preview/Staging)
+ * 3. siteConfig.url (default https://sinemus.id)
+ */
+export function getBaseUrl(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : `https://${process.env.NEXT_PUBLIC_SITE_URL}`;
+  }
+  if (process.env.NODE_ENV === 'development') {
+    return `http://localhost:${process.env.PORT || 3000}`;
+  }
+  if (process.env.VERCEL) {
+    return 'https://sinemus.vercel.app';
+  }
+  return siteConfig.url;
 }
 
 /**
@@ -21,27 +44,55 @@ export function constructMetadata({
   canonicalUrl,
   noIndex = false,
   type = 'website',
+  keywords,
+  googleVerification = siteConfig.verification.google,
 }: ConstructMetadataParams = {}): Metadata {
-  const metaTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const metaTitle = title ? `${title} - ${siteConfig.brandName}` : siteConfig.name;
+  const baseUrl = getBaseUrl();
+  const productionBase = siteConfig.productionUrl || 'https://sinemus.id';
+
+  const rawPath = canonicalUrl || '/';
+  const canonicalTarget = rawPath.startsWith('http')
+    ? rawPath
+    : `${productionBase}${rawPath.startsWith('/') ? rawPath : `/${rawPath}`}`;
+
+  const absoluteImageUrl = image.startsWith('http')
+    ? image
+    : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
 
   return {
     title: metaTitle,
     description,
-    metadataBase: new URL(siteConfig.url),
+    keywords: keywords && keywords.length > 0 ? keywords : undefined,
+    metadataBase: new URL(baseUrl),
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/favicon.ico',
+    },
+    verification: googleVerification
+      ? {
+          google: googleVerification,
+        }
+      : undefined,
     alternates: {
-      canonical: canonicalUrl || '/',
+      canonical: canonicalTarget,
     },
     openGraph: {
       title: metaTitle,
       description,
-      url: canonicalUrl || '/',
+      url: canonicalTarget,
       siteName: siteConfig.name,
       locale: 'id_ID',
       type,
       images: [
         {
-          url: image,
+          url: absoluteImageUrl,
+          secureUrl: absoluteImageUrl,
+          width: 1200,
+          height: 630,
           alt: metaTitle,
+          type: 'image/png',
         },
       ],
     },
@@ -49,7 +100,9 @@ export function constructMetadata({
       card: 'summary_large_image',
       title: metaTitle,
       description,
-      images: [image],
+      images: [absoluteImageUrl],
+      creator: '@sineasmuslim_id',
+      site: '@sineasmuslim_id',
     },
     robots: {
       index: !noIndex,
@@ -64,3 +117,4 @@ export function constructMetadata({
     },
   };
 }
+

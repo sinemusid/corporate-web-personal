@@ -10,7 +10,7 @@ export interface SocialChannelData {
   name: string;
   label: string;
   href: string;
-  type: 'website' | 'instagram' | 'youtube' | 'twitter' | 'linkedin';
+  type: 'website' | 'instagram' | 'youtube' | 'twitter' | 'linkedin' | 'tiktok';
 }
 
 export interface ValueItemData {

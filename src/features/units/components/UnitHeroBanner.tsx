@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ChevronRight, ExternalLink, Clapperboard, Trophy, Users, Monitor } from 'lucide-react';
+import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react';
 import { BusinessUnit } from '../types';
 import { MOCK_UNITS } from '../mock/units-mock';
 
@@ -13,13 +13,6 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
   unit = MOCK_UNITS[0],
 }) => {
   const heroImage = unit.bannerUrl || '/images/hero/khoas_poster.png';
-
-  const statIcons = [
-    <Clapperboard key="clap" className="w-6 h-6 text-blue-400" />,
-    <Trophy key="trophy" className="w-6 h-6 text-blue-400" />,
-    <Users key="users" className="w-6 h-6 text-blue-400" />,
-    <Monitor key="monitor" className="w-6 h-6 text-blue-400" />,
-  ];
 
   return (
     <section className="relative w-full min-h-[80vh] sm:min-h-[75vh] lg:min-h-[100vh] flex flex-col justify-center bg-slate-950 text-white overflow-hidden pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20">
