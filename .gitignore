@@ -17,9 +17,6 @@
 !.yarn/releases
 !.yarn/versions
 
-*.mov
-*.mp4
-
 # testing
 /coverage
 
