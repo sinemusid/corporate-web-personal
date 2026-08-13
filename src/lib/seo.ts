@@ -24,13 +24,13 @@ export function getBaseUrl(): string {
       ? process.env.NEXT_PUBLIC_SITE_URL
       : `https://${process.env.NEXT_PUBLIC_SITE_URL}`;
   }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
   if (process.env.NODE_ENV === 'development') {
     return `http://localhost:${process.env.PORT || 3000}`;
   }
-  if (process.env.VERCEL) {
-    return 'https://sinemus.vercel.app';
-  }
-  return siteConfig.url;
+  return siteConfig.productionUrl || siteConfig.url;
 }
 
 /**
@@ -55,6 +55,10 @@ export function constructMetadata({
   const canonicalTarget = rawPath.startsWith('http')
     ? rawPath
     : `${productionBase}${rawPath.startsWith('/') ? rawPath : `/${rawPath}`}`;
+
+  const currentEnvTarget = rawPath.startsWith('http')
+    ? rawPath
+    : `${baseUrl}${rawPath.startsWith('/') ? rawPath : `/${rawPath}`}`;
 
   const absoluteImageUrl = image.startsWith('http')
     ? image
@@ -81,7 +85,7 @@ export function constructMetadata({
     openGraph: {
       title: metaTitle,
       description,
-      url: canonicalTarget,
+      url: currentEnvTarget,
       siteName: siteConfig.name,
       locale: 'id_ID',
       type,
