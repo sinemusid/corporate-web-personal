@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { fontHeading, fontBody, fontMono } from "@/config/fonts";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { constructMetadata } from "@/lib/seo";
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-body bg-bg-primary text-content-primary selection:bg-accent-solid selection:text-content-inverse">
         <OrganizationJsonLd />
         {children}
+        <Analytics />
       </body>
     </html>
   );
