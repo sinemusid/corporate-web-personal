@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
 import { fontHeading, fontBody, fontMono } from "@/config/fonts";
-import { siteConfig } from "@/config/site.config";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
+import { constructMetadata } from "@/lib/seo";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: `${siteConfig.name} - Sinemus Indonesia`,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
-  },
-};
+export const metadata: Metadata = constructMetadata();
 
 export default function RootLayout({
   children,
