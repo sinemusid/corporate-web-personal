@@ -51,27 +51,36 @@ export function constructMetadata({
   googleVerification = siteConfig.verification.google,
 }: ConstructMetadataParams = {}): Metadata {
   const metaTitle = title ? `${title} - ${siteConfig.brandName}` : siteConfig.name;
-  const baseUrl = getBaseUrl();
+  
   const productionBase = siteConfig.productionUrl || 'https://sinemus.id';
+  const stagingShareBase = siteConfig.stagingShareUrl || 'https://sinemus.vercel.app';
 
   const rawPath = canonicalUrl || '/';
+  const cleanPath = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+
+  // Google Canonical Tag (Terkunci ke https://sinemus.id/...)
   const canonicalTarget = rawPath.startsWith('http')
     ? rawPath
-    : `${productionBase}${rawPath.startsWith('/') ? rawPath : `/${rawPath}`}`;
+    : `${productionBase}${cleanPath}`;
 
-  const currentEnvTarget = rawPath.startsWith('http')
+  // OpenGraph URL
+  const ogUrl = rawPath.startsWith('http')
     ? rawPath
-    : `${baseUrl}${rawPath.startsWith('/') ? rawPath : `/${rawPath}`}`;
+    : `${stagingShareBase}${cleanPath}`;
 
-  const absoluteImageUrl = image.startsWith('http')
-    ? image
-    : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
+  // Share Image URL (Terkunci ke https://sinemus.vercel.app/share/...)
+  let absoluteImageUrl: string;
+  if (image.startsWith('http')) {
+    absoluteImageUrl = image.replace(/^https?:\/\/[^\/]+/, stagingShareBase);
+  } else {
+    absoluteImageUrl = `${stagingShareBase}${image.startsWith('/') ? '' : '/'}${image}`;
+  }
 
   return {
     title: metaTitle,
     description,
     keywords: keywords && keywords.length > 0 ? keywords : undefined,
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(stagingShareBase),
     icons: {
       icon: '/favicon.ico',
       shortcut: '/favicon.ico',
@@ -88,7 +97,7 @@ export function constructMetadata({
     openGraph: {
       title: metaTitle,
       description,
-      url: currentEnvTarget,
+      url: ogUrl,
       siteName: siteConfig.name,
       locale: 'id_ID',
       type,

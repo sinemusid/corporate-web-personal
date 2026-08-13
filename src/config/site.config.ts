@@ -6,6 +6,7 @@ export const siteConfig = {
   description:
     'Sineas Muslim Indonesia (Sinemus) adalah platform ekosistem sinema dan penyedia solusi teknologi terintegrasi. Menghadirkan layanan produksi film, event screening komunitas, hingga solusi digital terpercaya di Indonesia.',
   productionUrl: 'https://sinemus.id',
+  stagingShareUrl: 'https://sinemus.vercel.app',
   url: process.env.NEXT_PUBLIC_SITE_URL
     ? process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
       ? process.env.NEXT_PUBLIC_SITE_URL
