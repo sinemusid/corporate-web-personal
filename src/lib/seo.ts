@@ -24,13 +24,16 @@ export function getBaseUrl(): string {
       ? process.env.NEXT_PUBLIC_SITE_URL
       : `https://${process.env.NEXT_PUBLIC_SITE_URL}`;
   }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
   if (process.env.NODE_ENV === 'development') {
     return `http://localhost:${process.env.PORT || 3000}`;
   }
-  return siteConfig.productionUrl || siteConfig.url;
+  return siteConfig.url;
 }
 
 /**
@@ -121,4 +124,3 @@ export function constructMetadata({
     },
   };
 }
-

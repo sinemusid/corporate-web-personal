@@ -10,9 +10,7 @@ export const siteConfig = {
     ? process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')
       ? process.env.NEXT_PUBLIC_SITE_URL
       : `https://${process.env.NEXT_PUBLIC_SITE_URL}`
-    : process.env.VERCEL
-      ? 'https://sinemus.vercel.app'
-      : 'https://sinemus.id',
+    : 'https://sinemus.vercel.app',
   ogImage: '/share/sinemus-indonesia.PNG',
   links: {
     instagram: 'https://www.instagram.com/sineasmuslim.id',
@@ -29,4 +27,3 @@ export const siteConfig = {
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || '',
   },
 };
-
