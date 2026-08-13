@@ -35,16 +35,18 @@ export async function generateMetadata({ params }: UnitDetailPageProps): Promise
     });
   }
 
+  const cleanUnitTitle = `${resolvedParams.slug.charAt(0).toUpperCase()}${resolvedParams.slug.slice(1)} Unit`;
   const shareImage = unit.ogImage || siteConfig.ogImage;
 
   return constructMetadata({
-    title: unit.title,
+    title: cleanUnitTitle,
     description: unit.description,
     image: shareImage,
     canonicalUrl: `/units/${unit.slug}`,
     keywords: [
+      cleanUnitTitle,
       unit.title,
-      `Sinemus ${unit.title}`,
+      `Sinemus ${cleanUnitTitle}`,
       'Sineas Muslim Indonesia',
       'Sinemus Indonesia',
       'Unit Bisnis Sinemus',

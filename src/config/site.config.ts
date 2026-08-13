@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'Sineas Muslim Indonesia (Sinemus)',
-  brandName: 'Sinemus',
+  brandName: 'Sinemus Indonesia',
   legalName: 'PT Sineas Muslim Indonesia',
   alternateName: ['Sinemus', 'Sinemus Indonesia'],
   description:
