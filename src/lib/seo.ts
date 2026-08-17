@@ -50,7 +50,11 @@ export function constructMetadata({
   keywords,
   googleVerification = siteConfig.verification.google,
 }: ConstructMetadataParams = {}): Metadata {
-  const metaTitle = title ? `${title} - ${siteConfig.brandName}` : siteConfig.name;
+  const metaTitle = title
+    ? title.includes(siteConfig.brandName) || title.includes('Sinemus')
+      ? title
+      : `${title} - ${siteConfig.brandName}`
+    : siteConfig.name;
   
   const productionBase = siteConfig.productionUrl || 'https://sinemus.id';
   const stagingShareBase = siteConfig.stagingShareUrl || 'https://sinemus.vercel.app';

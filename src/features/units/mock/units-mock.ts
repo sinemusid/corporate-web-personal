@@ -4,7 +4,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
   {
     id: 'unit-production',
     slug: 'production',
-    title: 'SINEMUS PRODUCTION',
+    title: 'PRODUCTION UNIT',
     subtitle: 'Film Feature & Studio Content Studio',
     tagline: 'Crafting Impactful Cinema & World-Class Visual Storytelling',
     description: 'Rumah produksi film layar lebar, dokumenter, dan konten audio-visual berstandar internasional.',
@@ -72,7 +72,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
   {
     id: 'unit-screen',
     slug: 'screen',
-    title: 'SINEMUS SCREEN',
+    title: 'SCREEN UNIT',
     subtitle: 'Exhibition & Digital Screening Platform',
     tagline: 'Bridging Filmmakers to Diverse Audiences Across Screens',
     description: 'Jaringan eksibisi sinema, pemutaran independen, dan platform penayangan digital terintegrasi.',
@@ -140,7 +140,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
   {
     id: 'unit-academy',
     slug: 'academy',
-    title: 'SINEMUS ACADEMY',
+    title: 'ACADEMY UNIT',
     subtitle: 'Creative Talent & Technical Education',
     tagline: 'Nurturing the Next Generation of Visionary Filmmakers',
     description: 'Inkubator dan lembaga pelatihan intensif untuk mencetak talenta perfilman masa depan.',
@@ -208,7 +208,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
   {
     id: 'unit-community',
     slug: 'community',
-    title: 'SINEMUS COMMUNITY',
+    title: 'COMMUNITY UNIT',
     subtitle: 'Filmmakers Network & Arts Collective',
     tagline: 'Fostering Collaborative Ecosystems for Independent Cinema',
     description: 'Wadah jejaring sineas independen, apresiasi film, dan forum apresiasi karya.',

@@ -15,9 +15,9 @@ import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 export const revalidate = 3600;
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Tentang Kami',
+  title: 'Tentang Kami - Profil & Misi Corporate',
   description:
-    'Mengenal lebih dekat profil Sinemus Indonesia, visi dan misi perusahaan, struktur organisasi, jajaran kepemimpinan, serta rekam jejak portofolio industri kreatif.',
+    'Mengenal profil Sinemus Indonesia, visi misi, struktur organisasi, tim kepemimpinan, dan rekam jejak portofolio ekosistem sinema terintegrasi.',
   canonicalUrl: '/about',
   image: '/share/sinemus-indonesia.PNG',
   keywords: [
@@ -27,7 +27,6 @@ export const metadata: Metadata = constructMetadata({
     'Tim Kepemimpinan Sinemus',
     'Struktur Organisasi Sinemus',
     'Portofolio Sinemus Indonesia',
-    'Rekam Jejak Perusahaan Film',
   ],
 });
 

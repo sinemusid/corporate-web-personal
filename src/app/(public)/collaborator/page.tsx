@@ -9,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = constructMetadata({
   title: 'Mitra & Kolaborator Strategis',
   description:
-    'Jelajahi jaringan mitra strategis, jaringan komunitas sinema, vendor produksi terpercaya, dan ekosistem kolaborator resmi Sinemus Indonesia.',
+    'Jelajahi jaringan mitra strategis, jaringan komunitas sinema, dan ekosistem kolaborator resmi Sinemus Indonesia.',
   canonicalUrl: '/collaborator',
   image: '/share/sinemus-indonesia.PNG',
   keywords: [
@@ -17,7 +17,6 @@ export const metadata: Metadata = constructMetadata({
     'Kolaborator Strategis Sinemus',
     'Kemitraan Sinema Indonesia',
     'Jaringan Komunitas Film',
-    'Vendor Produksi Film',
     'Ekosistem Kreatif Sinemus',
   ],
 });

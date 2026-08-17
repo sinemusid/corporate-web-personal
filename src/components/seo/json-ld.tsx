@@ -110,27 +110,86 @@ export function OrganizationJsonLd() {
     subOrganization: [
       {
         '@type': 'Organization',
-        '@id': `${productionBase}/units/production#unit`,
-        name: 'Sinemus Production',
-        url: `${productionBase}/units/production`,
-      },
-      {
-        '@type': 'Organization',
         '@id': `${productionBase}/units/screen#unit`,
-        name: 'Sinemus Screen',
+        name: 'Screen Unit',
         url: `${productionBase}/units/screen`,
       },
       {
         '@type': 'Organization',
+        '@id': `${productionBase}/units/production#unit`,
+        name: 'Production Unit',
+        url: `${productionBase}/units/production`,
+      },
+      {
+        '@type': 'Organization',
         '@id': `${productionBase}/units/academy#unit`,
-        name: 'Sinemus Academy',
+        name: 'Academy Unit',
         url: `${productionBase}/units/academy`,
       },
       {
         '@type': 'Organization',
         '@id': `${productionBase}/units/community#unit`,
-        name: 'Sinemus Community',
+        name: 'Community Unit',
         url: `${productionBase}/units/community`,
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+export function SiteNavigationJsonLd() {
+  const productionBase = siteConfig.productionUrl || 'https://sinemus.id';
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: [
+      {
+        '@type': 'SiteNavigationElement',
+        position: 1,
+        name: 'Screen Unit',
+        description: 'Jaringan eksibisi sinema, pemutaran independen, dan penayangan digital.',
+        url: `${productionBase}/units/screen`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 2,
+        name: 'Production Unit',
+        description: 'Rumah produksi film layar lebar, dokumenter, dan konten audio-visual.',
+        url: `${productionBase}/units/production`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 3,
+        name: 'Academy Unit',
+        description: 'Inkubator dan pelatihan intensif talenta perfilman masa depan.',
+        url: `${productionBase}/units/academy`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 4,
+        name: 'Community Unit',
+        description: 'Wadah jejaring sineas independen dan apresiasi karya.',
+        url: `${productionBase}/units/community`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 5,
+        name: 'Tentang Kami',
+        description: 'Profil Sinemus Indonesia, visi misi, struktur organisasi, dan portofolio.',
+        url: `${productionBase}/about`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 6,
+        name: 'Hubungi Kami',
+        description: 'Hubungi Sinemus Indonesia untuk kemitraan corporate dan konsultasi.',
+        url: `${productionBase}/contact`,
       },
     ],
   };

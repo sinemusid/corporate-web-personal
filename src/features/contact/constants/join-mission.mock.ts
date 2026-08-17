@@ -9,7 +9,7 @@ export const MOCK_JOIN_MISSION: JoinMissionData = {
   ctaHref: '#contact-form',
   benefits: [
     'Jejaring kolaborasi dengan 500+ filmmaker dan komunitas sinema.',
-    'Akses ke inkubasi Sinemus Academy & hibah pendanaan karya.',
-    'Dukungan distribusi eksibisi di jaringan Sinemus Screen.',
+    'Akses ke inkubasi Academy Unit & hibah pendanaan karya.',
+    'Dukungan distribusi eksibisi di jaringan Screen Unit.',
   ],
 };

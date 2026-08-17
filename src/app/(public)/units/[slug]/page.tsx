@@ -35,7 +35,16 @@ export async function generateMetadata({ params }: UnitDetailPageProps): Promise
     });
   }
 
-  const cleanUnitTitle = `${resolvedParams.slug.charAt(0).toUpperCase()}${resolvedParams.slug.slice(1)} Unit`;
+  const unitTitles: Record<string, string> = {
+    screen: 'Screen Unit - Layanan Penayangan & Distribusi Film',
+    production: 'Production Unit - Studio Film & Audio Visual',
+    academy: 'Academy Unit - Inkubasi & Pelatihan Sinema',
+    community: 'Community Unit - Jaringan Sineas & Komunitas',
+  };
+
+  const cleanUnitTitle =
+    unitTitles[resolvedParams.slug] ||
+    `${resolvedParams.slug.charAt(0).toUpperCase()}${resolvedParams.slug.slice(1)} Unit`;
   const shareImage = unit.ogImage || siteConfig.ogImage;
 
   return constructMetadata({
@@ -46,7 +55,6 @@ export async function generateMetadata({ params }: UnitDetailPageProps): Promise
     keywords: [
       cleanUnitTitle,
       unit.title,
-      `Sinemus ${cleanUnitTitle}`,
       'Sineas Muslim Indonesia',
       'Sinemus Indonesia',
       'Unit Bisnis Sinemus',

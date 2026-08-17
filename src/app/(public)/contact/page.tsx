@@ -7,9 +7,9 @@ import { BreadcrumbJsonLd, LocalBusinessJsonLd } from '@/components/seo/json-ld'
 export const revalidate = 3600;
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Hubungi Kami & Kemitraan Strategis',
+  title: 'Hubungi Kami & Kemitraan Corporate',
   description:
-    'Mari berkolaborasi dan bangun ekosistem digital bersama Sinemus Indonesia. Hubungi tim kami untuk konsultasi proyek, kemitraan strategis, serta informasi karir.',
+    'Hubungi tim Sinemus Indonesia untuk konsultasi proyek, kemitraan strategis, distribusi eksibisi, dan kolaborasi ekosistem sinema.',
   canonicalUrl: '/contact',
   image: '/share/sinemus-indonesia.PNG',
   keywords: [
@@ -17,7 +17,6 @@ export const metadata: Metadata = constructMetadata({
     'Kemitraan Sinemus',
     'Karir Sinemus Indonesia',
     'Konsultasi Proyek Digital',
-    'Alamat Sinemus Bandung',
     'Hubungi Sineas Muslim',
   ],
 });

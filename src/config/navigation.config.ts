@@ -12,22 +12,22 @@ export const mainNavigation: NavItem[] = [
     description: '4 Pilar Unit Bisnis (Production, Screen, Academy, Community)',
     subItems: [
       {
-        label: 'Sinemus Production',
+        label: 'Production Unit',
         href: '/units/production',
         description: 'Rumah produksi film layar lebar, dokumenter, dan konten audio-visual.',
       },
       {
-        label: 'Sinemus Screen',
+        label: 'Screen Unit',
         href: '/units/screen',
         description: 'Jaringan eksibisi sinema, pemutaran independen, dan penayangan digital.',
       },
       {
-        label: 'Sinemus Academy',
+        label: 'Academy Unit',
         href: '/units/academy',
         description: 'Inkubator dan pelatihan intensif talenta perfilman masa depan.',
       },
       {
-        label: 'Sinemus Community',
+        label: 'Community Unit',
         href: '/units/community',
         description: 'Wadah jejaring sineas independen dan apresiasi karya.',
       },
