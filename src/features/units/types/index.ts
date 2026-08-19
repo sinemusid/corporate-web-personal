@@ -31,7 +31,6 @@ export interface BusinessUnit extends BaseEntity {
   slug: UnitSlug;
   title: string;
   subtitle: string;
-  tagline: string;
   description: string;
   about: string;
   features: string[];

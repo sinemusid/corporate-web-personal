@@ -6,14 +6,12 @@ export const MOCK_UNITS: BusinessUnit[] = [
     slug: 'production',
     title: 'PRODUCTION UNIT',
     subtitle: 'Film Feature & Studio Content Studio',
-    tagline: 'Menciptakan Karya Visual dan Audio-Visual Berkualitas Tinggi',
     description: 'Unit produksi yang berfokus pada penciptaan karya film, video korporat, dokumenter, dan konten audio-visual berstandar profesional.',
     about: 'Sinemus Production memadukan kekuatan narasi visual dengan standar teknis produksi yang solid. Kami mendampingi proses kreasi mulai dari pengembangan ide cerita, pra-produksi, eksekusi pengambilan gambar, hingga tahap pasca-produksi untuk menghasilkan karya yang berkarakter dan berdampak.',
     bannerUrl: '/images/hero/bg-unit-preview.jpeg',
     ogImage: '/share/sinemus-production.PNG',
     externalUrl: 'https://production.sinemus.id',
     features: ['Feature Film & Short Film', 'Corporate & Commercial Video', 'Post-Production & Sound Finishing'],
-    stats: [],
     capabilities: [
       {
         title: 'Pra-Produksi & Konsep Cerita',
@@ -31,6 +29,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
         tags: ['Video Editing', 'Color Grading', 'Sound Design'],
       },
     ],
+    stats: [],
     featuredProjects: [],
     workflow: [
       {
@@ -55,14 +54,12 @@ export const MOCK_UNITS: BusinessUnit[] = [
     slug: 'screen',
     title: 'SCREEN UNIT',
     subtitle: 'Platform Screening Digital & Ticketing Event Sinema',
-    tagline: 'Distribusi Penayangan Film Digital dan Solusi Tiket Screening Terintegrasi',
     description: 'Platform penayangan film berbasis web serta sistem ticketing online untuk mempermudah manajemen dan partisipasi event screening offline.',
     about: 'Sinemus Screen memfasilitasi penayangan karya film melalui streaming digital berbasis web agar karya dapat menjangkau audiens yang lebih luas. Selain itu, platform ini menyediakan layanan pembelian tiket dan manajemen event screening luring (offline), memberikan kemudahan bagi peserta serta mempermudah penyelenggara dalam mengelola pendaftaran dan kuota event.',
     bannerUrl: '/images/hero/bg-unit-preview.jpeg',
     ogImage: '/share/sinemus-screen.PNG',
     externalUrl: 'https://screen.sinemus.id',
     features: ['Web Streaming & Digital Screening', 'Online Ticketing & Booking', 'Event Screening Management'],
-    stats: [],
     capabilities: [
       {
         title: 'Web Streaming & Digital Screening',
@@ -80,6 +77,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
         tags: ['Event Management', 'Attendee Tracking', 'Seamless Check-In'],
       },
     ],
+    stats: [],
     featuredProjects: [],
     workflow: [
       {
@@ -104,14 +102,12 @@ export const MOCK_UNITS: BusinessUnit[] = [
     slug: 'academy',
     title: 'ACADEMY UNIT',
     subtitle: 'Creative Talent & Technical Education',
-    tagline: 'Membangun Kapasitas dan Keterampilan Generasi Sineas Profesional',
     description: 'Pusat pelatihan, workshop, dan pembekalan teknis bagi talenta kreatif dan insan perfilman.',
     about: 'Sinemus Academy didedikasikan untuk memperkuat keahlian teknis dan pemahaman industri perfilman. Melalui berbagai program workshop, kelas intensif, dan sesi berbagi bersama praktisi berpengalaman, kami mendukung lahirnya talenta kreatif yang kompeten dan berintegritas.',
     bannerUrl: '/images/hero/bg-unit-preview.jpeg',
     ogImage: '/share/sinemus-academy.PNG',
     externalUrl: 'https://academy.sinemus.id',
     features: ['Technical Workshops', 'Masterclass & Directing Lab', 'Scriptwriting Class'],
-    stats: [],
     capabilities: [
       {
         title: 'Workshop & Pelatihan Teknis',
@@ -129,6 +125,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
         tags: ['Mentorship', 'Portfolio Review', 'Creative Guidance'],
       },
     ],
+    stats: [],
     featuredProjects: [],
     workflow: [
       {
@@ -153,14 +150,12 @@ export const MOCK_UNITS: BusinessUnit[] = [
     slug: 'community',
     title: 'COMMUNITY UNIT',
     subtitle: 'Filmmakers Network & Arts Collective',
-    tagline: 'Wadah Jejaring, Kolaborasi, dan Penguatan Ekosistem Sineas',
     description: 'Ruang kolaborasi dan interaksi bagi para sineas, kreator konten, dan penggiat media visual.',
     about: 'Sinemus Community membangun ekosistem yang suportif bagi para penggiat audio-visual. Kami memfasilitasi temu komunitas, pertukaran ide, serta ruang kolaborasi karya antarkreator di berbagai daerah.',
     bannerUrl: '/images/hero/bg-unit-preview.jpeg',
     ogImage: '/share/sinemus-community.PNG',
     externalUrl: 'https://community.sinemus.id',
     features: ['Filmmakers Meetup', 'Creative Collaboration', 'Community Discussion'],
-    stats: [],
     capabilities: [
       {
         title: 'Jejaring & Temu Komunitas',
@@ -178,6 +173,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
         tags: ['Film Review', 'Sharing Session', 'Community Screening'],
       },
     ],
+    stats: [],
     featuredProjects: [],
     workflow: [
       {
