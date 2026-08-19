@@ -1,15 +1,15 @@
 import { JoinMissionData } from '../types';
 
 export const MOCK_JOIN_MISSION: JoinMissionData = {
-  heading: 'BERGABUNG DALAM MISI EKOSISTEM SINEMUS',
-  subheading: 'Menjadi Bagian dari Gerakan Sinema Terintegrasi Berbasis Nilai Universal',
+  heading: 'TERHUBUNG DENGAN EKOSISTEM SINEMUS',
+  subheading: 'Membangun Sinergi Industri Perfilman dan Kreativitas Visual Bersama Sinemus Indonesia',
   description:
-    'Kami mengundang sineas, studio, investor, dan mitra strategis untuk bersama-sama membangun industri perfilman yang inklusif, mandiri, dan berdaya saing global.',
-  ctaText: 'Hubungi Tim Kemitraan',
+    'Kami terbuka untuk menjalin kerja sama strategis bersama mitra institusi, kreator, komunitas, dan korporat dalam memajukan ekosistem sinema yang bernilai dan berdampak.',
+  ctaText: 'Kirim Pesan Kolaborasi',
   ctaHref: '#contact-form',
   benefits: [
-    'Jejaring kolaborasi dengan 500+ filmmaker dan komunitas sinema.',
-    'Akses ke inkubasi Academy Unit & hibah pendanaan karya.',
-    'Dukungan distribusi eksibisi di jaringan Screen Unit.',
+    'Sinergi produksi audio-visual, film naratif, video korporat, dan karya kreatif bersama tim Sinemus.',
+    'Kemitraan pelatihan teknis perfilman, masterclass praktisi, dan program edukasi sinema terarah.',
+    'Fasilitasi penayangan digital serta solusi manajemen tiket untuk penyelenggaraan event screening.',
   ],
 };

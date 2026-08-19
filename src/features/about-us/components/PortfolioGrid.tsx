@@ -12,6 +12,10 @@ interface PortfolioGridProps {
 export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ data }) => {
   const [selectedItem, setSelectedItem] = useState<PortfolioItemData | null>(null);
 
+  if (!data?.items || data.items.length === 0) {
+    return null;
+  }
+
   const handleOpenModal = (item: PortfolioItemData) => {
     setSelectedItem(item);
   };

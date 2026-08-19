@@ -8,7 +8,7 @@ export const MOCK_PROJECT_STATS: ProjectStatsData = {
     { label: 'Film Diproduksi', value: '8', description: 'Karya layar lebar, film pendek, & serial orisinal' },
     { label: 'Profesional Crew', value: '150+', description: 'Tenaga ahli berpengalaman standar industri' },
     { label: 'Talent', value: '10+', description: 'Aktor & kreator kreatif berbakat' },
-    { label: 'Vendor', value: '10+', description: 'Mitra teknis & fasilitas produksi terpercaya' },
+    { label: 'Vendor', value: '4', description: 'Mitra teknis & fasilitas produksi terpercaya' },
     { label: 'Community Member', value: '90+', description: 'Jaringan pegiat & jejaring sineas' },
   ],
 };

@@ -12,7 +12,7 @@ interface UnitHeroBannerProps {
 export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
   unit = MOCK_UNITS[0],
 }) => {
-  const heroImage = unit.bannerUrl || '/images/hero/khoas_poster.png';
+  const heroImage = unit.bannerUrl || '/images/hero/bg-unit-preview.jpeg';
 
   return (
     <section className="relative w-full min-h-[80vh] sm:min-h-[75vh] lg:min-h-[100vh] flex flex-col justify-center bg-slate-950 text-white overflow-hidden pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20">
