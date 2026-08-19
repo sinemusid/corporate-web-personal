@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             Kolaborator
           </Link>
           <Link href="/contact" className="hover:text-blue-400 transition-colors">
-            Kontak
+            Hubungi Kami
           </Link>
         </div>
 

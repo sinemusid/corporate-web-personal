@@ -1,4 +1,4 @@
-import { MOCK_UNITS } from '../mock/units-mock';
+import { MOCK_UNITS } from '../constants/units-mock';
 import { mapBusinessUnits, mapSingleUnit } from './data-mapper';
 
 export async function fetchUnits() {

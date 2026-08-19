@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react';
 import { BusinessUnit } from '../types';
-import { MOCK_UNITS } from '../mock/units-mock';
+import { MOCK_UNITS } from '../constants/units-mock';
 
 interface UnitHeroBannerProps {
   unit?: BusinessUnit;

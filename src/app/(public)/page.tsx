@@ -7,7 +7,7 @@ import { WebSiteJsonLd } from '@/components/seo/json-ld';
 export const revalidate = 3600;
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Sinemus Indonesia - Platform Ekosistem Sinema & Solusi Digital',
+  title: 'Sinemus Indonesia – Platform Ekosistem Sinema & Solusi Digital',
   description:
     'Sinemus Indonesia adalah ekosistem sinema terintegrasi yang menghadirkan layanan produksi film, platform penayangan digital, akademi, dan komunitas sinema.',
   canonicalUrl: '/',

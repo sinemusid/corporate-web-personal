@@ -1,10 +1,10 @@
 export const siteConfig = {
-  name: 'Sineas Muslim Indonesia (Sinemus)',
+  name: 'Sinemus Indonesia – Platform Ekosistem Sinema & Solusi Digital',
   brandName: 'Sinemus Indonesia',
   legalName: 'PT Sineas Muslim Indonesia',
-  alternateName: ['Sinemus', 'Sinemus Indonesia'],
+  alternateName: ['Sinemus', 'Sinemus Indonesia', 'Sineas Muslim Indonesia'],
   description:
-    'Sineas Muslim Indonesia (Sinemus) adalah platform ekosistem sinema dan penyedia solusi teknologi terintegrasi. Menghadirkan layanan produksi film, event screening komunitas, hingga solusi digital terpercaya di Indonesia.',
+    'Sinemus Indonesia adalah ekosistem sinema terintegrasi yang menghadirkan layanan produksi film, platform penayangan digital, akademi, dan komunitas sinema.',
   productionUrl: 'https://sinemus.id',
   stagingShareUrl: 'https://sinemus.vercel.app',
   url: process.env.NEXT_PUBLIC_SITE_URL

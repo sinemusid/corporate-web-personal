@@ -116,6 +116,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
             <div className="relative z-10 pt-5 mt-4 border-t border-white/15">
               <Link
                 href={`/units/${unit.slug}`}
+                aria-label={`Pelajari lebih lanjut tentang ${unit.title}`}
                 className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-blue-300 group-hover:text-white transition-colors"
               >
                 <span>Pelajari Lebih Lanjut</span>

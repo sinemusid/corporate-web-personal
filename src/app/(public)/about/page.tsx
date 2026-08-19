@@ -15,7 +15,7 @@ import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 export const revalidate = 3600;
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Tentang Kami - Profil & Misi Corporate',
+  title: 'Tentang Kami – Profil & Misi Corporate',
   description:
     'Mengenal profil Sinemus Indonesia, visi misi, struktur organisasi, tim kepemimpinan, dan rekam jejak portofolio ekosistem sinema terintegrasi.',
   canonicalUrl: '/about',
@@ -49,6 +49,3 @@ export default function AboutUsPage() {
     </main>
   );
 }
-
-
-

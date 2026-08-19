@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: UnitDetailPageProps): Promise
   }
 
   const unitTitles: Record<string, string> = {
-    screen: 'Screen Unit - Platform Streaming Film & Ticketing Event Sinema',
+    screen: 'Screen Unit - Layanan Penayangan & Distribusi Film',
     production: 'Production Unit - Studio Film & Audio Visual',
     academy: 'Academy Unit - Inkubasi & Pelatihan Sinema',
     community: 'Community Unit - Jaringan Sineas & Komunitas',

@@ -7,6 +7,6 @@ export * from './components/UnitProjectsSection';
 export * from './components/UnitWorkflowSection';
 export * from './components/UnitCtaSection';
 export * from './components/UnitStatsSection';
-export * from './mock/units-mock';
+export * from './constants/units-mock';
 export * from './types';
 export * from './api';

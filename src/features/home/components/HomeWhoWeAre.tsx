@@ -67,9 +67,10 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
           <div className="pt-2 sm:pt-4 flex justify-start">
             <Link
               href={data.ctaHref}
+              aria-label="Tentang Kami - Profil Sinemus Indonesia"
               className="inline-flex items-center px-6 py-3 sm:px-7 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/15 hover:border-white/30 backdrop-blur-md font-body font-medium text-sm transition-all duration-300 group active:scale-95 cursor-pointer shadow-lg shadow-black/20"
             >
-              <span>Selengkapnya</span>
+              <span>{data.ctaText || 'Tentang Kami'}</span>
               <ArrowRight className="ml-2 w-4 h-4 text-blue-400 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

@@ -50,10 +50,11 @@ export function constructMetadata({
   keywords,
   googleVerification = siteConfig.verification.google,
 }: ConstructMetadataParams = {}): Metadata {
+  const brandSuffix = ` – ${siteConfig.brandName}`;
   const metaTitle = title
-    ? title.includes(siteConfig.brandName) || title.includes('Sinemus')
+    ? title.includes(siteConfig.brandName)
       ? title
-      : `${title} - ${siteConfig.brandName}`
+      : `${title}${brandSuffix}`
     : siteConfig.name;
   
   const productionBase = siteConfig.productionUrl || 'https://sinemus.id';
