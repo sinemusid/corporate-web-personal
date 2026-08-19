@@ -41,21 +41,18 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
       />
 
       {/* Hero Central Text */}
-      <div className="relative z-10 space-y-3 sm:space-y-4 lg:space-y-7 max-w-5xl mx-auto py-6 sm:py-8 lg:py-12">
+      <div className="relative z-10 max-w-5xl mx-auto py-6 sm:py-8 lg:py-12 flex flex-col items-center justify-center">
         <h1 className="flex justify-center items-center">
-          <span className="sr-only">{data.title}</span>
+          <span className="sr-only">{data.title} - {data.tagline}</span>
           <Image
-            src="/images/hero/sinemus-hero.png"
-            alt={data.title}
-            width={600}
-            height={150}
+            src="/images/hero/sinemus-hero-v2.png"
+            alt={`${data.title} - ${data.tagline}`}
+            width={625}
+            height={168}
             priority
-            className="h-9 sm:h-14 md:h-20 lg:h-32 object-contain brightness-0 invert drop-shadow-[0_2px_24px_rgba(255,255,255,0.08)]"
+            className="w-auto h-20 sm:h-28 md:h-36 lg:h-48 object-contain drop-shadow-[0_4px_32px_rgba(0,0,0,0.6)]"
           />
         </h1>
-        <p className="text-xs sm:text-sm md:text-base lg:text-xl font-body font-normal text-blue-200 tracking-wide max-w-xs sm:max-w-lg lg:max-w-2xl mx-auto leading-relaxed">
-          {data.tagline}
-        </p>
       </div>
 
     </div>

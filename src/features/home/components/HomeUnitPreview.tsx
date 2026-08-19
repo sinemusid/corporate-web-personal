@@ -25,16 +25,16 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
       )}
 
       {/* Diagram Branching Tree — Desktop Only */}
-      <div className="hidden lg:flex flex-col items-center w-full mt-16 -mb-2 relative">
+      <div className="hidden lg:flex flex-col items-center w-full mt-10 -mb-2 relative">
         {/* Sinemus Root Node */}
-        <div className="z-10 flex items-center justify-center px-5 py-2.5">
+        <div className="z-10 flex items-center justify-center px-5 py-2">
           <Image
-            src="/images/sinemus-indonesia.png"
+            src="/images/sinemus-indonesia-v2.png"
             alt={data.heading || 'Sinemus Indonesia'}
-            width={180}
-            height={40}
+            width={371}
+            height={530}
             priority
-            className="h-9 sm:h-10 w-auto object-contain"
+            className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto object-contain transition-transform duration-300 hover:scale-105"
           />
         </div>
 
@@ -90,7 +90,7 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
           >
             {/* Background Image Showcase */}
             <Image
-              src="/images/hero/bg-unit-preview.jpeg"
+              src={unit.bgImage || '/images/hero/bg-unit-preview.jpeg'}
               alt={unit.title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

@@ -23,6 +23,7 @@ export interface HomeUnitItem {
   subtitle: string;
   description: string;
   bannerUrl: string;
+  bgImage?: string;
   features: string[];
 }
 

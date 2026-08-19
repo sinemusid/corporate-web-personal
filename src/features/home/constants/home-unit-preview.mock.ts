@@ -12,6 +12,7 @@ export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
       subtitle: 'Film Feature & Studio Content Studio',
       description: 'Mesin kreatif yang berfokus pada penciptaan karya visual berkualitas tinggi',
       bannerUrl: '/images/khoas_poster.png',
+      bgImage: '/images/units/bg-production.jpg',
       features: ['Feature Film Production', 'Commercial & Music Video', 'Post-Production & VFX'],
     },
     {
@@ -21,6 +22,7 @@ export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
       subtitle: 'Exhibition & Digital Screening Platform',
       description: 'Solusi untuk memastikan setiap karya sampai ke tangan penonton yang tepat.',
       bannerUrl: '/images/khoas_poster.png',
+      bgImage: '/images/units/bg-screen.jpg',
       features: ['Private Screening Hub', 'Digital VOD Platform', 'Film Festival Partner'],
     },
     {
@@ -30,6 +32,7 @@ export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
       subtitle: 'Creative Talent & Technical Education',
       description: 'Pusat pengembangan skill perfilman untuk mencetak generasi sineas muslim yang profesional',
       bannerUrl: '/images/khoas_poster.png',
+      bgImage: '/images/units/bg-academy.jpg',
       features: ['Masterclass Director', 'Screenwriting Lab', 'Technical Workshop'],
     },
     {
@@ -39,6 +42,7 @@ export const MOCK_HOME_UNIT_PREVIEW: HomeUnitPreviewData = {
       subtitle: 'Filmmakers Network & Arts Collective',
       description: 'Wadah berkumpulnya para sineas dan penggiat dakwah visual',
       bannerUrl: '/images/khoas_poster.png',
+      bgImage: '/images/units/bg-community.png',
       features: ['Community Screening', 'Filmmaker Gathering', 'Funding Lab Grants'],
     },
   ],

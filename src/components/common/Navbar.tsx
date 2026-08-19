@@ -96,18 +96,29 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="w-full px-6 sm:px-12 h-16 sm:h-20 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 group">
-          <div className="relative h-6 sm:h-7 w-32 sm:w-40">
+        {/* Logo Icon */}
+        <Link href="/" className="flex items-center group" aria-label="Sinemus Indonesia Home">
+          <div className="relative h-9 w-9 sm:h-11 sm:w-11 transition-transform duration-300 group-hover:scale-105">
+            {/* White Icon (Image 2) for transparent dark hero top */}
             <Image
-              src="/images/sinemus-indonesia.png"
-              alt="Sinemus Indonesia Logo"
+              src="/images/sinemus-icon-white.png"
+              alt="Sinemus Indonesia Icon"
               fill
               priority
-              className={`object-contain object-left transition-transform duration-300 group-hover:scale-105 ${
-                isTransparentTop && isDarkHeroPage
-                  ? 'brightness-0 invert drop-shadow-[0_2px_12px_rgba(255,255,255,0.15)]'
-                  : ''
+              sizes="(max-width: 640px) 36px, 44px"
+              className={`object-contain transition-opacity duration-300 ${
+                isTransparentTop && isDarkHeroPage ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+            {/* Blue Icon (Image 3) for scrolled / light navbar top */}
+            <Image
+              src="/images/sinemus-icon-blue.png"
+              alt="Sinemus Indonesia Icon"
+              fill
+              priority
+              sizes="(max-width: 640px) 36px, 44px"
+              className={`object-contain transition-opacity duration-300 ${
+                isTransparentTop && isDarkHeroPage ? 'opacity-0' : 'opacity-100'
               }`}
             />
           </div>
