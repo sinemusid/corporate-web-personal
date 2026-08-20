@@ -13,4 +13,3 @@ export const PortfolioGridWidget: React.FC = async () => {
     </SectionWrapper>
   );
 };
-

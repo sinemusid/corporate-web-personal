@@ -1,4 +1,5 @@
 import React from 'react';
+import { FadeIn, FadeInStagger, MotionCard } from '@/components/motion';
 import { JoinMissionData } from '../types';
 
 interface JoinMissionProps {
@@ -7,7 +8,7 @@ interface JoinMissionProps {
 
 export const JoinMission: React.FC<JoinMissionProps> = ({ data }) => {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-bg-elevated/80 border border-borderToken-subtle/80 p-6 sm:p-8 md:p-10 w-full max-w-5xl mx-auto backdrop-blur-xl text-center shadow-2xl flex flex-col items-center">
+    <FadeIn direction="up" className="relative overflow-hidden rounded-3xl bg-bg-elevated/80 border border-borderToken-subtle/80 p-6 sm:p-8 md:p-10 w-full max-w-5xl mx-auto backdrop-blur-xl text-center shadow-2xl flex flex-col items-center">
       {/* Background ambient glow effect */}
       <div 
         className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent-subtle/20 rounded-full blur-3xl opacity-50" 
@@ -28,11 +29,11 @@ export const JoinMission: React.FC<JoinMissionProps> = ({ data }) => {
       <div className="w-full max-w-3xl my-6 sm:my-8 border-t border-borderToken-subtle/60 z-10" />
 
       {/* Benefits grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 w-full z-10">
+      <FadeInStagger staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 w-full z-10">
         {data.benefits.map((benefit, idx) => (
-          <div 
+          <MotionCard 
             key={idx} 
-            className="group relative p-4 sm:p-5 rounded-2xl bg-bg-primary/60 border border-borderToken-subtle/80 hover:border-content-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-center flex flex-col items-center justify-start space-y-2"
+            className="group relative p-4 sm:p-5 rounded-2xl bg-bg-primary/60 border border-borderToken-subtle/80 hover:border-content-primary/30 transition-colors duration-300 hover:shadow-lg text-center flex flex-col items-center justify-start space-y-2"
           >
             <span className="text-[11px] font-mono font-semibold text-content-secondary group-hover:text-content-primary transition-colors duration-200 px-2 py-0.5 rounded-md bg-bg-elevated border border-borderToken-subtle/50">
               0{idx + 1}
@@ -40,9 +41,9 @@ export const JoinMission: React.FC<JoinMissionProps> = ({ data }) => {
             <p className="text-xs font-body text-content-secondary font-normal leading-relaxed group-hover:text-content-primary transition-colors duration-200">
               {benefit}
             </p>
-          </div>
+          </MotionCard>
         ))}
-      </div>
+      </FadeInStagger>
 
       {/* CTA Button */}
       <div className="mt-6 sm:mt-8 z-10">
@@ -56,13 +57,13 @@ export const JoinMission: React.FC<JoinMissionProps> = ({ data }) => {
             fill="none" 
             viewBox="0 0 24 24" 
             stroke="currentColor" 
-            strokeWidth="2.5"
+            strokeWidth="2.5" 
             aria-hidden="true"
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
         </a>
       </div>
-    </div>
+    </FadeIn>
   );
 };

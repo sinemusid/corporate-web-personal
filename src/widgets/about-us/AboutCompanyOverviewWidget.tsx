@@ -17,4 +17,3 @@ export const AboutCompanyOverviewWidget: React.FC = async () => {
     </SectionWrapper>
   );
 };
-

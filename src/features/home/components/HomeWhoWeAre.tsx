@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { FadeIn } from '@/components/motion';
 import { HomeWhoWeAreData } from '../types';
 
 interface HomeWhoWeAreProps {
@@ -22,12 +23,6 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
             muted
             loop
             playsInline
-            /**
-             * ✅ FIX: preload="none" — section ini below-fold saat initial load.
-             * Video section 2 tidak perlu di-buffer bersamaan dengan video section 1.
-             * Browser akan mulai load setelah elemen di-mount & visible.
-             * Sebelumnya preload="metadata" masih mendownload ~100KB untuk metadata.
-             */
             preload="none"
             aria-hidden="true"
             className="absolute inset-0 block w-full h-full object-cover object-center opacity-55"
@@ -35,13 +30,6 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
             <source src={data.backgroundVideo} type="video/mp4" />
           </video>
         ) : (
-          /**
-           * ✅ FIX: Hapus priority=true untuk background image below-fold.
-           * Section "Who We Are" selalu berada di bawah hero — tidak above-fold saat load.
-           * priority=true pada gambar off-screen adalah pemborosan bandwidth dan
-           * justru menunda LCP element yang sebenarnya (hero logo/video).
-           * Ganti dengan loading="lazy" (default) dan sizes yang benar.
-           */
           <Image
             src={bgImage}
             alt={data.subheading || 'Sinemus Indonesia Team'}
@@ -67,7 +55,7 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
 
       {/* 4. Text Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="space-y-5 sm:space-y-6 max-w-xl sm:max-w-2xl text-left">
+        <FadeIn direction="up" delay={0.1} className="space-y-5 sm:space-y-6 max-w-xl sm:max-w-2xl text-left">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white tracking-tight leading-tight sm:leading-snug">
             {data.subheading}
           </h2>
@@ -86,7 +74,7 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
               <ArrowRight className="ml-2 w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </div>
+        </FadeIn>
       </div>
 
     </div>

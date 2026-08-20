@@ -13,4 +13,3 @@ export const MilestonesTimelineWidget: React.FC = async () => {
     </SectionWrapper>
   );
 };
-

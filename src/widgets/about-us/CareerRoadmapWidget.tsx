@@ -13,4 +13,3 @@ export const CareerRoadmapWidget: React.FC = async () => {
     </SectionWrapper>
   );
 };
-

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FadeIn, FadeInStagger } from '@/components/motion';
 import { PartnerItem } from '../types';
 import { PartnerCard } from './PartnerCard';
 
@@ -7,7 +8,6 @@ interface PartnerGridSectionProps {
   subtitle?: string;
   items: PartnerItem[];
   columnsDesktop?: 3 | 4 | 5;
-  /** Index offset dari total grid global — untuk kalkulasi priority yang benar lintas section */
   indexOffset?: number;
 }
 
@@ -30,7 +30,7 @@ export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
   return (
     <div className="space-y-6 w-full z-10 pt-4">
       {/* Section Header */}
-      <div className="text-center flex flex-col items-center justify-center space-y-1.5 pb-2 max-w-2xl mx-auto">
+      <FadeIn direction="up" className="text-center flex flex-col items-center justify-center space-y-1.5 pb-2 max-w-2xl mx-auto">
         <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 uppercase tracking-tight text-center">
           {title}
         </h2>
@@ -39,20 +39,19 @@ export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
             {subtitle}
           </p>
         )}
-      </div>
+      </FadeIn>
 
       {/* Partners / Vendors Grid */}
-      <div className={`grid ${gridColsClass} gap-4 sm:gap-5 w-full`}>
+      <FadeInStagger staggerDelay={0.06} className={`grid ${gridColsClass} gap-4 sm:gap-5 w-full`}>
         {items.map((item, localIndex) => (
           <PartnerCard
             key={item.id}
             partner={item}
-            // ✅ Global index memastikan priority dihitung benar lintas dua section
             index={indexOffset + localIndex}
             columnsDesktop={columnsDesktop}
           />
         ))}
-      </div>
+      </FadeInStagger>
     </div>
   );
 };

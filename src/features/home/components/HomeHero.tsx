@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
+import { FadeIn } from '@/components/motion';
 import { HomeHeroData } from '../types';
 
 interface HomeHeroProps {
@@ -18,13 +19,6 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
             muted
             loop
             playsInline
-            /**
-             * ✅ FIX: preload="none" — browser TIDAK download video saat page load.
-             * Video autoPlay tetap berjalan setelah elemen di-mount (browser behavior),
-             * tapi bandwidth tidak dipakai untuk buffering sebelum user melihat halaman.
-             * Ini adalah fix LCP yang signifikan — sebelumnya preload="auto" memblokir
-             * network untuk video 3MB saat page baru dimuat.
-             */
             preload="none"
             aria-hidden="true"
             className="absolute inset-0 block w-full h-full object-cover object-center opacity-40"
@@ -32,10 +26,6 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
             <source src={data.backgroundVideo} type="video/mp4" />
           </video>
         ) : (
-          /**
-           * ✅ Fallback image: priority=true hanya di sini karena ini LCP element
-           * saat tidak ada video. sizes=100vw benar karena full-bleed background.
-           */
           <Image
             src={data.backgroundImage}
             alt=""
@@ -62,14 +52,14 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
       />
 
       {/* Hero Central Content */}
-      <div className="relative z-10 max-w-5xl mx-auto py-8 sm:py-12 flex flex-col items-center justify-center space-y-6">
+      <FadeIn
+        direction="scale"
+        duration={1.0}
+        delay={0.1}
+        className="relative z-10 max-w-5xl mx-auto py-8 sm:py-12 flex flex-col items-center justify-center space-y-6"
+      >
         <h1 className="flex justify-center items-center">
           <span className="sr-only">{data.title} - {data.tagline}</span>
-          {/*
-           * ✅ Hero logo image: priority=true BENAR karena ini LCP element utama.
-           * sizes berdasarkan h-20/h-28/h-36/h-44 dan aspect ratio gambar (625:168 ≈ 3.7:1).
-           * w-auto berarti width mengikuti height, kalkulasi: h-20=80px → width≈296px
-           */}
           <Image
             src="/images/hero/sinemus-hero-v2.png"
             alt={`${data.title} - ${data.tagline}`}
@@ -80,13 +70,13 @@ export const HomeHero: React.FC<HomeHeroProps> = ({ data }) => {
             className="w-auto h-20 sm:h-28 md:h-36 lg:h-44 object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.8)]"
           />
         </h1>
-      </div>
+      </FadeIn>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-6 sm:bottom-8 z-10 flex flex-col items-center space-y-1.5 opacity-60 hover:opacity-100 transition-opacity">
+      <FadeIn delay={0.6} direction="up" className="absolute bottom-6 sm:bottom-8 z-10 flex flex-col items-center space-y-1.5 opacity-60 hover:opacity-100 transition-opacity">
         <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">Scroll</span>
         <ChevronDown className="w-4 h-4 text-blue-400 animate-bounce" />
-      </div>
+      </FadeIn>
     </div>
   );
 };

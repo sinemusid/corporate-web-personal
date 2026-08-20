@@ -13,4 +13,3 @@ export const DesignStructureWidget: React.FC = async () => {
     </SectionWrapper>
   );
 };
-

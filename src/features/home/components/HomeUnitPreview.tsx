@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { FadeIn, FadeInStagger, MotionCard } from '@/components/motion';
 import { HomeUnitPreviewData } from '../types';
 
 interface HomeUnitPreviewProps {
@@ -14,31 +15,25 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
     <div className="relative space-y-10 sm:space-y-14 w-full">
       {/* Section Header */}
       {showTitleHeader && (
-        <div className="relative z-10 text-center max-w-3xl mx-auto space-y-3 px-4">
+        <FadeIn direction="up" className="relative z-10 text-center max-w-3xl mx-auto space-y-3 px-4">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold tracking-tight text-slate-900 leading-tight">
             {data.heading}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
             {data.subheading}
           </p>
-        </div>
+        </FadeIn>
       )}
 
       {/* Unit Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+      <FadeInStagger staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
         {data.units.map((unit, index) => {
-          /**
-           * ✅ FIX: Unit card pertama (index 0) above-fold di semua breakpoint,
-           * index 0-1 above-fold di tablet (md: 2-col).
-           * Hanya 2 card pertama yang dapat priority=true — sisanya lazy-loaded.
-           * bg-unit-preview.jpeg (333KB) × 4 cards = 1.3MB jika semua eager-loaded.
-           */
           const isPriority = index < 2;
 
           return (
-            <div
+            <MotionCard
               key={unit.id}
-              className="group relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-800/80 hover:border-blue-500/60 shadow-lg hover:shadow-2xl hover:shadow-blue-950/40 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 h-full min-h-90"
+              className="group relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-800/80 hover:border-blue-500/60 shadow-lg hover:shadow-2xl hover:shadow-blue-950/40 flex flex-col justify-between transition-colors duration-500 h-full min-h-90"
             >
               {/* Background Image with Depth Zoom */}
               <div className="absolute inset-0 z-0 select-none overflow-hidden">
@@ -47,13 +42,6 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
                   alt=""
                   aria-hidden="true"
                   fill
-                  /**
-                   * ✅ FIX: sizes sesuai grid breakpoint riil.
-                   * Mobile (1-col): 100vw
-                   * Tablet (2-col): ~50vw
-                   * Desktop (4-col): ~25vw
-                   * Sebelumnya tidak ada sizes — Next.js default 100vw untuk semua breakpoint.
-                   */
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   quality={70}
                   priority={isPriority}
@@ -95,10 +83,10 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
                   </Link>
                 </div>
               </div>
-            </div>
+            </MotionCard>
           );
         })}
-      </div>
+      </FadeInStagger>
     </div>
   );
 };

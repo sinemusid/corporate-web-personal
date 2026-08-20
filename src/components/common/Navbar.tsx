@@ -1,66 +1,84 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { mainNavigation } from '@/config/navigation.config';
 import { Button } from '@/components/ui/Button';
+import { MOTION_DURATIONS, MOTION_EASINGS } from '@/config/motion.config';
+
+function subscribeScroll(callback: () => void) {
+  window.addEventListener('scroll', callback, { passive: true });
+  return () => window.removeEventListener('scroll', callback);
+}
+
+function getScrollSnapshot(): boolean {
+  return window.scrollY > 20;
+}
+
+function getServerScrollSnapshot(): boolean {
+  return false;
+}
+
+function subscribeModal(callback: () => void) {
+  const observer = new MutationObserver(callback);
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  return () => observer.disconnect();
+}
+
+function getModalSnapshot(): boolean {
+  return document.body.classList.contains('modal-open');
+}
+
+function getServerModalSnapshot(): boolean {
+  return false;
+}
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
-  // ✅ FIX: lastScrollY sebagai ref — tidak menyebabkan re-render/re-registration listener
+  // External store subscriptions (React 18/19 best practice - zero cascading renders)
+  const isScrolledByScroll = useSyncExternalStore(subscribeScroll, getScrollSnapshot, getServerScrollSnapshot);
+  const isModalOpen = useSyncExternalStore(subscribeModal, getModalSnapshot, getServerModalSnapshot);
+
+  // Ref untuk melacak arah scroll (delta)
   const lastScrollYRef = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  // Ref untuk membaca isOpen terbaru di dalam handler tanpa membuatnya jadi dependency
-  const isOpenRef = useRef(isOpen);
-  isOpenRef.current = isOpen;
 
-  // Detect modal open state on document.body
+  // Cleanup timeout saat unmount
   useEffect(() => {
-    const checkModalOpen = () => {
-      setIsModalOpen(document.body.classList.contains('modal-open'));
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  // Effect untuk mengontrol visibility navbar saat scroll naik/turun
+  useEffect(() => {
+    const handleScrollVisibility = () => {
+      const currentScrollY = window.scrollY;
+
+      if (isOpen || currentScrollY <= 20) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollYRef.current && currentScrollY > 60) {
+        setIsVisible(false);
+        setActiveDropdown(null);
+      } else if (currentScrollY < lastScrollYRef.current) {
+        setIsVisible(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
 
-    checkModalOpen();
-
-    const observer = new MutationObserver(checkModalOpen);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // ✅ FIX: handleScroll stabil (useCallback []), hanya didaftarkan SEKALI.
-  // Membaca isOpen via ref, menyimpan lastScrollY via ref — zero re-registration.
-  const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY;
-
-    setScrolled(currentScrollY > 20);
-
-    if (isOpenRef.current || currentScrollY <= 20) {
-      setIsVisible(true);
-    } else if (currentScrollY > lastScrollYRef.current && currentScrollY > 60) {
-      setIsVisible(false);
-      setActiveDropdown(null);
-    } else if (currentScrollY < lastScrollYRef.current) {
-      setIsVisible(true);
-    }
-
-    lastScrollYRef.current = currentScrollY;
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+    window.addEventListener('scroll', handleScrollVisibility, { passive: true });
+    return () => window.removeEventListener('scroll', handleScrollVisibility);
+  }, [isOpen]);
 
   const handleMouseEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -77,14 +95,13 @@ export const Navbar: React.FC = () => {
     setMobileExpanded((prev) => (prev === label ? null : label));
   };
 
-
   // State abstraction for clean dynamic theme switching across ALL navlink pages
-  const isHomePage = pathname === '/';
-  const isUnitDetailPage = pathname.startsWith('/units/');
-  // Pages with dark sinematic hero background vs light page top
+  const currentPath = pathname || '/';
+  const isHomePage = currentPath === '/' || currentPath === '';
+  const isUnitDetailPage = currentPath.startsWith('/units/');
+  // Pages with dark cinematic hero background vs light page top
   const isDarkHeroPage = isHomePage || isUnitDetailPage;
-  // ✅ FIX: scrolled berasal dari state yang di-set oleh ref-based handleScroll (zero re-registration)
-  const isScrolled = scrolled || isOpen;
+  const isScrolled = isScrolledByScroll || isOpen;
   // Theme logic for top vs scrolled header
   const isTransparentTop = !isScrolled;
 
@@ -137,10 +154,10 @@ export const Navbar: React.FC = () => {
             const hasSub = Boolean(item.subItems && item.subItems.length > 0);
             const isActive =
               item.href === '/'
-                ? pathname === '/'
+                ? isHomePage
                 : item.href.startsWith('/units')
-                ? pathname.startsWith('/units')
-                : pathname === item.href || pathname.startsWith(item.href);
+                ? isUnitDetailPage
+                : currentPath === item.href || currentPath.startsWith(item.href);
             const isDropdownOpen = activeDropdown === item.label;
             const useWhiteNavText = isTransparentTop && isDarkHeroPage;
 
@@ -211,77 +228,83 @@ export const Navbar: React.FC = () => {
                 )}
 
                 {/* Mega Dropdown Menu (Adaptive Theme) */}
-                {hasSub && isDropdownOpen && (
-                  <div
-                    className={`absolute top-full -left-20 w-[540px] p-4 rounded-2xl shadow-2xl border transition-all animate-in fade-in slide-in-from-top-2 duration-200 z-50 ${
-                      useWhiteNavText
-                        ? 'bg-slate-950/95 backdrop-blur-2xl border-white/10 shadow-black/60'
-                        : 'bg-white/98 backdrop-blur-2xl border-slate-200/90 shadow-slate-900/10'
-                    }`}
-                    onMouseEnter={() => handleMouseEnter(item.label)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <div
-                      className={`text-[10px] font-mono uppercase tracking-widest px-3 pt-1 pb-2.5 mb-3 flex items-center justify-between border-b ${
-                        useWhiteNavText ? 'border-white/10 text-slate-400' : 'border-slate-100 text-slate-500'
+                <AnimatePresence>
+                  {hasSub && isDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                      transition={{ duration: MOTION_DURATIONS.fast, ease: MOTION_EASINGS.cinematic }}
+                      className={`absolute top-full -left-20 w-[540px] p-4 rounded-2xl shadow-2xl border z-50 ${
+                        useWhiteNavText
+                          ? 'bg-slate-950/95 backdrop-blur-2xl border-white/10 shadow-black/60'
+                          : 'bg-white/98 backdrop-blur-2xl border-slate-200/90 shadow-slate-900/10'
                       }`}
+                      onMouseEnter={() => handleMouseEnter(item.label)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <span className={`font-bold ${useWhiteNavText ? 'text-white' : 'text-slate-900'}`}>
-                        Unit Bisnis Sinemus
-                      </span>
-                      <span className="text-slate-400">4 Pilar Integrasi</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2.5">
-                      {item.subItems?.map((sub) => {
-                        const isSubActive = pathname === sub.href;
-                        return (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            onClick={() => setActiveDropdown(null)}
-                            className={`group/sub flex flex-col justify-between p-3.5 rounded-xl border transition-all duration-200 ${
-                              useWhiteNavText
-                                ? isSubActive
-                                  ? 'bg-blue-950/60 border-blue-500/50 text-blue-300 shadow-xs'
-                                  : 'bg-slate-900/60 border-white/5 hover:bg-slate-900/90 hover:border-blue-500/40'
-                                : isSubActive
-                                ? 'bg-blue-50/80 border-blue-200 text-blue-700 shadow-xs'
-                                : 'bg-slate-50/70 border-slate-200/70 hover:bg-blue-50/50 hover:border-blue-300'
-                            }`}
-                          >
-                            <div className="space-y-1">
-                              <div className="flex items-center justify-between">
-                                <span
-                                  className={`text-xs font-heading font-bold uppercase tracking-wider transition-colors ${
-                                    useWhiteNavText
-                                      ? 'text-white group-hover/sub:text-blue-400'
-                                      : 'text-slate-900 group-hover/sub:text-blue-600'
+                      <div
+                        className={`text-[10px] font-mono uppercase tracking-widest px-3 pt-1 pb-2.5 mb-3 flex items-center justify-between border-b ${
+                          useWhiteNavText ? 'border-white/10 text-slate-400' : 'border-slate-100 text-slate-500'
+                        }`}
+                      >
+                        <span className={`font-bold ${useWhiteNavText ? 'text-white' : 'text-slate-900'}`}>
+                          Unit Bisnis Sinemus
+                        </span>
+                        <span className="text-slate-400">4 Pilar Integrasi</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2.5">
+                        {item.subItems?.map((sub) => {
+                          const isSubActive = currentPath === sub.href;
+                          return (
+                            <Link
+                              key={sub.href}
+                              href={sub.href}
+                              onClick={() => setActiveDropdown(null)}
+                              className={`group/sub flex flex-col justify-between p-3.5 rounded-xl border transition-all duration-200 ${
+                                useWhiteNavText
+                                  ? isSubActive
+                                    ? 'bg-blue-950/60 border-blue-500/50 text-blue-300 shadow-xs'
+                                    : 'bg-slate-900/60 border-white/5 hover:bg-slate-900/90 hover:border-blue-500/40'
+                                  : isSubActive
+                                  ? 'bg-blue-50/80 border-blue-200 text-blue-700 shadow-xs'
+                                  : 'bg-slate-50/70 border-slate-200/70 hover:bg-blue-50/50 hover:border-blue-300'
+                              }`}
+                            >
+                              <div className="space-y-1">
+                                <div className="flex items-center justify-between">
+                                  <span
+                                    className={`text-xs font-heading font-bold uppercase tracking-wider transition-colors ${
+                                      useWhiteNavText
+                                        ? 'text-white group-hover/sub:text-blue-400'
+                                        : 'text-slate-900 group-hover/sub:text-blue-600'
+                                    }`}
+                                  >
+                                    {sub.label}
+                                  </span>
+                                  <ArrowRight
+                                    className={`w-3.5 h-3.5 transition-all ${
+                                      useWhiteNavText
+                                        ? 'text-slate-400 group-hover/sub:text-blue-400 group-hover/sub:translate-x-1'
+                                        : 'text-slate-400 group-hover/sub:text-blue-600 group-hover/sub:translate-x-1'
+                                    }`}
+                                  />
+                                </div>
+                                <p
+                                  className={`text-[11px] font-body font-normal leading-relaxed line-clamp-2 ${
+                                    useWhiteNavText ? 'text-slate-300' : 'text-slate-600'
                                   }`}
                                 >
-                                  {sub.label}
-                                </span>
-                                <ArrowRight
-                                  className={`w-3.5 h-3.5 transition-all ${
-                                    useWhiteNavText
-                                      ? 'text-slate-400 group-hover/sub:text-blue-400 group-hover/sub:translate-x-1'
-                                      : 'text-slate-400 group-hover/sub:text-blue-600 group-hover/sub:translate-x-1'
-                                  }`}
-                                />
+                                  {sub.description}
+                                </p>
                               </div>
-                              <p
-                                className={`text-[11px] font-body font-normal leading-relaxed line-clamp-2 ${
-                                  useWhiteNavText ? 'text-slate-300' : 'text-slate-600'
-                                }`}
-                              >
-                                {sub.description}
-                              </p>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
@@ -329,126 +352,138 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Drawer (Adaptive Theme) */}
-      {isOpen && (
-        <div
-          className={`md:hidden px-6 pt-4 pb-6 space-y-3 shadow-2xl transition-all duration-300 max-h-[80vh] overflow-y-auto border-t border-b ${
-            isTransparentTop && isDarkHeroPage
-              ? 'bg-slate-950/95 backdrop-blur-2xl border-white/10'
-              : 'bg-white/98 backdrop-blur-2xl border-slate-200'
-          }`}
-        >
-          {mainNavigation.map((item) => {
-            const hasSub = Boolean(item.subItems && item.subItems.length > 0);
-            const isActive =
-              item.href === '/'
-                ? pathname === '/'
-                : item.href.startsWith('/units')
-                ? pathname.startsWith('/units')
-                : pathname === item.href || pathname.startsWith(item.href);
-            const isExpanded = mobileExpanded === item.label;
-            const useWhiteMobileText = isTransparentTop && isDarkHeroPage;
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: MOTION_DURATIONS.fast, ease: MOTION_EASINGS.cinematic }}
+            className={`md:hidden px-6 pt-4 pb-6 space-y-3 shadow-2xl max-h-[80vh] overflow-y-auto border-t border-b ${
+              isTransparentTop && isDarkHeroPage
+                ? 'bg-slate-950/95 backdrop-blur-2xl border-white/10'
+                : 'bg-white/98 backdrop-blur-2xl border-slate-200'
+            }`}
+          >
+            {mainNavigation.map((item) => {
+              const hasSub = Boolean(item.subItems && item.subItems.length > 0);
+              const isActive =
+                item.href === '/'
+                  ? isHomePage
+                  : item.href.startsWith('/units')
+                  ? isUnitDetailPage
+                  : currentPath === item.href || currentPath.startsWith(item.href);
+              const isExpanded = mobileExpanded === item.label;
+              const useWhiteMobileText = isTransparentTop && isDarkHeroPage;
 
-            if (hasSub) {
-              return (
-                <div
-                  key={item.label}
-                  className={`rounded-xl border overflow-hidden transition-all ${
-                    useWhiteMobileText ? 'border-white/10 bg-slate-900/60' : 'border-slate-200 bg-slate-50/80'
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleMobileSubmenu(item.label)}
-                    className={`w-full px-4 py-3 flex items-center justify-between text-xs font-heading font-semibold uppercase tracking-wider transition-colors ${
-                      useWhiteMobileText
-                        ? isActive
-                          ? 'text-blue-400 bg-blue-950/50'
-                          : 'text-white/90 hover:text-blue-400 hover:bg-slate-800/50'
-                        : isActive
-                        ? 'text-blue-600 bg-blue-50/60'
-                        : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/50'
+              if (hasSub) {
+                return (
+                  <div
+                    key={item.label}
+                    className={`rounded-xl border overflow-hidden transition-all ${
+                      useWhiteMobileText ? 'border-white/10 bg-slate-900/60' : 'border-slate-200 bg-slate-50/80'
                     }`}
                   >
-                    <span>{item.label}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        isExpanded
-                          ? 'rotate-180 text-blue-500'
-                          : 'text-slate-400'
-                      }`}
-                    />
-                  </button>
-
-                  {/* Submenu Accordion */}
-                  {isExpanded && (
-                    <div
-                      className={`px-3 pb-3 pt-1 space-y-2 border-t ${
+                    <button
+                      type="button"
+                      onClick={() => toggleMobileSubmenu(item.label)}
+                      className={`w-full px-4 py-3 flex items-center justify-between text-xs font-heading font-semibold uppercase tracking-wider transition-colors ${
                         useWhiteMobileText
-                          ? 'border-white/10 bg-slate-950/50'
-                          : 'border-slate-200 bg-slate-100/60'
+                          ? isActive
+                            ? 'text-blue-400 bg-blue-950/50'
+                            : 'text-white/90 hover:text-blue-400 hover:bg-slate-800/50'
+                          : isActive
+                          ? 'text-blue-600 bg-blue-50/60'
+                          : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/50'
                       }`}
                     >
-                      {item.subItems?.map((sub) => {
-                        const isSubActive = pathname === sub.href;
-                        return (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            onClick={() => {
-                              setIsOpen(false);
-                              setMobileExpanded(null);
-                            }}
-                            className={`block p-3 rounded-lg border transition-all ${
-                              useWhiteMobileText
-                                ? isSubActive
-                                  ? 'bg-blue-950/80 border-blue-500/50 text-blue-300 font-bold shadow-xs'
-                                  : 'bg-slate-900/80 border-white/10 text-white/90 hover:bg-slate-800 hover:border-blue-400/40 hover:text-blue-400'
-                                : isSubActive
-                                ? 'bg-blue-50 border-blue-300 text-blue-700 font-bold shadow-xs'
-                                : 'bg-white border-slate-200/80 text-slate-700 hover:bg-blue-50/60 hover:border-blue-200 hover:text-blue-600'
-                            }`}
-                          >
-                            <div className="flex items-center justify-between text-xs font-heading font-bold uppercase tracking-wide">
-                              <span>{sub.label}</span>
-                              <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-                            </div>
-                            <p
-                              className={`text-[11px] font-body normal-case font-normal mt-1 leading-tight line-clamp-2 ${
-                                useWhiteMobileText ? 'text-slate-300' : 'text-slate-500'
-                              }`}
-                            >
-                              {sub.description}
-                            </p>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              );
-            }
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-300 ${
+                          isExpanded
+                            ? 'rotate-180 text-blue-500'
+                            : 'text-slate-400'
+                        }`}
+                      />
+                    </button>
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-xl border transition-all text-xs font-heading uppercase tracking-wider ${
-                  useWhiteMobileText
-                    ? isActive
-                      ? 'bg-blue-950/80 border-blue-500/50 text-blue-300 font-bold shadow-xs'
-                      : 'bg-slate-900/80 border-white/10 text-white/90 hover:bg-slate-800 hover:border-blue-400/40 hover:text-blue-400'
-                    : isActive
-                    ? 'bg-blue-50 border-blue-300 text-blue-700 font-bold shadow-xs'
-                    : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-blue-50/60 hover:border-blue-200 hover:text-blue-600'
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </div>
-      )}
+                    {/* Submenu Accordion */}
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className={`px-3 pb-3 pt-1 space-y-2 border-t ${
+                            useWhiteMobileText
+                              ? 'border-white/10 bg-slate-950/50'
+                              : 'border-slate-200 bg-slate-100/60'
+                          }`}
+                        >
+                          {item.subItems?.map((sub) => {
+                            const isSubActive = currentPath === sub.href;
+                            return (
+                              <Link
+                                key={sub.href}
+                                href={sub.href}
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setMobileExpanded(null);
+                                }}
+                                className={`block p-3 rounded-lg border transition-all ${
+                                  useWhiteMobileText
+                                    ? isSubActive
+                                      ? 'bg-blue-950/80 border-blue-500/50 text-blue-300 font-bold shadow-xs'
+                                      : 'bg-slate-900/80 border-white/10 text-white/90 hover:bg-slate-800 hover:border-blue-400/40 hover:text-blue-400'
+                                    : isSubActive
+                                    ? 'bg-blue-50 border-blue-300 text-blue-700 font-bold shadow-xs'
+                                    : 'bg-white border-slate-200/80 text-slate-700 hover:bg-blue-50/60 hover:border-blue-200 hover:text-blue-600'
+                                }`}
+                              >
+                                <div className="flex items-center justify-between text-xs font-heading font-bold uppercase tracking-wide">
+                                  <span>{sub.label}</span>
+                                  <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                                </div>
+                                <p
+                                  className={`text-[11px] font-body normal-case font-normal mt-1 leading-tight line-clamp-2 ${
+                                    useWhiteMobileText ? 'text-slate-300' : 'text-slate-500'
+                                  }`}
+                                >
+                                  {sub.description}
+                                </p>
+                              </Link>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-xl border transition-all text-xs font-heading uppercase tracking-wider ${
+                    useWhiteMobileText
+                      ? isActive
+                        ? 'bg-blue-950/80 border-blue-500/50 text-blue-300 font-bold shadow-xs'
+                        : 'bg-slate-900/80 border-white/10 text-white/90 hover:bg-slate-800 hover:border-blue-400/40 hover:text-blue-400'
+                      : isActive
+                      ? 'bg-blue-50 border-blue-300 text-blue-700 font-bold shadow-xs'
+                      : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-blue-50/60 hover:border-blue-200 hover:text-blue-600'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

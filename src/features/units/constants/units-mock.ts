@@ -11,6 +11,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
     bannerUrl: '/images/units/bg-production.jpg',
     ogImage: '/share/sinemus-production.PNG',
     externalUrl: 'https://production.sinemus.id',
+    isLiveWebsite: false,
     features: ['Feature Film & Short Film', 'Corporate & Commercial Video', 'Post-Production & Sound Finishing'],
     capabilities: [
       {
@@ -59,6 +60,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
     bannerUrl: '/images/units/bg-screen.jpg',
     ogImage: '/share/sinemus-screen.PNG',
     externalUrl: 'https://screen.sinemus.id',
+    isLiveWebsite: true,
     features: ['Web Streaming & Digital Screening', 'Online Ticketing & Booking', 'Event Screening Management'],
     capabilities: [
       {
@@ -107,6 +109,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
     bannerUrl: '/images/units/bg-academy.jpg',
     ogImage: '/share/sinemus-academy.PNG',
     externalUrl: 'https://academy.sinemus.id',
+    isLiveWebsite: false,
     features: ['Technical Workshops', 'Masterclass & Directing Lab', 'Scriptwriting Class'],
     capabilities: [
       {
@@ -155,6 +158,7 @@ export const MOCK_UNITS: BusinessUnit[] = [
     bannerUrl: '/images/units/bg-community.png',
     ogImage: '/share/sinemus-community.PNG',
     externalUrl: 'https://community.sinemus.id',
+    isLiveWebsite: false,
     features: ['Filmmakers Meetup', 'Creative Collaboration', 'Community Discussion'],
     capabilities: [
       {

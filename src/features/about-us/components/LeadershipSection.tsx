@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Mail, ExternalLink } from 'lucide-react';
+import { FadeIn } from '@/components/motion';
 import { LeadershipData } from '../types';
 
 interface LeadershipSectionProps {
@@ -33,18 +34,17 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ data }) =>
     <section className="w-full bg-transparent py-10 sm:py-16 select-none px-4 sm:px-6 relative z-10">
       <div className="max-w-5xl mx-auto space-y-10 sm:space-y-12">
         {/* Section Header */}
-        <div className="text-center space-y-2 max-w-2xl mx-auto">
+        <FadeIn direction="up" className="text-center space-y-2 max-w-2xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 uppercase tracking-tight font-heading leading-tight">
             {data.subheading || data.heading}
           </h2>
-        </div>
+        </FadeIn>
 
         {/* CEO Leadership Executive Card */}
         {ceo && (
-          <div className="relative rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-10 md:p-12 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center group overflow-hidden">
+          <FadeIn direction="up" delay={0.1} className="relative rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-10 md:p-12 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center group overflow-hidden">
             {/* Left Column: Portrait Framing with Viewfinder Accents */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              {/* ✅ FIX: aspect-[4/5] (kompatibel Tailwind v3/v4), position relative wajib untuk fill */}
               <div className="relative w-full max-w-xs sm:max-w-sm aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-blue-500 transition-all duration-500 shadow-md group-hover:shadow-2xl">
                 {/* Photo */}
                 <Image
@@ -79,7 +79,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ data }) =>
               </div>
 
               {/* Bio Narrative */}
-              <p className="text-sm sm:text-base text-slate-600 font-body font-normal leading-relaxed text-justify sm:text-left">
+              <p className="text-sm sm:text-base text-slate-600 font-body font-normal leading-relaxed sm:text-left">
                 {ceo.bio}
               </p>
 
@@ -114,7 +114,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ data }) =>
                 </div>
               )}
             </div>
-          </div>
+          </FadeIn>
         )}
       </div>
     </section>

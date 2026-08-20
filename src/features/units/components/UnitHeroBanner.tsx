@@ -1,9 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, ExternalLink } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import { FadeIn } from '@/components/motion';
 import { BusinessUnit } from '../types';
 import { MOCK_UNITS } from '../constants/units-mock';
+import { UnitVisitButton } from './UnitVisitButton';
 
 interface UnitHeroBannerProps {
   unit?: BusinessUnit;
@@ -56,7 +58,7 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
         </nav>
 
         {/* Content & Stat Grid Horizontal Container */}
-        <div className="space-y-6 sm:space-y-8 pt-2">
+        <FadeIn direction="up" delay={0.1} className="space-y-6 sm:space-y-8 pt-2">
           {/* Top Block: Heading, Subtitle & Narrative Description */}
           <div className="space-y-4 sm:space-y-5 max-w-4xl">
             <div className="space-y-2">
@@ -73,23 +75,13 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
             </p>
           </div>
 
-          {/* Action Buttons (External Link if available) */}
-          {unit.externalUrl && (
-            <div className="pt-2">
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
-                <a
-                  href={unit.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3 bg-slate-900/80 hover:bg-slate-900 text-slate-200 hover:text-white border border-slate-800 hover:border-blue-500/50 font-medium rounded-xl text-xs sm:text-sm backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-sm"
-                >
-                  Kunjungi Website Unit
-                  <ExternalLink className="w-4 h-4 text-blue-400" />
-                </a>
-              </div>
+          {/* Action Buttons (External Link or Coming Soon Modal trigger) */}
+          <div className="pt-2">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
+              <UnitVisitButton unit={unit} />
             </div>
-          )}
-        </div>
+          </div>
+        </FadeIn>
 
       </div>
     </section>

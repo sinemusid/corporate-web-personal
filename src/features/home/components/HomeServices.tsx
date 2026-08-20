@@ -1,5 +1,6 @@
 import React from 'react';
 import { Clapperboard, Share2, GraduationCap, Users2 } from 'lucide-react';
+import { FadeIn, FadeInStagger, MotionCard } from '@/components/motion';
 import { HomeServicesData } from '../types';
 
 interface HomeServicesProps {
@@ -17,25 +18,25 @@ export const HomeServices: React.FC<HomeServicesProps> = ({ data }) => {
   return (
     <div className="space-y-10 sm:space-y-14 w-full">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-3 px-4">
+      <FadeIn direction="up" className="text-center max-w-3xl mx-auto space-y-3 px-4">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold tracking-tight text-slate-900 leading-tight">
           {data.heading}
         </h2>
         <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
           {data.subheading}
         </p>
-      </div>
+      </FadeIn>
 
       {/* Services Grid (Clean Modern Studio Architecture) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <FadeInStagger staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {data.services.map((service, index) => {
           const indexNum = String(index + 1).padStart(2, '0');
           const IconComponent = SERVICE_ICONS[service.id] || Clapperboard;
 
           return (
-            <div
+            <MotionCard
               key={service.id}
-              className="relative p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500/60 transition-all duration-300 flex flex-col justify-between space-y-6 shadow-xs hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 group overflow-hidden h-full"
+              className="relative p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500/60 transition-colors duration-300 flex flex-col justify-between space-y-6 shadow-xs hover:shadow-xl hover:shadow-blue-900/5 group overflow-hidden h-full"
             >
               {/* Top Accent Gradient Bar */}
               <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -74,12 +75,10 @@ export const HomeServices: React.FC<HomeServicesProps> = ({ data }) => {
                   ))}
                 </div>
               </div>
-            </div>
+            </MotionCard>
           );
         })}
-      </div>
+      </FadeInStagger>
     </div>
   );
 };
-
-

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FadeIn } from '@/components/motion';
 import { CollaboratorPartnersData } from '../types';
 import { PartnerGridSection } from './PartnerGridSection';
 
@@ -13,14 +14,14 @@ export const CollaboratorPartners: React.FC<CollaboratorPartnersProps> = ({ data
       aria-label="Mitra dan Kolaborator Sinemus"
     >
       {/* Main Header */}
-      <header className="space-y-3 max-w-3xl mx-auto flex flex-col items-center z-10">
+      <FadeIn direction="up" className="space-y-3 max-w-3xl mx-auto flex flex-col items-center z-10">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-slate-900 uppercase tracking-tight leading-tight">
           {data.heading}
         </h1>
         <p className="text-xs sm:text-sm md:text-base font-body text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
           {data.subheading}
         </p>
-      </header>
+      </FadeIn>
 
       {/* Section 1: Strategic Collaborators — indexOffset=0, prioritize first 5 */}
       <PartnerGridSection

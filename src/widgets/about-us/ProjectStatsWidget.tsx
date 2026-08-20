@@ -13,4 +13,3 @@ export const ProjectStatsWidget: React.FC = async () => {
     </SectionWrapper>
   );
 };
-

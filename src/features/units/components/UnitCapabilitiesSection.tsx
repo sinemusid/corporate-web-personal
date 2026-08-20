@@ -1,4 +1,5 @@
 import React from 'react';
+import { FadeIn, FadeInStagger, MotionCard } from '@/components/motion';
 import { UnitCapability } from '../types';
 
 interface UnitCapabilitiesSectionProps {
@@ -12,20 +13,20 @@ export const UnitCapabilitiesSection: React.FC<UnitCapabilitiesSectionProps> = (
 }) => {
   return (
     <section className="space-y-6">
-      <div className="flex flex-col space-y-1.5 border-l-4 border-blue-600 pl-4">
+      <FadeIn direction="up" className="flex flex-col space-y-1.5 border-l-4 border-blue-600 pl-4">
         <h2 className="text-xl md:text-2xl font-heading font-bold text-slate-900">
           Pilar Kapabilitas &amp; Layanan Utama
         </h2>
         <p className="text-sm text-slate-600 font-body">
           Spesialisasi dan kompetensi operasional berstandar tinggi dari {unitTitle}.
         </p>
-      </div>
+      </FadeIn>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <FadeInStagger staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {capabilities.map((cap, idx) => (
-          <div
+          <MotionCard
             key={idx}
-            className="group relative p-6 bg-white border border-slate-200/80 rounded-2xl hover:border-blue-400/60 hover:shadow-md transition-all duration-300 space-y-4 flex flex-col justify-between shadow-xs"
+            className="group relative p-6 bg-white border border-slate-200/80 rounded-2xl hover:border-blue-400/60 hover:shadow-md transition-colors duration-300 space-y-4 flex flex-col justify-between shadow-xs"
           >
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-blue-50/80 text-blue-700 font-mono font-bold flex items-center justify-center text-sm border border-blue-200/60 group-hover:scale-105 transition-transform">
@@ -51,9 +52,9 @@ export const UnitCapabilitiesSection: React.FC<UnitCapabilitiesSectionProps> = (
                 ))}
               </div>
             )}
-          </div>
+          </MotionCard>
         ))}
-      </div>
+      </FadeInStagger>
     </section>
   );
 };

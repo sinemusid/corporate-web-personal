@@ -1,4 +1,5 @@
 import React from 'react';
+import { FadeIn, FadeInStagger, MotionCard } from '@/components/motion';
 import { UnitWorkflowStep } from '../types';
 
 interface UnitWorkflowSectionProps {
@@ -10,20 +11,20 @@ export const UnitWorkflowSection: React.FC<UnitWorkflowSectionProps> = ({ workfl
 
   return (
     <section className="space-y-6">
-      <div className="flex flex-col space-y-1.5 border-l-4 border-blue-600 pl-4">
+      <FadeIn direction="up" className="flex flex-col space-y-1.5 border-l-4 border-blue-600 pl-4">
         <h3 className="text-xl md:text-2xl font-heading font-bold text-slate-900">
           Alur Kerja &amp; Kolaborasi
         </h3>
         <p className="text-sm text-slate-600 font-body">
           Tahapan sistematis untuk merealisasikan kerja sama yang terstruktur.
         </p>
-      </div>
+      </FadeIn>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      <FadeInStagger staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
         {workflow.map((step, idx) => (
-          <div
+          <MotionCard
             key={idx}
-            className="p-6 bg-white border border-slate-200/80 rounded-2xl space-y-3 relative shadow-xs hover:shadow-md hover:border-blue-400/60 transition-all duration-300"
+            className="p-6 bg-white border border-slate-200/80 rounded-2xl space-y-3 relative shadow-xs hover:shadow-md hover:border-blue-400/60 transition-colors duration-300"
           >
             <div className="text-3xl font-mono font-extrabold text-blue-600/40">
               {step.stepNumber}
@@ -34,9 +35,9 @@ export const UnitWorkflowSection: React.FC<UnitWorkflowSectionProps> = ({ workfl
             <p className="text-xs font-body text-slate-600 leading-relaxed">
               {step.description}
             </p>
-          </div>
+          </MotionCard>
         ))}
-      </div>
+      </FadeInStagger>
     </section>
   );
 };

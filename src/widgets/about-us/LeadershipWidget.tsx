@@ -15,4 +15,3 @@ export const LeadershipWidget: React.FC = async () => {
     </SectionWrapper>
   );
 };
-

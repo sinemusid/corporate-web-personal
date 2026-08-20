@@ -8,6 +8,7 @@ import {
   Award,
   Globe2,
 } from 'lucide-react';
+import { FadeIn, FadeInStagger, MotionCard } from '@/components/motion';
 import { VisionMissionValueData } from '../types';
 
 interface VisionMissionValueProps {
@@ -27,7 +28,7 @@ export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) 
   return (
     <div className="relative max-w-6xl mx-auto select-none py-6 space-y-12 sm:space-y-16">
       {/* 1. CINEMATIC VISION SECTION */}
-      <div className="relative rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-12 md:p-14 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-500 overflow-hidden group">
+      <FadeIn direction="up" className="relative rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-12 md:p-14 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-500 overflow-hidden group">
         {/* Decorative Film Reel SVG Background Watermark */}
         <div
           aria-hidden="true"
@@ -63,26 +64,26 @@ export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) 
             — Arah Strategis &amp; Komitmen Ekosistem Sinemus Indonesia
           </p>
         </div>
-      </div>
+      </FadeIn>
 
       {/* 2. STRATEGIC MISSION PILLARS */}
       <div className="space-y-8">
         {/* Clean Executive Section Title */}
-        <div className="text-center space-y-2 max-w-2xl mx-auto">
+        <FadeIn direction="up" className="text-center space-y-2 max-w-2xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-slate-900 uppercase tracking-tight">
             {data.missionTitle || 'Misi Perusahaan'}
           </h2>
-        </div>
+        </FadeIn>
 
         {/* 3x2 Responsive Pillar Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <FadeInStagger staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {data.missions.map((mission, idx) => {
             const IconComponent = MISSION_ICONS[idx]?.icon || Clapperboard;
 
             return (
-              <div
+              <MotionCard
                 key={idx}
-                className="group relative rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 text-left flex flex-col justify-between space-y-5 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden shadow-xs"
+                className="group relative rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 text-left flex flex-col justify-between space-y-5 hover:border-blue-500 hover:shadow-xl transition-colors duration-300 overflow-hidden shadow-xs"
               >
                 {/* Top Header: Icon & Pillar Step */}
                 <div className="flex items-center justify-between">
@@ -107,10 +108,10 @@ export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) 
                     <div className="w-0 group-hover:w-full h-full bg-blue-600 transition-all duration-500 ease-out" />
                   </div>
                 </div>
-              </div>
+              </MotionCard>
             );
           })}
-        </div>
+        </FadeInStagger>
       </div>
     </div>
   );
