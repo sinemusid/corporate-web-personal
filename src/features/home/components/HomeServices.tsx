@@ -7,7 +7,7 @@ interface HomeServicesProps {
 
 export const HomeServices: React.FC<HomeServicesProps> = ({ data }) => {
   return (
-    <div className="space-y-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="space-y-10 w-full">
       <div className="text-center max-w-3xl mx-auto space-y-2.5 px-4">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wider text-slate-900 leading-tight">
           {data.heading}

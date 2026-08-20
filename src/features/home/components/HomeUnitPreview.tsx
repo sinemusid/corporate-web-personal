@@ -11,7 +11,7 @@ interface HomeUnitPreviewProps {
 
 export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitleHeader = true }) => {
   return (
-    <div className="relative space-y-6 sm:space-y-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="relative space-y-6 sm:space-y-8 w-full">
 
       {showTitleHeader && (
         <div className="relative z-10 text-center max-w-3xl mx-auto space-y-2.5 px-4">

@@ -87,9 +87,14 @@ export function constructMetadata({
     keywords: keywords && keywords.length > 0 ? keywords : undefined,
     metadataBase: new URL(stagingShareBase),
     icons: {
-      icon: '/favicon.ico',
+      icon: [
+        { url: '/favicon.ico' },
+        { url: '/icon.png', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
       shortcut: '/favicon.ico',
-      apple: '/favicon.ico',
     },
     verification: googleVerification
       ? {

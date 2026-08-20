@@ -14,7 +14,7 @@ export const UnitPreviewSectionWidget: React.FC<UnitPreviewSectionWidgetProps> =
   const unitPreview = await fetchHomeUnitPreview();
 
   return (
-    <SectionWrapper id="units" darkBg={darkBg} className="w-full py-24 md:py-32 flex flex-col justify-center">
+    <SectionWrapper id="units" darkBg={darkBg} className="w-full flex flex-col justify-center pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-14 lg:pb-16">
       <HomeUnitPreview data={unitPreview} showTitleHeader={showTitleHeader} />
     </SectionWrapper>
   );

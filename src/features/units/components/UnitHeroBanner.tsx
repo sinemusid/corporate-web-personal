@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react';
+import { ChevronRight, ExternalLink } from 'lucide-react';
 import { BusinessUnit } from '../types';
 import { MOCK_UNITS } from '../constants/units-mock';
 
@@ -15,7 +15,7 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
   const heroImage = unit.bannerUrl || '/images/hero/bg-unit-preview.jpeg';
 
   return (
-    <section className="relative w-full min-h-[80vh] sm:min-h-[75vh] lg:min-h-[100vh] flex flex-col justify-center bg-slate-950 text-white overflow-hidden pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20">
+    <section className="relative w-full min-h-[85vh] sm:min-h-[85vh] lg:min-h-[85vh] flex flex-col justify-end lg:justify-center bg-slate-950 text-white overflow-hidden pt-28 sm:pt-32 lg:pt-24 pb-12 sm:pb-16 lg:pb-20">
       {/* Background Image Layer - Full Width */}
       <div className="absolute inset-0 z-0 select-none">
         <Image
@@ -28,15 +28,27 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
         />
       </div>
 
+      {/* Top subtle blend gradient */}
+      <div 
+        aria-hidden="true" 
+        className="absolute top-0 left-0 right-0 h-20 sm:h-28 z-1 pointer-events-none bg-gradient-to-b from-slate-950 via-slate-950/50 to-transparent" 
+      />
+
+      {/* SpaceX/Who-We-Are style Text legibility gradient */}
+      <div 
+        aria-hidden="true" 
+        className="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-slate-950/95 via-slate-950/75 via-40% to-transparent to-60% lg:bg-gradient-to-r lg:from-slate-950/95 lg:via-slate-950/65 lg:via-40% lg:to-transparent lg:to-55%" 
+      />
+
       {/* Main Container Aligned directly with Navbar (w-full px-6 sm:px-12) */}
       <div className="relative z-10 w-full px-6 sm:px-12 space-y-4 lg:space-y-6">
         {/* Breadcrumb Navigation - Positioned closer to Navbar */}
-        <nav className="flex items-center gap-2 text-xs sm:text-sm text-slate-400 font-medium">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-slate-400 font-medium">
           <Link href="/" className="hover:text-blue-400 transition-colors">
             Beranda
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          <Link href="/units" className="hover:text-blue-400 transition-colors">
+          <Link href="/#units" className="hover:text-blue-400 transition-colors">
             Unit Bisnis
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
@@ -61,30 +73,22 @@ export const UnitHeroBanner: React.FC<UnitHeroBannerProps> = ({
             </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="pt-2">
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3 bg-blue-600/90 hover:bg-blue-600 text-white font-semibold rounded-xl text-xs sm:text-sm border border-blue-500/30 hover:border-blue-400/60 shadow-sm shadow-blue-950/50 backdrop-blur-sm transition-all active:scale-95 cursor-pointer"
-              >
-                Konsultasikan Project
-                <ArrowRight className="w-4 h-4 text-blue-100" />
-              </Link>
-
-              {unit.externalUrl && (
+          {/* Action Buttons (External Link if available) */}
+          {unit.externalUrl && (
+            <div className="pt-2">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
                 <a
                   href={unit.externalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3 bg-slate-900/80 hover:bg-slate-900 text-slate-200 hover:text-white border border-slate-800 hover:border-blue-500/50 font-medium rounded-xl text-xs sm:text-sm backdrop-blur-md transition-all active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3 bg-slate-900/80 hover:bg-slate-900 text-slate-200 hover:text-white border border-slate-800 hover:border-blue-500/50 font-medium rounded-xl text-xs sm:text-sm backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-sm"
                 >
                   Kunjungi Website Unit
                   <ExternalLink className="w-4 h-4 text-blue-400" />
                 </a>
-              )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
       </div>

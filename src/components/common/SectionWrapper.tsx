@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 interface SectionWrapperProps {
   id?: string;
@@ -24,8 +25,8 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
     : 'bg-white text-slate-900 bg-white-pattern bg-repeat';
 
   return (
-    <section id={id} className={`w-full ${bgStyle}`}>
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${spacingClass} ${className}`}>
+    <section id={id} className={cn('w-full', id && 'scroll-mt-[-28] sm:scroll-mt-[-30]', bgStyle)}>
+      <div className={cn('max-w-7xl mx-auto px-4 sm:px-6 lg:px-8', spacingClass, className)}>
         {children}
       </div>
     </section>
