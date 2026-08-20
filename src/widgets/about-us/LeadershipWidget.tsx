@@ -8,8 +8,10 @@ export const LeadershipWidget: React.FC = async () => {
   if (!leadership) return null;
 
   return (
-    <SectionWrapper id="our-team">
-      <LeadershipSection data={leadership} />
+    <SectionWrapper id="founder">
+      <div id="meet-the-founder" className="scroll-mt-24">
+        <LeadershipSection data={leadership} />
+      </div>
     </SectionWrapper>
   );
 };
