@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Metadata } from 'next';
 import { CollaboratorPartnersWidget } from '@/widgets/collaborators';
+import { CollaboratorSkeleton } from '@/features/collaborators';
 import { constructMetadata } from '@/lib/seo';
 import { BreadcrumbJsonLd } from '@/components/seo/json-ld';
 
@@ -30,9 +31,10 @@ export default async function CollaboratorPage() {
           { name: 'Kolaborator', item: '/collaborator' },
         ]}
       />
-      <CollaboratorPartnersWidget />
+      {/* Suspense boundary dengan modular CollaboratorSkeleton */}
+      <Suspense fallback={<CollaboratorSkeleton />}>
+        <CollaboratorPartnersWidget />
+      </Suspense>
     </>
   );
 }
-
-

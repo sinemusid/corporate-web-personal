@@ -8,7 +8,7 @@ interface CollaboratorPartnersProps {
 
 export const CollaboratorPartners: React.FC<CollaboratorPartnersProps> = ({ data }) => {
   return (
-    <section 
+    <section
       className="relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center text-center space-y-8 sm:space-y-12"
       aria-label="Mitra dan Kolaborator Sinemus"
     >
@@ -22,20 +22,21 @@ export const CollaboratorPartners: React.FC<CollaboratorPartnersProps> = ({ data
         </p>
       </header>
 
-      {/* Unified Section 1: Strategic Collaborators (10 items -> 2 inline rows x 5 logos) */}
+      {/* Section 1: Strategic Collaborators — indexOffset=0, prioritize first 5 */}
       <PartnerGridSection
         title={data.collaboratorsHeading || 'Mitra & Kolaborator Strategis'}
         items={data.collaborators}
         columnsDesktop={5}
+        indexOffset={0}
       />
 
-      {/* Unified Section 2: Production Vendors (4 items -> 1 inline row x 4 logos) */}
+      {/* Section 2: Vendors — indexOffset = collaborators.length agar priority tidak overlap */}
       <PartnerGridSection
         title={data.vendorsHeading || 'Mitra Vendor & Produksi'}
         items={data.vendors}
         columnsDesktop={4}
+        indexOffset={data.collaborators?.length ?? 0}
       />
     </section>
   );
 };
-

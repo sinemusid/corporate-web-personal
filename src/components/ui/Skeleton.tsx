@@ -1,11 +1,20 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
-interface SkeletonProps {
+export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const Skeleton: React.FC<SkeletonProps> = ({ className = '' }) => {
+/**
+ * 🧱 Skeleton Primitive (Single Source of Truth)
+ * Base atomic pulsing placeholder for all loading states across the application.
+ */
+export const Skeleton: React.FC<SkeletonProps> = ({ className, ...props }) => {
   return (
-    <div className={`animate-pulse bg-bg-tertiary rounded-md ${className}`} />
+    <div
+      aria-hidden="true"
+      className={cn('animate-pulse bg-slate-200/80 rounded-2xl', className)}
+      {...props}
+    />
   );
 };

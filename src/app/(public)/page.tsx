@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Metadata } from 'next';
-import { HeroSectionWidget, WhoWeAreSectionWidget, UnitPreviewSectionWidget, ServicesSectionWidget } from '@/widgets/home';
+import {
+  HeroSectionWidget,
+  WhoWeAreSectionWidget,
+  UnitPreviewSectionWidget,
+  ServicesSectionWidget,
+} from '@/widgets/home';
+import {
+  HomeWhoWeAreSkeleton,
+  HomeUnitPreviewSkeleton,
+  HomeServicesSkeleton,
+} from '@/features/home';
 import { constructMetadata } from '@/lib/seo';
 import { WebSiteJsonLd } from '@/components/seo/json-ld';
 
@@ -31,10 +41,24 @@ export default function LandingPage() {
   return (
     <main className="flex flex-col w-full min-h-screen">
       <WebSiteJsonLd />
+
+      {/* Hero: Stream langsung sebagai LCP utama */}
       <HeroSectionWidget />
-      <WhoWeAreSectionWidget />
-      <UnitPreviewSectionWidget showTitleHeader />
-      <ServicesSectionWidget />
+
+      {/* Who We Are: Suspense dengan dedicated SRP skeleton */}
+      <Suspense fallback={<HomeWhoWeAreSkeleton />}>
+        <WhoWeAreSectionWidget />
+      </Suspense>
+
+      {/* Unit Preview: Suspense dengan dedicated SRP skeleton */}
+      <Suspense fallback={<HomeUnitPreviewSkeleton />}>
+        <UnitPreviewSectionWidget showTitleHeader />
+      </Suspense>
+
+      {/* Services: Suspense dengan dedicated SRP skeleton */}
+      <Suspense fallback={<HomeServicesSkeleton />}>
+        <ServicesSectionWidget />
+      </Suspense>
     </main>
   );
 }

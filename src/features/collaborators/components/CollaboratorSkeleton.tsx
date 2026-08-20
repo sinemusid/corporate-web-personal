@@ -1,36 +1,61 @@
 import React from 'react';
+import { Skeleton } from '@/components/ui/Skeleton';
 
-export const CollaboratorSkeleton: React.FC = () => {
+/**
+ * 🤝 Collaborator Page Header Skeleton
+ */
+export const CollaboratorHeaderSkeleton: React.FC = () => {
   return (
-    <div className="animate-pulse space-y-12 max-w-6xl mx-auto py-12 px-4">
-      {/* Header skeleton */}
-      <div className="space-y-4 max-w-2xl mx-auto text-center flex flex-col items-center">
-        <div className="h-10 bg-bg-tertiary rounded-xl w-3/4" />
-        <div className="h-5 bg-bg-tertiary rounded-lg w-1/2" />
+    <div className="space-y-3 max-w-3xl mx-auto flex flex-col items-center text-center">
+      <Skeleton className="h-10 sm:h-12 md:h-14 w-3/4 max-w-xl bg-slate-200/90 rounded-xl" />
+      <Skeleton className="h-5 sm:h-6 w-full max-w-lg bg-slate-200/60 rounded-lg" />
+    </div>
+  );
+};
+
+/**
+ * 🤝 Partner / Vendor Grid Section Skeleton
+ */
+export const PartnerGridSkeleton: React.FC<{ count?: number; cols?: 4 | 5 }> = ({
+  count = 10,
+  cols = 5,
+}) => {
+  const gridClass =
+    cols === 5
+      ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'
+      : 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-4';
+
+  return (
+    <div className="space-y-6 w-full pt-4">
+      {/* Title */}
+      <div className="text-center flex flex-col items-center justify-center space-y-1.5 pb-2 max-w-md mx-auto">
+        <Skeleton className="h-7 w-48 bg-slate-200/90 rounded-lg" />
       </div>
 
-      {/* Section 1 skeleton (10 items in 5-column layout: 2 inline rows x 5 logos) */}
-      <div className="space-y-6">
-        <div className="h-7 bg-bg-tertiary rounded-lg w-1/3" />
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <div key={`skel-1-${i}`} className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-0.8rem)] h-28 sm:h-32 bg-bg-tertiary rounded-2xl" />
-          ))}
-        </div>
-      </div>
-
-      {/* Section 2 skeleton (4 items) */}
-      <div className="space-y-6">
-        <div className="h-7 bg-bg-tertiary rounded-lg w-1/4" />
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={`skel-2-${i}`} className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-0.8rem)] h-28 sm:h-32 bg-bg-tertiary rounded-2xl" />
-          ))}
-        </div>
+      {/* Grid */}
+      <div className={`grid ${gridClass} gap-4 sm:gap-5 w-full`}>
+        {Array.from({ length: count }).map((_, i) => (
+          <div
+            key={i}
+            className="w-full h-24 sm:h-28 p-4 bg-white border border-slate-200/80 rounded-2xl flex items-center justify-center shadow-xs"
+          >
+            <Skeleton className="w-24 h-12 bg-slate-200/70 rounded-lg" />
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-
-
+/**
+ * 🤝 Composite Collaborator Page Skeleton
+ */
+export const CollaboratorSkeleton: React.FC = () => {
+  return (
+    <div className="w-full max-w-6xl mx-auto px-4 pt-[88px] sm:pt-[108px] pb-20 space-y-10 sm:space-y-12">
+      <CollaboratorHeaderSkeleton />
+      <PartnerGridSkeleton count={10} cols={5} />
+      <PartnerGridSkeleton count={4} cols={4} />
+    </div>
+  );
+};

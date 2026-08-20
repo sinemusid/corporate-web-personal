@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Compass } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HomeWhoWeAreData } from '../types';
 
 interface HomeWhoWeAreProps {
@@ -22,37 +22,50 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
             muted
             loop
             playsInline
-            preload="metadata"
+            /**
+             * ✅ FIX: preload="none" — section ini below-fold saat initial load.
+             * Video section 2 tidak perlu di-buffer bersamaan dengan video section 1.
+             * Browser akan mulai load setelah elemen di-mount & visible.
+             * Sebelumnya preload="metadata" masih mendownload ~100KB untuk metadata.
+             */
+            preload="none"
             aria-hidden="true"
             className="absolute inset-0 block w-full h-full object-cover object-center opacity-55"
           >
             <source src={data.backgroundVideo} type="video/mp4" />
           </video>
         ) : (
+          /**
+           * ✅ FIX: Hapus priority=true untuk background image below-fold.
+           * Section "Who We Are" selalu berada di bawah hero — tidak above-fold saat load.
+           * priority=true pada gambar off-screen adalah pemborosan bandwidth dan
+           * justru menunda LCP element yang sebenarnya (hero logo/video).
+           * Ganti dengan loading="lazy" (default) dan sizes yang benar.
+           */
           <Image
             src={bgImage}
             alt={data.subheading || 'Sinemus Indonesia Team'}
             fill
-            priority
             sizes="100vw"
+            quality={70}
             className="object-cover object-center opacity-50"
           />
         )}
       </div>
 
-      {/* 2. Top-to-Bottom Subtle Blend Gradient from Hero Section */}
-      <div 
-        aria-hidden="true" 
-        className="absolute top-0 left-0 right-0 h-28 sm:h-36 z-1 pointer-events-none bg-gradient-to-b from-slate-950 via-slate-950/60 to-transparent" 
+      {/* 2. Top-to-Bottom Blend Gradient from Hero Section */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-0 right-0 h-28 sm:h-36 z-1 pointer-events-none bg-gradient-to-b from-slate-950 via-slate-950/60 to-transparent"
       />
 
-      {/* High-legibility Multi-Directional Gradient Mask */}
-      <div 
-        aria-hidden="true" 
-        className="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-slate-950 via-slate-950/80 via-40% to-transparent to-70% lg:bg-gradient-to-r lg:from-slate-950/95 lg:via-slate-950/75 lg:via-45% lg:to-transparent lg:to-65%" 
+      {/* 3. Multi-Directional Gradient Mask */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-slate-950 via-slate-950/80 via-40% to-transparent to-70% lg:bg-gradient-to-r lg:from-slate-950/95 lg:via-slate-950/75 lg:via-45% lg:to-transparent lg:to-65%"
       />
 
-      {/* 3. Text Content Container Overlay */}
+      {/* 4. Text Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         <div className="space-y-5 sm:space-y-6 max-w-xl sm:max-w-2xl text-left">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white tracking-tight leading-tight sm:leading-snug">
@@ -79,4 +92,3 @@ export const HomeWhoWeAre: React.FC<HomeWhoWeAreProps> = ({ data }) => {
     </div>
   );
 };
-

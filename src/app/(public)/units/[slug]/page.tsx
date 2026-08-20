@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { fetchUnitBySlug } from '@/features/units/api';
+import { UnitDetailSkeleton } from '@/features/units';
 import { siteConfig } from '@/config/site.config';
 import { constructMetadata } from '@/lib/seo';
 import { BreadcrumbJsonLd, UnitJsonLd } from '@/components/seo/json-ld';
@@ -81,8 +82,9 @@ export default async function UnitDetailPage({ params }: UnitDetailPageProps) {
         ]}
       />
       <UnitJsonLd unit={unit} />
-      <UnitDetailWidget unit={unit} />
+      <Suspense fallback={<UnitDetailSkeleton />}>
+        <UnitDetailWidget unit={unit} />
+      </Suspense>
     </main>
   );
 }
-

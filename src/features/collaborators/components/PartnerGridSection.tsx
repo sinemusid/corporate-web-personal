@@ -7,6 +7,8 @@ interface PartnerGridSectionProps {
   subtitle?: string;
   items: PartnerItem[];
   columnsDesktop?: 3 | 4 | 5;
+  /** Index offset dari total grid global — untuk kalkulasi priority yang benar lintas section */
+  indexOffset?: number;
 }
 
 export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
@@ -14,6 +16,7 @@ export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
   subtitle,
   items,
   columnsDesktop = 5,
+  indexOffset = 0,
 }) => {
   if (!items || items.length === 0) return null;
 
@@ -26,7 +29,7 @@ export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
 
   return (
     <div className="space-y-6 w-full z-10 pt-4">
-      {/* Section Header (Centered) */}
+      {/* Section Header */}
       <div className="text-center flex flex-col items-center justify-center space-y-1.5 pb-2 max-w-2xl mx-auto">
         <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 uppercase tracking-tight text-center">
           {title}
@@ -38,15 +41,18 @@ export const PartnerGridSection: React.FC<PartnerGridSectionProps> = ({
         )}
       </div>
 
-      {/* Partners / Vendors Grid (CSS Grid: Exactly 5 items per inline row on desktop) */}
+      {/* Partners / Vendors Grid */}
       <div className={`grid ${gridColsClass} gap-4 sm:gap-5 w-full`}>
-        {items.map((item) => (
-          <PartnerCard key={item.id} partner={item} />
+        {items.map((item, localIndex) => (
+          <PartnerCard
+            key={item.id}
+            partner={item}
+            // ✅ Global index memastikan priority dihitung benar lintas dua section
+            index={indexOffset + localIndex}
+            columnsDesktop={columnsDesktop}
+          />
         ))}
       </div>
     </div>
   );
 };
-
-
-

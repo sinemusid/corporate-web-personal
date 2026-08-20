@@ -24,27 +24,46 @@ export const HomeUnitPreview: React.FC<HomeUnitPreviewProps> = ({ data, showTitl
         </div>
       )}
 
-      {/* Modern Ecosystem Grid */}
+      {/* Unit Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
-        {data.units.map((unit) => {
+        {data.units.map((unit, index) => {
+          /**
+           * ✅ FIX: Unit card pertama (index 0) above-fold di semua breakpoint,
+           * index 0-1 above-fold di tablet (md: 2-col).
+           * Hanya 2 card pertama yang dapat priority=true — sisanya lazy-loaded.
+           * bg-unit-preview.jpeg (333KB) × 4 cards = 1.3MB jika semua eager-loaded.
+           */
+          const isPriority = index < 2;
+
           return (
             <div
               key={unit.id}
               className="group relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-800/80 hover:border-blue-500/60 shadow-lg hover:shadow-2xl hover:shadow-blue-950/40 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 h-full min-h-90"
             >
-              {/* Background Media with Depth Zoom */}
+              {/* Background Image with Depth Zoom */}
               <div className="absolute inset-0 z-0 select-none overflow-hidden">
                 <Image
                   src={unit.bgImage || '/images/hero/bg-unit-preview.jpeg'}
-                  alt={unit.title}
+                  alt=""
+                  aria-hidden="true"
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  /**
+                   * ✅ FIX: sizes sesuai grid breakpoint riil.
+                   * Mobile (1-col): 100vw
+                   * Tablet (2-col): ~50vw
+                   * Desktop (4-col): ~25vw
+                   * Sebelumnya tidak ada sizes — Next.js default 100vw untuk semua breakpoint.
+                   */
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  quality={70}
+                  priority={isPriority}
+                  loading={isPriority ? undefined : 'lazy'}
                   className="object-cover object-center brightness-75 group-hover:scale-110 group-hover:brightness-90 transition-all duration-700 ease-out"
                 />
-                {/* Cinematic Multi-stop Gradient Layer */}
-                <div 
-                  aria-hidden="true" 
-                  className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/85 via-50% to-slate-950/40 group-hover:via-slate-950/75 transition-colors duration-500 pointer-events-none" 
+                {/* Cinematic Gradient */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/85 via-50% to-slate-950/40 group-hover:via-slate-950/75 transition-colors duration-500 pointer-events-none"
                 />
               </div>
 
