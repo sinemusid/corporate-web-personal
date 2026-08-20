@@ -3,7 +3,7 @@
 import React from 'react';
 import { DesignStructureData } from '../types';
 import {
-  useDesignStructureData,
+  computeDesignStructureData,
   CardItem,
   CEOTrunkLine,
   CSuiteGrid,
@@ -16,14 +16,16 @@ interface DesignStructureProps {
 }
 
 export const DesignStructure: React.FC<DesignStructureProps> = ({ data }) => {
-  const structureData = useDesignStructureData(data);
+  // ✅ FIX: Memanggil pure function, bukan hook
+  const structureData = computeDesignStructureData(data);
   const { heading, ceoNode, cSuiteColumns, pudNode, ucoNode, usNode } = structureData;
 
+
   return (
-    <section className="w-full bg-transparent py-16 sm:py-20 font-sans select-none px-4 sm:px-6 relative z-10">
-      <div className="max-w-1400px mx-auto space-y-12 sm:space-y-16">
-        <div className="text-center flex flex-col items-center justify-center space-y-4 max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 uppercase tracking-tight font-heading leading-tight">
+    <section className="w-full bg-transparent py-10 sm:py-16 select-none px-4 sm:px-6 relative z-10">
+      <div className="max-w-6xl mx-auto space-y-10 sm:space-y-14">
+        <div className="text-center flex flex-col items-center justify-center space-y-3 max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 uppercase tracking-tight font-heading leading-tight">
             {heading}
           </h2>
         </div>

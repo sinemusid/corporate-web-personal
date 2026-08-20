@@ -7,11 +7,13 @@ interface AboutCompanyOverviewProps {
 
 export const AboutCompanyOverview: React.FC<AboutCompanyOverviewProps> = ({ data }) => {
   return (
-    <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4 pt-12">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 uppercase tracking-tight font-heading leading-tight">
-        {data.subheading}
+    <div className="max-w-5xl mx-auto text-center relative z-10 space-y-3 pt-6 sm:pt-10">
+      <p className="text-xs sm:text-sm md:text-base font-mono font-bold text-blue-600 uppercase tracking-widest">
+        {data.heading || 'Tentang Kami'}
+      </p>
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 uppercase tracking-tight font-heading leading-tight">
+        {data.subheading || 'SINEAS MUSLIM INDONESIA'}
       </h1>
     </div>
   );
 };
-

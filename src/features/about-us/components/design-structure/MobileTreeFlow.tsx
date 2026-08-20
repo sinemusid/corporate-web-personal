@@ -25,7 +25,7 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
       {/* 1. CEO Card (Leadership) */}
       <div className="flex flex-col items-center w-full z-10">
         <div className="w-full max-w-sm">
-          <CardItem node={ceoNode} highlight levelBadge="LEVEL 1 — EXECUTIVE LEADERSHIP" />
+          <CardItem node={ceoNode} highlight levelBadge="EXECUTIVE LEADERSHIP" />
         </div>
         {/* Connector Line from CEO down into Trunk */}
         <div className="w-[1px] h-8 bg-slate-300" />
@@ -39,8 +39,8 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
         {/* Section Header: C-Suite Directors & Staff */}
         <div className="relative flex items-center space-x-3 pt-2 z-10">
           <div className="w-2.5 h-2.5 rounded-full bg-blue-600 -ml-[21px] sm:-ml-[25px]" />
-          <span className="text-[11px] font-bold tracking-widest text-blue-700 uppercase bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-            DIRECTORS &amp; DEPARTMENT STAFF
+          <span className="text-[11px] font-mono font-bold tracking-widest text-blue-700 uppercase bg-blue-50 border border-blue-200 px-3 py-1 rounded-full shadow-xs">
+            DIREKSI &amp; STAF DEPARTEMEN
           </span>
         </div>
 
@@ -77,3 +77,5 @@ export const MobileTreeFlow: React.FC<MobileTreeFlowProps> = ({ data }) => {
     </div>
   );
 };
+
+

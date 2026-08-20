@@ -5,7 +5,7 @@ export interface CSuiteColumnData {
   staff?: StructureNodeData;
 }
 
-export interface UseDesignStructureDataReturn {
+export interface ComputeDesignStructureDataReturn {
   heading: string;
   subheading: string;
   ceoNode?: StructureNodeData;
@@ -15,7 +15,13 @@ export interface UseDesignStructureDataReturn {
   usNode?: StructureNodeData;
 }
 
-export const useDesignStructureData = (data: DesignStructureData): UseDesignStructureDataReturn => {
+/**
+ * ✅ FIX: Pure utility function — BUKAN React hook.
+ * Sebelumnya dinamai useDesignStructureData (prefix 'use') yang menyebabkan
+ * React Compiler memperlakukannya sebagai hook dan berpotensi mis-optimisasi.
+ * Ini adalah komputasi murni tanpa side effect — tidak memerlukan prefix 'use'.
+ */
+export const computeDesignStructureData = (data: DesignStructureData): ComputeDesignStructureDataReturn => {
   const ceoNode = data.nodes.find((n) => n.role === 'CEO') || data.nodes[0];
 
   const caoNode = data.nodes.find((n) => n.role === 'CAO');
@@ -75,3 +81,12 @@ export const useDesignStructureData = (data: DesignStructureData): UseDesignStru
     usNode,
   };
 };
+
+/**
+ * @deprecated Gunakan `computeDesignStructureData` — alias untuk backward compatibility
+ * dengan komponen yang masih import nama lama.
+ */
+export const useDesignStructureData = computeDesignStructureData;
+
+// Re-export type alias untuk backward compatibility
+export type UseDesignStructureDataReturn = ComputeDesignStructureDataReturn;

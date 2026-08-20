@@ -20,16 +20,18 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
     ? 'pt-[88px] sm:pt-[108px] lg:pt-[112px] pb-12 sm:pb-16 lg:pb-20'
     : 'py-12 sm:py-16 lg:py-20';
 
-  const bgStyle = darkBg 
-    ? 'bg-slate-950 text-white' 
+  const bgStyle = darkBg
+    ? 'bg-slate-950 text-white'
     : 'bg-white text-slate-900 bg-white-pattern bg-repeat';
 
   return (
-    <section id={id} className={cn('w-full', id && 'scroll-mt-[-28] sm:scroll-mt-[-30]', bgStyle)}>
+    // ✅ FIX: scroll-mt-24 (96px) sebagai offset untuk fixed navbar — nilai valid Tailwind
+    <section id={id} className={cn('w-full', id && 'scroll-mt-24', bgStyle)}>
       <div className={cn('max-w-7xl mx-auto px-4 sm:px-6 lg:px-8', spacingClass, className)}>
         {children}
       </div>
     </section>
   );
 };
+
 

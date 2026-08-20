@@ -1,57 +1,115 @@
 import React from 'react';
+import {
+  Compass,
+  Clapperboard,
+  Layers,
+  MonitorPlay,
+  HeartHandshake,
+  Award,
+  Globe2,
+} from 'lucide-react';
 import { VisionMissionValueData } from '../types';
 
 interface VisionMissionValueProps {
   data: VisionMissionValueData;
 }
 
+const MISSION_ICONS = [
+  { icon: Clapperboard, label: 'Narasi Sinema' },
+  { icon: Layers, label: 'Ekosistem Terpadu' },
+  { icon: MonitorPlay, label: 'Distribusi Digital' },
+  { icon: HeartHandshake, label: 'Komunitas Kreator' },
+  { icon: Award, label: 'Akademi & Talenta' },
+  { icon: Globe2, label: 'Standar Global' },
+];
+
 export const VisionMissionValue: React.FC<VisionMissionValueProps> = ({ data }) => {
   return (
-    <div className="relative max-w-6xl mx-auto select-none py-6">
-      <div className="relative z-10 space-y-10">
-        <div className="rounded-3xl border border-slate-200 bg-white shadow-xs px-6 py-6 sm:px-10 sm:py-8 text-center transition-colors">
-          <div className="flex justify-center mb-4">
-            <span className="px-6 py-1.5 rounded-full text-xs sm:text-sm font-extrabold tracking-widest text-white bg-blue-600 uppercase font-heading shadow-md shadow-blue-600/20">
-              {data.visionTitle || 'VISI'}
-            </span>
-          </div>
-          <p className="text-sm sm:text-base md:text-lg text-slate-700 font-body leading-relaxed max-w-4xl mx-auto font-normal">
-            {data.visionText}
-          </p>
+    <div className="relative max-w-6xl mx-auto select-none py-6 space-y-12 sm:space-y-16">
+      {/* 1. CINEMATIC VISION SECTION */}
+      <div className="relative rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-12 md:p-14 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-500 overflow-hidden group">
+        {/* Decorative Film Reel SVG Background Watermark */}
+        <div
+          aria-hidden="true"
+          className="absolute -right-12 -bottom-12 w-64 h-64 sm:w-80 sm:h-80 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none text-slate-900 select-none"
+        >
+          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-full h-full">
+            <circle cx="100" cy="100" r="90" strokeWidth="3" />
+            <circle cx="100" cy="100" r="32" strokeWidth="3" fill="currentColor" fillOpacity="0.1" />
+            <circle cx="100" cy="45" r="14" strokeWidth="2.5" />
+            <circle cx="155" cy="100" r="14" strokeWidth="2.5" />
+            <circle cx="100" cy="155" r="14" strokeWidth="2.5" />
+            <circle cx="45" cy="100" r="14" strokeWidth="2.5" />
+            <circle cx="100" cy="100" r="8" fill="currentColor" />
+          </svg>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 bg-white shadow-xs px-4 py-6 sm:px-6 sm:py-8 transition-colors">
-          <div className="flex justify-center mb-4">
-            <span className="px-6 py-1.5 rounded-full text-xs sm:text-sm font-extrabold tracking-widest text-white bg-blue-600 uppercase font-heading shadow-md shadow-blue-600/20">
-              {data.missionTitle || 'MISI'}
-            </span>
+        {/* Vision Header Label */}
+        <div className="relative z-10 flex items-center gap-2 mb-6">
+          <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200/70 flex items-center justify-center text-blue-600 shadow-xs">
+            <Compass className="w-4 h-4" />
           </div>
-          <div
-            className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${
-              data.missions.length === 6
-                ? 'lg:grid-cols-6'
-                : data.missions.length === 4
-                ? 'lg:grid-cols-4'
-                : 'lg:grid-cols-3'
-            } divide-y sm:divide-y-0 ${
-              data.missions.length === 6
-                ? 'lg:divide-x'
-                : data.missions.length === 4
-                ? 'lg:divide-x'
-                : 'md:divide-x'
-            } divide-slate-200 text-center w-full items-stretch`}
-          >
-            {data.missions.map((m, idx) => (
+          <span className="text-xs font-mono font-bold tracking-widest text-blue-700 uppercase">
+            {data.visionTitle || 'VISI PERUSAHAAN'}
+          </span>
+        </div>
+
+        {/* Editorial Vision Quote with Accent Border */}
+        <div className="relative z-10 border-l-4 border-blue-600 pl-6 sm:pl-8 py-1 space-y-3">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-900 font-heading font-semibold leading-relaxed tracking-tight">
+            &ldquo;{data.visionText}&rdquo;
+          </p>
+          <p className="text-xs sm:text-sm font-mono font-medium text-slate-500 tracking-wide pt-1">
+            — Arah Strategis &amp; Komitmen Ekosistem Sinemus Indonesia
+          </p>
+        </div>
+      </div>
+
+      {/* 2. STRATEGIC MISSION PILLARS */}
+      <div className="space-y-8">
+        {/* Clean Executive Section Title */}
+        <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-slate-900 uppercase tracking-tight">
+            {data.missionTitle || 'Misi Perusahaan'}
+          </h2>
+        </div>
+
+        {/* 3x2 Responsive Pillar Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {data.missions.map((mission, idx) => {
+            const IconComponent = MISSION_ICONS[idx]?.icon || Clapperboard;
+
+            return (
               <div
                 key={idx}
-                className="flex items-center justify-center p-4 sm:p-5 w-full h-full text-center"
+                className="group relative rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 text-left flex flex-col justify-between space-y-5 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden shadow-xs"
               >
-                <p className="text-sm sm:text-base text-slate-700 font-body leading-relaxed max-w-4xl mx-auto font-normal">
-                  {m}
-                </p>
+                {/* Top Header: Icon & Pillar Step */}
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/70 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-xs">
+                    <IconComponent className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </div>
+                  <span className="text-xs font-mono font-extrabold text-slate-400 group-hover:text-blue-600 tracking-wider transition-colors">
+                    PILAR {(idx + 1).toString().padStart(2, '0')}
+                  </span>
+                </div>
+
+                {/* Pillar Statement */}
+                <div className="space-y-1">
+                  <h3 className="text-base sm:text-lg font-heading font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+                    {mission}
+                  </h3>
+                </div>
+
+                {/* Bottom Visual Accent Bar */}
+                <div className="pt-2">
+                  <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+                    <div className="w-0 group-hover:w-full h-full bg-blue-600 transition-all duration-500 ease-out" />
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>

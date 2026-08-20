@@ -36,7 +36,6 @@ const UserIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) =
 );
 
 export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item, isOpen, onClose }) => {
-  // Lock background scroll when modal is open & handle ESC key press
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -79,7 +78,7 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
         <button
           onClick={onClose}
           aria-label="Tutup detail modal"
-          className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/90 hover:bg-slate-100 text-slate-700 border border-slate-200 backdrop-blur-md transition-all duration-300 shadow-md group cursor-pointer"
+          className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/90 hover:bg-slate-100 text-slate-700 border border-slate-200 backdrop-blur-md transition-all duration-200 shadow-md group cursor-pointer"
         >
           <CloseIcon className="w-5 h-5 text-slate-600 group-hover:text-slate-900 transition-colors" />
         </button>
@@ -95,7 +94,7 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
             priority
           />
           {/* Subtle Bottom Gradient Fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent" />
 
           {/* Top Left Badges */}
           <div className="absolute bottom-4 left-4 sm:left-8 right-4 flex flex-wrap items-center gap-2 z-10">
@@ -171,7 +170,7 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
           <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-end gap-3">
             <button
               onClick={onClose}
-              className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-slate-200 text-xs font-bold font-mono uppercase tracking-wider text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-full border border-slate-200 text-xs font-bold font-mono uppercase tracking-wider text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
             >
               Tutup
             </button>
@@ -180,7 +179,7 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
                 href={item.trailerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-blue-600 text-white hover:bg-blue-700 text-xs font-bold font-mono uppercase tracking-wider transition-all shadow-md shadow-blue-600/25 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-blue-600 text-white hover:bg-blue-700 text-xs font-bold font-mono uppercase tracking-wider transition-all shadow-md shadow-blue-600/25 cursor-pointer"
               >
                 <PlayIcon className="w-4 h-4 fill-white" />
                 <span>Lihat Teaser / Detail Karya</span>
@@ -192,3 +191,5 @@ export const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({ item
     </div>
   );
 };
+
+

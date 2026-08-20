@@ -21,13 +21,13 @@ export const SpecialUnitSection: React.FC<SpecialUnitSectionProps> = ({
           <CardItem node={pudNode} />
         </div>
 
-        <div className="w-[1px] h-8 bg-slate-300 transition-colors duration-500" />
+        <div className="w-[1px] h-8 bg-slate-300 transition-colors duration-200" />
 
         <div className="w-full">
           <CardItem node={ucoNode} />
         </div>
 
-        <div className="w-[1px] h-8 bg-slate-300 transition-colors duration-500" />
+        <div className="w-[1px] h-8 bg-slate-300 transition-colors duration-200" />
 
         <div className="w-full">
           <CardItem node={usNode} isStaff />
@@ -36,3 +36,5 @@ export const SpecialUnitSection: React.FC<SpecialUnitSectionProps> = ({
     </div>
   );
 };
+
+

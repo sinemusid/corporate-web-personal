@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -13,11 +13,16 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
+  // ✅ FIX: lastScrollY sebagai ref — tidak menyebabkan re-render/re-registration listener
+  const lastScrollYRef = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // Ref untuk membaca isOpen terbaru di dalam handler tanpa membuatnya jadi dependency
+  const isOpenRef = useRef(isOpen);
+  isOpenRef.current = isOpen;
 
   // Detect modal open state on document.body
   useEffect(() => {
@@ -27,34 +32,35 @@ export const Navbar: React.FC = () => {
 
     checkModalOpen();
 
-    const observer = new MutationObserver(() => {
-      checkModalOpen();
-    });
-
+    const observer = new MutationObserver(checkModalOpen);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     return () => observer.disconnect();
   }, []);
 
+  // ✅ FIX: handleScroll stabil (useCallback []), hanya didaftarkan SEKALI.
+  // Membaca isOpen via ref, menyimpan lastScrollY via ref — zero re-registration.
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
+
+    setScrolled(currentScrollY > 20);
+
+    if (isOpenRef.current || currentScrollY <= 20) {
+      setIsVisible(true);
+    } else if (currentScrollY > lastScrollYRef.current && currentScrollY > 60) {
+      setIsVisible(false);
+      setActiveDropdown(null);
+    } else if (currentScrollY < lastScrollYRef.current) {
+      setIsVisible(true);
+    }
+
+    lastScrollYRef.current = currentScrollY;
+  }, []);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (isOpen || currentScrollY <= 20) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 60) {
-        setIsVisible(false);
-        setActiveDropdown(null);
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, isOpen]);
+  }, [handleScroll]);
 
   const handleMouseEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -71,13 +77,14 @@ export const Navbar: React.FC = () => {
     setMobileExpanded((prev) => (prev === label ? null : label));
   };
 
+
   // State abstraction for clean dynamic theme switching across ALL navlink pages
   const isHomePage = pathname === '/';
   const isUnitDetailPage = pathname.startsWith('/units/');
   // Pages with dark sinematic hero background vs light page top
   const isDarkHeroPage = isHomePage || isUnitDetailPage;
-  const isScrolled = lastScrollY > 20 || isOpen;
-  
+  // ✅ FIX: scrolled berasal dari state yang di-set oleh ref-based handleScroll (zero re-registration)
+  const isScrolled = scrolled || isOpen;
   // Theme logic for top vs scrolled header
   const isTransparentTop = !isScrolled;
 

@@ -1,6 +1,5 @@
 // 1. About Company Overview
 export interface AboutCompanyOverviewData {
-  title: string;
   heading: string;
   subheading: string;
 }
